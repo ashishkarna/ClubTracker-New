@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TabBarItem" id="5ex-gh-F8Z" customClass="TabBarCollectionViewCell" customModule="ClubTracker" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="119" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="119" height="60"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wSW-Ls-HRM">
+                        <rect key="frame" x="0.0" y="0.0" width="119" height="60"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Yj-c8-Dmm">
+                                <rect key="frame" x="8" y="13" width="103" height="37"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.82185950949999997" green="0.93998633109999996" blue="0.54414644609999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="4Yj-c8-Dmm" secondAttribute="bottom" constant="10" id="4V8-be-gdi"/>
+                            <constraint firstAttribute="trailing" secondItem="4Yj-c8-Dmm" secondAttribute="trailing" constant="8" id="9Zg-0S-oT3"/>
+                            <constraint firstItem="4Yj-c8-Dmm" firstAttribute="leading" secondItem="wSW-Ls-HRM" secondAttribute="leading" constant="8" id="YWM-bA-xLU"/>
+                            <constraint firstItem="4Yj-c8-Dmm" firstAttribute="top" secondItem="wSW-Ls-HRM" secondAttribute="top" constant="13" id="gU0-z1-iVx"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="wSW-Ls-HRM" secondAttribute="trailing" id="6L6-p1-ngV"/>
+                <constraint firstItem="wSW-Ls-HRM" firstAttribute="top" secondItem="5ex-gh-F8Z" secondAttribute="top" id="7Me-BP-aDv"/>
+                <constraint firstAttribute="bottom" secondItem="wSW-Ls-HRM" secondAttribute="bottom" id="G6j-jz-tF2"/>
+                <constraint firstItem="wSW-Ls-HRM" firstAttribute="leading" secondItem="5ex-gh-F8Z" secondAttribute="leading" id="xPh-aE-N15"/>
+            </constraints>
+            <size key="customSize" width="119" height="60"/>
+            <connections>
+                <outlet property="tabItemLabel" destination="4Yj-c8-Dmm" id="Dqz-ct-4Ww"/>
+                <outlet property="view" destination="wSW-Ls-HRM" id="j6M-jF-hqh"/>
+            </connections>
+            <point key="canvasLocation" x="259.5" y="598"/>
+        </collectionViewCell>
+    </objects>
+</document>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TabBarController" customModule="ClubTracker" customModuleProvider="target">
+            <connections>
+                <outlet property="tabBarCollectionView" destination="qb2-t3-KBh" id="G9d-VZ-6dz"/>
+                <outlet property="tabBarView" destination="iN0-l3-epB" id="GwL-jL-vwn"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qNV-ro-Dpo">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="1"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="sH3-1w-l1C"/>
+                    </constraints>
+                </view>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="qb2-t3-KBh">
+                    <rect key="frame" x="0.0" y="1" width="600" height="59"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="HwI-VL-iHV">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="b94-3y-AgQ"/>
+                        <outlet property="delegate" destination="-1" id="CnY-pK-XgK"/>
+                    </connections>
+                </collectionView>
+            </subviews>
+            <color key="backgroundColor" red="0.97254901959999995" green="0.92941176469999998" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="qb2-t3-KBh" firstAttribute="top" secondItem="qNV-ro-Dpo" secondAttribute="bottom" id="7A4-pY-VKX"/>
+                <constraint firstItem="qb2-t3-KBh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="83Y-Bx-LRD"/>
+                <constraint firstItem="qNV-ro-Dpo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="8Ge-FA-XUe"/>
+                <constraint firstItem="qNV-ro-Dpo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ocM-4D-Yoc"/>
+                <constraint firstAttribute="trailing" secondItem="qb2-t3-KBh" secondAttribute="trailing" id="t9D-Hl-HRQ"/>
+                <constraint firstAttribute="trailing" secondItem="qNV-ro-Dpo" secondAttribute="trailing" id="v3c-UP-wKB"/>
+                <constraint firstAttribute="bottom" secondItem="qb2-t3-KBh" secondAttribute="bottom" id="xFn-9s-haK"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+</document>
