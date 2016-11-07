@@ -128,9 +128,9 @@
             <constraints>
                 <constraint firstItem="PYd-PO-Mbr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="4L5-dL-3HH"/>
                 <constraint firstAttribute="trailing" secondItem="5p0-iq-6AL" secondAttribute="trailing" id="5yi-l5-uey"/>
+                <constraint firstItem="oNG-os-zAa" firstAttribute="top" secondItem="5p0-iq-6AL" secondAttribute="bottom" constant="15" id="8bM-I5-cvK"/>
                 <constraint firstAttribute="trailing" secondItem="2Xj-8S-GW9" secondAttribute="trailing" constant="15" id="9Gm-Qd-e4w"/>
                 <constraint firstAttribute="trailing" secondItem="PYd-PO-Mbr" secondAttribute="trailing" id="Gkb-ef-cSX"/>
-                <constraint firstItem="oNG-os-zAa" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="85" id="Hf0-Be-XCk"/>
                 <constraint firstAttribute="bottom" secondItem="PYd-PO-Mbr" secondAttribute="bottom" constant="60" id="KaM-LW-BDa"/>
                 <constraint firstItem="5p0-iq-6AL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UF5-wi-aFR"/>
                 <constraint firstItem="LjP-4l-8U8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="WCu-Ba-MI6"/>

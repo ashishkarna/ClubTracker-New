@@ -71,12 +71,13 @@ extension UrgentMessageViewController{
         params["class_id"] = class_id
        
         if sender.on{
-             getUrgentRequest(params)
-        
+            
+            getCompletedRequest(params)
         }
         
         else{
-            getCompletedRequest(params)
+            getUrgentRequest(params)
+            
         
         }
     }
