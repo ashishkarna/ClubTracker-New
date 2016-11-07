@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -10,11 +9,14 @@
             <string>Montserrat-Bold</string>
             <string>Montserrat-Bold</string>
             <string>Montserrat-Bold</string>
+            <string>Montserrat-Bold</string>
         </mutableArray>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterViewController" customModule="ClubTracker" customModuleProvider="target">
             <connections>
+                <outlet property="btnAllPresent" destination="dfg-dJ-19Y" id="xYk-th-VGW"/>
+                <outlet property="lblClassName" destination="5NW-LZ-G70" id="Ysg-og-9fu"/>
                 <outlet property="tablePupil" destination="PYd-PO-Mbr" id="8e0-wc-26w"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -66,6 +68,9 @@
                                     <integer key="value" value="5"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="btnSave:" destination="-1" eventType="touchUpInside" id="R4f-vp-Auv"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.6705882352941176" green="0.76470588235294112" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
@@ -100,7 +105,7 @@
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dfg-dJ-19Y">
+                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dfg-dJ-19Y">
                             <rect key="frame" x="129" y="7" width="51" height="31"/>
                             <connections>
                                 <action selector="btnSwitchTapped:" destination="-1" eventType="valueChanged" id="G1r-Dd-dCv"/>
@@ -119,25 +124,29 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="shV-uo-FBx">
                     <rect key="frame" x="15" y="173" width="178" height="45"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Archive" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z8r-qy-lLj">
-                            <rect key="frame" x="0.0" y="12" width="57.5" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <switch opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sWY-9w-XqV">
-                            <rect key="frame" x="129" y="7" width="51" height="31"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lgk-Ga-LJc">
+                            <rect key="frame" x="0.0" y="0.0" width="178" height="45"/>
+                            <color key="backgroundColor" red="0.6705882353" green="0.76470588240000004" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
+                            <state key="normal" title="Archive">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
-                                <action selector="btnSwitchTapped:" destination="-1" eventType="valueChanged" id="PE6-iS-Ilz"/>
+                                <action selector="btnArchiveTapped:" destination="-1" eventType="touchUpInside" id="V5F-Lz-h3k"/>
                             </connections>
-                        </switch>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="Z8r-qy-lLj" firstAttribute="leading" secondItem="shV-uo-FBx" secondAttribute="leading" id="6y4-kN-MbW"/>
-                        <constraint firstAttribute="trailing" secondItem="sWY-9w-XqV" secondAttribute="trailing" id="9L1-MD-YOd"/>
-                        <constraint firstItem="sWY-9w-XqV" firstAttribute="centerY" secondItem="Z8r-qy-lLj" secondAttribute="centerY" id="NYr-cf-Jd0"/>
-                        <constraint firstItem="Z8r-qy-lLj" firstAttribute="centerY" secondItem="shV-uo-FBx" secondAttribute="centerY" id="QwD-Yh-QJh"/>
+                        <constraint firstItem="Lgk-Ga-LJc" firstAttribute="height" secondItem="shV-uo-FBx" secondAttribute="height" id="0Kf-kb-7cC"/>
+                        <constraint firstItem="Lgk-Ga-LJc" firstAttribute="top" secondItem="shV-uo-FBx" secondAttribute="top" id="8m3-Rt-gS6"/>
+                        <constraint firstItem="Lgk-Ga-LJc" firstAttribute="leading" secondItem="shV-uo-FBx" secondAttribute="leading" id="hf5-EJ-YtP"/>
+                        <constraint firstItem="Lgk-Ga-LJc" firstAttribute="width" secondItem="shV-uo-FBx" secondAttribute="width" id="ljr-jU-6ak"/>
                     </constraints>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="2Xj-8S-GW9">
@@ -148,7 +157,7 @@
                 </imageView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PYd-PO-Mbr">
                     <rect key="frame" x="0.0" y="268" width="320" height="240"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.91402243589999999" green="0.91402243589999999" blue="0.91402243589999999" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="O6o-F8-fSy"/>
                         <outlet property="delegate" destination="-1" id="mnd-VM-KqK"/>

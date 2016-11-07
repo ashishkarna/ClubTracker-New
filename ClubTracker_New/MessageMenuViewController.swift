@@ -10,10 +10,12 @@ import UIKit
 
 class MessageMenuViewController: UIViewController {
 
+    @IBOutlet weak var lblClassName: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        lblClassName.text = NSUserDefaults.standardUserDefaults().valueForKey("class_name") as? String
     }
 
     override func didReceiveMemoryWarning() {

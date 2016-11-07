@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TeacherMenuViewController" customModule="ClubTracker" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="RYw-cb-Xd9" id="Sh9-j9-SEh"/>
+                <outlet property="lblNavTitle" destination="fNr-ru-BpY" id="WpB-xF-hMe"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -45,7 +46,7 @@
                             </constraints>
                             <state key="normal" image="backBtn"/>
                             <connections>
-                                <action selector="btnBack:" destination="-1" eventType="touchUpInside" id="KqE-LC-TfV"/>
+                                <action selector="btnBack:" destination="-1" eventType="touchUpInside" id="Jv4-L6-4FE"/>
                             </connections>
                         </button>
                     </subviews>

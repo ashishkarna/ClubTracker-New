@@ -8,5 +8,6 @@
 #define SwiftExample_Objc_Bridge_Header_h
 
 #import "TPKeyboardAvoidingScrollView.h"
+#import "MBProgressHUD.h"
 
 #endif

@@ -73,6 +73,13 @@ class Helper: NSObject{
         
     }
 
+    static func isSameText(firstStr: String, secondStr: String) -> Bool {
+        if firstStr == secondStr {
+            return true
+        }
+        return false
+    }
+
     
     static func isNotBlank(name: String) -> Bool{
         
@@ -92,6 +99,42 @@ class Helper: NSObject{
     }
     
     
+    //MARK: DATE AND TIME FORMATTER
+    static func getDate(dateString: String)-> String{
+    
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let date = formatter.dateFromString(dateString)
+        
+        formatter.dateFormat = "yyyy-MM-dd"
+        let stringDate = formatter.stringFromDate(date!)
+        return stringDate
+        
+    }
+    
+    static func getSimpleTime(dateString:String)->String{
+    
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let date = formatter.dateFromString(dateString)
+        
+        formatter.dateFormat = "hh:mm:ss a"
+        let time = formatter.stringFromDate(date!)
+        return time
+        
+    }
+    
+    static func getTime(dateString: String)-> String{
+        
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let date = formatter.dateFromString(dateString)
+        
+        formatter.dateFormat = "hh:mm:ss a"
+        let stringDate = formatter.stringFromDate(date!)
+        return stringDate
+        
+    }
     
     //MARK: TableView Design
    static func setTableViewDesign(tableView: UITableView){

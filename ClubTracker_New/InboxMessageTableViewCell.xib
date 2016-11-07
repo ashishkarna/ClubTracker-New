@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -21,7 +20,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="69.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIt-f5-WpW">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oIt-f5-WpW">
                         <rect key="frame" x="16" y="8" width="141" height="21"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -31,27 +30,34 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dEB-51-OM3">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dEB-51-OM3">
                         <rect key="frame" x="171" y="8" width="141" height="21"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subject: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l8c-10-Tv7">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subject: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l8c-10-Tv7">
                         <rect key="frame" x="16" y="40" width="141" height="21"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qsF-5N-3Zi">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qsF-5N-3Zi">
                         <rect key="frame" x="171" y="40" width="141" height="21"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eh9-h5-Xww">
+                        <rect key="frame" x="8" y="69" width="304" height="2"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="2" id="dxK-V7-a36"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" red="0.82185950949999997" green="0.93998633109999996" blue="0.54414644609999996" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
@@ -64,10 +70,13 @@
                     <constraint firstItem="l8c-10-Tv7" firstAttribute="height" secondItem="oIt-f5-WpW" secondAttribute="height" id="JZK-HU-WhG"/>
                     <constraint firstItem="oIt-f5-WpW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="MBI-TN-OW1"/>
                     <constraint firstItem="l8c-10-Tv7" firstAttribute="leading" secondItem="oIt-f5-WpW" secondAttribute="leading" id="QHg-qt-ra4"/>
+                    <constraint firstItem="Eh9-h5-Xww" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Tyg-F4-e80"/>
                     <constraint firstItem="qsF-5N-3Zi" firstAttribute="trailing" secondItem="dEB-51-OM3" secondAttribute="trailing" id="XA6-gC-uZV"/>
                     <constraint firstItem="qsF-5N-3Zi" firstAttribute="top" secondItem="dEB-51-OM3" secondAttribute="bottom" constant="11" id="b2s-f2-60u"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Eh9-h5-Xww" secondAttribute="trailing" id="c04-44-1Mt"/>
                     <constraint firstItem="l8c-10-Tv7" firstAttribute="width" secondItem="oIt-f5-WpW" secondAttribute="width" id="eWa-Zd-pLH"/>
                     <constraint firstItem="dEB-51-OM3" firstAttribute="leading" secondItem="oIt-f5-WpW" secondAttribute="trailing" constant="14" id="ezl-V5-qmJ"/>
+                    <constraint firstItem="Eh9-h5-Xww" firstAttribute="top" secondItem="qsF-5N-3Zi" secondAttribute="bottom" constant="8" id="gon-cb-hLt"/>
                     <constraint firstAttribute="trailingMargin" secondItem="dEB-51-OM3" secondAttribute="trailing" id="jxL-Va-hQJ"/>
                     <constraint firstItem="oIt-f5-WpW" firstAttribute="width" secondItem="dEB-51-OM3" secondAttribute="width" id="nzl-fo-dJO"/>
                 </constraints>

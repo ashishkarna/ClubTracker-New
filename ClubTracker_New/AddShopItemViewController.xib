@@ -185,6 +185,9 @@
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Wbc-xu-l6N">
                                     <rect key="frame" x="15" y="187" width="290" height="94"/>
                                     <color key="backgroundColor" red="0.91402243589999999" green="0.91402243589999999" blue="0.91402243589999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="Wbc-xu-l6N" secondAttribute="height" multiplier="145:47" id="AxP-DA-lFY"/>
+                                    </constraints>
                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -242,13 +245,12 @@
                                 <constraint firstItem="n8J-Bd-lEU" firstAttribute="height" secondItem="aVp-bS-3on" secondAttribute="height" id="gff-ST-axv"/>
                                 <constraint firstItem="T03-9h-akT" firstAttribute="top" secondItem="sgw-8I-Rqe" secondAttribute="top" constant="8" id="r5D-uO-8gI"/>
                                 <constraint firstAttribute="bottom" secondItem="Wbc-xu-l6N" secondAttribute="bottom" constant="20" id="rBn-Of-22q"/>
-                                <constraint firstAttribute="width" secondItem="sgw-8I-Rqe" secondAttribute="height" multiplier="320:301" id="tkf-Ho-YxP"/>
                                 <constraint firstItem="aVp-bS-3on" firstAttribute="width" secondItem="bkC-QB-CAm" secondAttribute="width" id="wbn-Eo-epj"/>
                             </constraints>
                         </view>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="sgw-8I-Rqe" secondAttribute="bottom" constant="-68" id="FBO-cK-1sh"/>
+                        <constraint firstAttribute="bottom" secondItem="sgw-8I-Rqe" secondAttribute="bottom" id="FBO-cK-1sh"/>
                         <constraint firstAttribute="trailing" secondItem="sgw-8I-Rqe" secondAttribute="trailing" id="PaL-LS-1NI"/>
                         <constraint firstItem="sgw-8I-Rqe" firstAttribute="leading" secondItem="Lsp-kz-ei0" secondAttribute="leading" id="Wrh-gI-xhu"/>
                         <constraint firstItem="sgw-8I-Rqe" firstAttribute="top" secondItem="Lsp-kz-ei0" secondAttribute="top" id="btU-9c-geP"/>

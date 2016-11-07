@@ -20,6 +20,7 @@ class TeacherMenuViewController
     var menuImage = ["register-icon","message-icon","chat-icon","diary-icon","camera-icon","target-icon","shop_icon","social-media","contact-icon"]
     var menuTitle = ["Register","Message","Chat","Diary","Camera","Target/Stats","Shop","Social Media","Contact US"]
     
+    @IBOutlet weak var lblNavTitle: UILabel!
   
   
     
@@ -27,7 +28,7 @@ class TeacherMenuViewController
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-       
+       lblNavTitle.text = NSUserDefaults.standardUserDefaults().valueForKey("class_name") as? String
         let nib = UINib(nibName: "TeacherMenuItemCell", bundle: NSBundle.mainBundle())
         
        collectionView.registerNib(nib, forCellWithReuseIdentifier: "TeacherMenuItemCell")
@@ -55,8 +56,8 @@ extension TeacherMenuViewController{
 
     @IBAction func btnBack(sender: UIButton) {
         
-        
-       self.navigationController?.popViewControllerAnimated(true)
+        self.dismissViewControllerAnimated(true, completion: nil)
+      // self.navigationController?.popViewControllerAnimated(true)
     }
 
 }

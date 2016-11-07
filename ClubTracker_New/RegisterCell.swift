@@ -18,11 +18,10 @@ class RegisterCell: UITableViewCell {
     @IBOutlet weak var btnAbs: UIButton!
     @IBOutlet weak var btnIn: UIButton!
     @IBOutlet weak var lblName: UILabel!
-    
-    
-    
-  var buttonState = [false,false,false]
-    
+
+    //var childList = [Child]()
+    var status:Int!
+    var didButtonTapped = false
     //MARK:--tableViewcell property
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,79 +33,65 @@ class RegisterCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+
     
-    func configureButtonState(data:[Bool]){
-        
-       //button in
-        
-        if data[0]{
-            btnIn.backgroundColor = appColor
-        }
-        else{
-            btnIn.backgroundColor = lightAppColor
-        }
-        
-        //button abs
-        if data[1]{
+    func setAttendanceStatus(status:Int){
+       
+        switch status {
+        case 0://abs
+           
             btnAbs.backgroundColor = appColor
-        }
-        else{
-            btnAbs.backgroundColor = lightAppColor
-        }
-        
-        //button late
-        if data[2]{
-            btnLate.backgroundColor = appColor
-        }
-        else{
+            btnIn.backgroundColor = lightAppColor
             btnLate.backgroundColor = lightAppColor
-        }
         
+        case 1://in
+
+            btnAbs.backgroundColor = lightAppColor
+            btnIn.backgroundColor = appColor
+            btnLate.backgroundColor = lightAppColor
+            
+           
         
+        case 2://late
+            
+            btnAbs.backgroundColor = lightAppColor
+            btnIn.backgroundColor = lightAppColor
+            btnLate.backgroundColor = appColor
+            
+        default:
+            btnAbs.backgroundColor = lightAppColor
+            btnIn.backgroundColor = lightAppColor
+            btnLate.backgroundColor = lightAppColor
+
+            break
         }
+    }
+    
+    
+    
+    func getAttendanceStatus()->Int{
+        return status!
+    }
     
     
     @IBAction func btnTapped(sender: UIButton) {
-        
+        didButtonTapped = true
+       
         switch sender.tag {
-        case 0:
-            if buttonState[0] {
-                buttonState[0] = false
-                
-            }
-            else{
-                buttonState[0] = true
-                buttonState[1] = false
-                buttonState[2] = false
-             
-            }
+
+        case 0:     //abs
+            status = 0
             
-        case 1:
-            if buttonState[1] {
-                buttonState[1] = false
+        case 1:     //in
+            status = 1
             
-            }
-            else{
-                buttonState[1] = true
-                buttonState[0] = false
-                buttonState[2] = false
-            }
+        case 2:     //late
+            status = 2
             
-        case 2:
-            if buttonState[2] {
-                buttonState[2] = false
-            }
-            else{
-                buttonState[2] = true
-                buttonState[1] = false
-                buttonState[0] = false
-            }
         default:
             break
         }
-        
-        configureButtonState(buttonState)
-        
+       // setAttendanceStatus(status!)
         
     }
     

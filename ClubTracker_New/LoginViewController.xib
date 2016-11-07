@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -17,6 +16,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="ClubTracker" customModuleProvider="target">
             <connections>
+                <outlet property="btnTeacherOutlet" destination="N72-iy-bMF" id="UN5-tz-v5y"/>
                 <outlet property="txtPassword" destination="5qe-SE-tJ6" id="3Jo-bR-Gca"/>
                 <outlet property="txtUsername" destination="qvd-fd-5SD" id="yrw-Ec-HbB"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -64,7 +64,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="320" height="498"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Caz-2t-zbA">
-                                    <rect key="frame" x="15" y="80" width="290" height="337"/>
+                                    <rect key="frame" x="15" y="80" width="290" height="383"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="2Xj-8S-GW9">
                                             <rect key="frame" x="86" y="0.0" width="118" height="97"/>
@@ -130,7 +130,7 @@
                                             </constraints>
                                         </view>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="euQ-Pq-KEJ">
-                                            <rect key="frame" x="0.0" y="292" width="290" height="45"/>
+                                            <rect key="frame" x="0.0" y="331" width="290" height="45"/>
                                             <color key="backgroundColor" red="0.6705882352941176" green="0.76470588235294112" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                             <state key="normal" title="Login">
@@ -145,23 +145,58 @@
                                                 <action selector="btnLogin:" destination="-1" eventType="touchUpInside" id="gNn-lB-rrh"/>
                                             </connections>
                                         </button>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AqZ-Xs-eOq">
+                                            <rect key="frame" x="0.0" y="267" width="290" height="24"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are You a Teacher ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efZ-PD-fQc">
+                                                    <rect key="frame" x="8" y="1" width="163" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N72-iy-bMF">
+                                                    <rect key="frame" x="250" y="0.0" width="25" height="24"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="25" id="dMd-Fs-qZJ"/>
+                                                    </constraints>
+                                                    <state key="normal" backgroundImage="unCheckIcon"/>
+                                                    <connections>
+                                                        <action selector="btnIsTeacherPressed:" destination="-1" eventType="touchUpInside" id="9oI-6I-beA"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="efZ-PD-fQc" secondAttribute="bottom" constant="2" id="6bt-m1-gUa"/>
+                                                <constraint firstAttribute="bottom" secondItem="N72-iy-bMF" secondAttribute="bottom" id="CeY-gZ-ckn"/>
+                                                <constraint firstAttribute="height" constant="24" id="FrY-iB-vQ9"/>
+                                                <constraint firstAttribute="trailing" secondItem="N72-iy-bMF" secondAttribute="trailing" constant="15" id="OSB-2C-LlH"/>
+                                                <constraint firstItem="efZ-PD-fQc" firstAttribute="top" secondItem="AqZ-Xs-eOq" secondAttribute="top" constant="1" id="eGX-uE-Inl"/>
+                                                <constraint firstItem="efZ-PD-fQc" firstAttribute="leading" secondItem="AqZ-Xs-eOq" secondAttribute="leading" constant="8" id="oAn-o4-wlN"/>
+                                                <constraint firstItem="N72-iy-bMF" firstAttribute="leading" secondItem="efZ-PD-fQc" secondAttribute="trailing" constant="79" id="u2l-Fe-ykE"/>
+                                                <constraint firstItem="N72-iy-bMF" firstAttribute="top" secondItem="AqZ-Xs-eOq" secondAttribute="top" id="xbD-zI-gDo"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstItem="euQ-Pq-KEJ" firstAttribute="top" secondItem="mYF-y3-h37" secondAttribute="bottom" constant="40" id="1s5-wC-aag"/>
+                                        <constraint firstItem="euQ-Pq-KEJ" firstAttribute="top" secondItem="AqZ-Xs-eOq" secondAttribute="bottom" constant="40" id="6aF-TH-MAv"/>
                                         <constraint firstItem="mYF-y3-h37" firstAttribute="top" secondItem="rIG-gh-opB" secondAttribute="bottom" constant="15" id="6hq-UT-cKp"/>
                                         <constraint firstItem="2Xj-8S-GW9" firstAttribute="centerX" secondItem="Caz-2t-zbA" secondAttribute="centerX" id="EMq-5f-sdS"/>
                                         <constraint firstItem="euQ-Pq-KEJ" firstAttribute="height" secondItem="mYF-y3-h37" secondAttribute="height" id="HuB-6g-8iI"/>
+                                        <constraint firstItem="AqZ-Xs-eOq" firstAttribute="width" secondItem="mYF-y3-h37" secondAttribute="width" id="Lhl-5Q-a8i"/>
                                         <constraint firstItem="mYF-y3-h37" firstAttribute="width" secondItem="rIG-gh-opB" secondAttribute="width" id="RE2-Y1-WHl"/>
                                         <constraint firstItem="euQ-Pq-KEJ" firstAttribute="leading" secondItem="mYF-y3-h37" secondAttribute="leading" id="T5u-Gb-1K8"/>
                                         <constraint firstItem="rIG-gh-opB" firstAttribute="top" secondItem="2Xj-8S-GW9" secondAttribute="bottom" constant="50" id="Y1F-uY-LXd"/>
+                                        <constraint firstItem="AqZ-Xs-eOq" firstAttribute="top" secondItem="mYF-y3-h37" secondAttribute="bottom" constant="15" id="Z1m-eK-nky"/>
                                         <constraint firstAttribute="trailing" secondItem="2Xj-8S-GW9" secondAttribute="trailing" constant="86" id="ZVe-54-jbh"/>
                                         <constraint firstItem="2Xj-8S-GW9" firstAttribute="top" secondItem="Caz-2t-zbA" secondAttribute="top" id="aFJ-aA-6Rc"/>
                                         <constraint firstItem="rIG-gh-opB" firstAttribute="leading" secondItem="Caz-2t-zbA" secondAttribute="leading" id="cFS-Ze-xMd"/>
                                         <constraint firstItem="mYF-y3-h37" firstAttribute="leading" secondItem="rIG-gh-opB" secondAttribute="leading" id="eoF-4V-wtQ"/>
                                         <constraint firstItem="euQ-Pq-KEJ" firstAttribute="width" secondItem="mYF-y3-h37" secondAttribute="width" id="fKg-Mf-Ybi"/>
-                                        <constraint firstAttribute="bottom" secondItem="euQ-Pq-KEJ" secondAttribute="bottom" id="gl8-H4-cyl"/>
+                                        <constraint firstAttribute="bottom" secondItem="euQ-Pq-KEJ" secondAttribute="bottom" constant="7" id="gl8-H4-cyl"/>
                                         <constraint firstAttribute="trailing" secondItem="rIG-gh-opB" secondAttribute="trailing" id="luT-GN-tsF"/>
+                                        <constraint firstItem="AqZ-Xs-eOq" firstAttribute="leading" secondItem="mYF-y3-h37" secondAttribute="leading" id="qcO-XV-8UA"/>
                                         <constraint firstItem="mYF-y3-h37" firstAttribute="height" secondItem="rIG-gh-opB" secondAttribute="height" id="wgG-ND-rcb"/>
                                         <constraint firstItem="rIG-gh-opB" firstAttribute="top" secondItem="Caz-2t-zbA" secondAttribute="top" constant="147" id="wuC-34-Iof"/>
                                     </constraints>
@@ -171,7 +206,7 @@
                             <constraints>
                                 <constraint firstItem="Caz-2t-zbA" firstAttribute="centerX" secondItem="0gt-vs-vCa" secondAttribute="centerX" id="1bw-6O-XYm"/>
                                 <constraint firstItem="Caz-2t-zbA" firstAttribute="top" secondItem="0gt-vs-vCa" secondAttribute="top" constant="80" id="9dD-hh-Gjd"/>
-                                <constraint firstItem="Caz-2t-zbA" firstAttribute="centerY" secondItem="0gt-vs-vCa" secondAttribute="centerY" id="qgD-eb-Syd"/>
+                                <constraint firstItem="Caz-2t-zbA" firstAttribute="centerY" secondItem="0gt-vs-vCa" secondAttribute="centerY" constant="22.5" id="qgD-eb-Syd"/>
                                 <constraint firstItem="Caz-2t-zbA" firstAttribute="leading" secondItem="0gt-vs-vCa" secondAttribute="leading" constant="15" id="yhT-aY-a7U"/>
                             </constraints>
                         </view>
@@ -203,5 +238,6 @@
     <resources>
         <image name="icon" width="76" height="76"/>
         <image name="textFieldView" width="214" height="44"/>
+        <image name="unCheckIcon" width="50" height="50"/>
     </resources>
 </document>

@@ -85,8 +85,23 @@
                     <rect key="frame" x="0.0" y="70" width="320" height="498"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S82-aT-WAC">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="518"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="576"/>
                             <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="m9a-G3-9Bd">
+                                    <rect key="frame" x="182" y="15" width="123" height="70"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="70" id="i6C-x5-T06"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Class Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fw1-7A-1p6">
+                                    <rect key="frame" x="15" y="15" width="123" height="21"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="21" id="I2B-18-lc5"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hs7-Nt-5RG">
                                     <rect key="frame" x="105" y="110" width="110" height="81"/>
                                     <subviews>
@@ -140,24 +155,6 @@
                                                 <action selector="btnFacebook:" destination="-1" eventType="touchUpInside" id="CGY-gc-6rT"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U7S-mp-m6t">
-                                            <rect key="frame" x="0.0" y="110" width="160" height="45"/>
-                                            <color key="backgroundColor" red="0.6705882353" green="0.76470588240000004" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="45" id="4nP-xo-yWq"/>
-                                            </constraints>
-                                            <state key="normal" title="Update Instagram">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                    <integer key="value" value="3"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="btnInstagram:" destination="-1" eventType="touchUpInside" id="17h-dr-XP4"/>
-                                            </connections>
-                                        </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vmd-Hu-MXc">
                                             <rect key="frame" x="0.0" y="55" width="160" height="45"/>
                                             <color key="backgroundColor" red="0.6705882353" green="0.76470588240000004" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -176,6 +173,24 @@
                                                 <action selector="btnTwitter:" destination="-1" eventType="touchUpInside" id="4ed-yJ-Ate"/>
                                             </connections>
                                         </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U7S-mp-m6t">
+                                            <rect key="frame" x="0.0" y="110" width="160" height="45"/>
+                                            <color key="backgroundColor" red="0.6705882353" green="0.76470588240000004" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="45" id="4nP-xo-yWq"/>
+                                            </constraints>
+                                            <state key="normal" title="Update Instagram">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="3"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="btnInstagram:" destination="-1" eventType="touchUpInside" id="17h-dr-XP4"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
@@ -191,21 +206,6 @@
                                         <constraint firstAttribute="trailing" secondItem="vmd-Hu-MXc" secondAttribute="trailing" id="yh9-xs-POI"/>
                                     </constraints>
                                 </view>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="m9a-G3-9Bd">
-                                    <rect key="frame" x="182" y="15" width="123" height="70"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="70" id="i6C-x5-T06"/>
-                                    </constraints>
-                                </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Class Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fw1-7A-1p6">
-                                    <rect key="frame" x="15" y="15" width="123" height="21"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="21" id="I2B-18-lc5"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -220,7 +220,7 @@
                                 <constraint firstItem="Fw1-7A-1p6" firstAttribute="top" secondItem="S82-aT-WAC" secondAttribute="top" constant="15" id="QgI-qW-ADp"/>
                                 <constraint firstItem="m9a-G3-9Bd" firstAttribute="leading" secondItem="Fw1-7A-1p6" secondAttribute="trailing" constant="44" id="Sgu-dC-dix"/>
                                 <constraint firstItem="Fw1-7A-1p6" firstAttribute="width" secondItem="m9a-G3-9Bd" secondAttribute="width" id="W24-wL-EXc"/>
-                                <constraint firstAttribute="bottom" secondItem="wee-dI-4Mt" secondAttribute="bottom" constant="27" id="bAw-xy-1zA"/>
+                                <constraint firstAttribute="bottom" secondItem="wee-dI-4Mt" secondAttribute="bottom" constant="85" id="bAw-xy-1zA"/>
                                 <constraint firstItem="X6h-67-0fL" firstAttribute="leading" secondItem="S82-aT-WAC" secondAttribute="leading" constant="15" id="d6L-g6-hoI"/>
                                 <constraint firstAttribute="trailing" secondItem="m9a-G3-9Bd" secondAttribute="trailing" constant="15" id="eMk-5x-4PD"/>
                                 <constraint firstItem="Fw1-7A-1p6" firstAttribute="leading" secondItem="S82-aT-WAC" secondAttribute="leading" constant="15" id="k8i-b7-3hi"/>
@@ -230,7 +230,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="S82-aT-WAC" firstAttribute="top" secondItem="1KU-TF-KkW" secondAttribute="top" id="6B5-uj-29c"/>
-                        <constraint firstAttribute="bottom" secondItem="S82-aT-WAC" secondAttribute="bottom" constant="-20" id="AoI-pR-98I"/>
+                        <constraint firstAttribute="bottom" secondItem="S82-aT-WAC" secondAttribute="bottom" id="AoI-pR-98I"/>
                         <constraint firstItem="S82-aT-WAC" firstAttribute="width" secondItem="1KU-TF-KkW" secondAttribute="width" id="HKO-VV-oKU"/>
                         <constraint firstItem="S82-aT-WAC" firstAttribute="leading" secondItem="1KU-TF-KkW" secondAttribute="leading" id="cfu-Ec-ELg"/>
                         <constraint firstAttribute="trailing" secondItem="S82-aT-WAC" secondAttribute="trailing" id="n6I-NA-Aph"/>
