@@ -115,7 +115,9 @@ extension NewMessageViewController{
        
         isRequiredActionTapped = sender.on ? true : false
         
-        viewTrailingConstraint.constant = sender.on ? 0 : -UIScreen.mainScreen().bounds.size.width
+        viewTrailingConstraint.constant = sender.on ? 0 : -Helper.getScreenWidth()
+        let newPosition = CGPoint(x: Helper.getScreenWidth(),y: 0)
+        scrollView.contentOffset = sender.on ? newPosition : scrollView.frame.origin
    
     }
     
