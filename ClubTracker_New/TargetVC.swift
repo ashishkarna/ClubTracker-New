@@ -41,11 +41,11 @@ class TargetVC: UIViewController {
         formHolder.addGestureRecognizer(tapGesture)
         
         //MARK: Target TableView
-        self.targetTableView.registerNib(UINib(nibName: "TargetCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "TargetCell")
+        self.targetTableView.register(UINib(nibName: "TargetCell", bundle: Bundle.main), forCellReuseIdentifier: "TargetCell")
         setTableViewDesign(self.targetTableView)
         
         //MARK:Dropdown Pupil TableView
-        self.searchPupilTableView.registerNib(UINib(nibName: "AutoCompleteCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "AutoCompleteCell")
+        self.searchPupilTableView.register(UINib(nibName: "AutoCompleteCell", bundle: Bundle.main), forCellReuseIdentifier: "AutoCompleteCell")
         
         setTableViewDesign(self.searchPupilTableView)
         
@@ -55,26 +55,26 @@ class TargetVC: UIViewController {
         
     }
 
-    func viewTapped(recognizer: UITapGestureRecognizer){
+    func viewTapped(_ recognizer: UITapGestureRecognizer){
     
-        self.searchPupilTableView.hidden = true
+        self.searchPupilTableView.isHidden = true
         self.currentTxtField?.resignFirstResponder()
     }
     
-    func setTableViewDesign(tableView: UITableView){
+    func setTableViewDesign(_ tableView: UITableView){
         
-        tableView.layer.shadowColor = UIColor.blackColor().CGColor
-        tableView.layer.shadowOffset = CGSizeMake(0, 4)
+        tableView.layer.shadowColor = UIColor.black.cgColor
+        tableView.layer.shadowOffset = CGSize(width: 0, height: 4)
         tableView.layer.shadowOpacity = 0.2
         
-        tableView.layer.borderColor = UIColor.lightGrayColor().CGColor
+        tableView.layer.borderColor = UIColor.lightGray.cgColor
         tableView.layer.cornerRadius = 1.0
         tableView.layer.borderWidth = 1.0
         tableView.layer.cornerRadius = 2.0
         tableView.layer.masksToBounds = true
         
         if tableView.tag == 0 {
-            tableView.hidden = true
+            tableView.isHidden = true
         }
         
     }
@@ -90,10 +90,10 @@ class TargetVC: UIViewController {
 
 extension TargetVC: UIGestureRecognizerDelegate {
     
-    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         
         let view = touch.view!
-        if view.isDescendantOfView(searchPupilTableView) {
+        if view.isDescendant(of: searchPupilTableView) {
             return false
         }
         return true
@@ -103,21 +103,21 @@ extension TargetVC: UIGestureRecognizerDelegate {
 
 //MARK: TextFieldDelegate
 extension TargetVC : UITextFieldDelegate{
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         self.currentTxtField = textField
         
     }
     
-     func textFieldShouldReturn(textField: UITextField) -> Bool {
+     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.currentTxtField?.resignFirstResponder()
         return true
     }
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         if textField == txtSearchPupil {
-            searchPupilTableView.hidden = false
-             let subString = (textField.text! as NSString).stringByReplacingCharactersInRange(range, withString: string)
+            searchPupilTableView.isHidden = false
+             let subString = (textField.text! as NSString).replacingCharacters(in: range, with: string)
             
             if !subString.isEmpty {
                
@@ -136,7 +136,7 @@ extension TargetVC : UITextFieldDelegate{
                 
             }else{
                 
-                 searchPupilTableView.hidden = true
+                 searchPupilTableView.isHidden = true
             
             }
         }
@@ -149,17 +149,17 @@ extension TargetVC : UITextFieldDelegate{
 //MARK: Button Action
 extension TargetVC{
     
-    @IBAction func btnBack(sender: UIButton) {
-        self.navigationController?.popViewControllerAnimated(true)
+    @IBAction func btnBack(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     
     
     
-    @IBAction func btnSave(sender: UIButton) {
+    @IBAction func btnSave(_ sender: UIButton) {
     }
 
-    @IBAction func btnAddTargets(sender: UIButton) {
+    @IBAction func btnAddTargets(_ sender: UIButton) {
         self.currentTxtField?.resignFirstResponder()
         //new item add garda cell item add garne and reload table data
         
@@ -178,7 +178,7 @@ extension TargetVC{
         
     }
     
-    @IBAction func btnSearchPeople(sender: UIButton) {
+    @IBAction func btnSearchPeople(_ sender: UIButton) {
         
         self.currentTxtField?.resignFirstResponder()
         let msg = validateTextField()
@@ -213,7 +213,7 @@ extension TargetVC{
 extension TargetVC : UITableViewDelegate{
 
     //MARK:Table View Deligates
-    func  tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func  tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView.tag == 0 {
             return pupilList.count
         }else{
@@ -221,19 +221,19 @@ extension TargetVC : UITableViewDelegate{
         }
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         return 45
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell {
         
         if tableView.tag == 0 {
-           let cell = tableView.dequeueReusableCellWithIdentifier("AutoCompleteCell") as! AutoCompleteCell
+           let cell = tableView.dequeueReusableCell(withIdentifier: "AutoCompleteCell") as! AutoCompleteCell
             cell.lblPupil.text = pupilList[indexPath.row]
             return cell
         }else{
-           let  cell = tableView.dequeueReusableCellWithIdentifier("TargetCell") as! TargetCell
+           let  cell = tableView.dequeueReusableCell(withIdentifier: "TargetCell") as! TargetCell
              cell.targetLabel.text = targetList[indexPath.row]
             return cell
         }
@@ -241,10 +241,10 @@ extension TargetVC : UITableViewDelegate{
         
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView.tag == 0 {
             txtSearchPupil.text = pupilList[indexPath.row]
-            searchPupilTableView.hidden = true
+            searchPupilTableView.isHidden = true
             self.currentTxtField?.resignFirstResponder()
         }
     }

@@ -19,6 +19,7 @@ class TeacherMenuViewController
     
     var menuImage = ["register-icon","message-icon","chat-icon","diary-icon","camera-icon","target-icon","shop_icon","social-media","contact-icon"]
     var menuTitle = ["Register","Message","Chat","Diary","Camera","Target/Stats","Shop","Social Media","Contact US"]
+    var isTeacher = false
     
     @IBOutlet weak var lblNavTitle: UILabel!
   
@@ -28,15 +29,20 @@ class TeacherMenuViewController
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-       lblNavTitle.text = NSUserDefaults.standardUserDefaults().valueForKey("class_name") as? String
-        let nib = UINib(nibName: "TeacherMenuItemCell", bundle: NSBundle.mainBundle())
+        isTeacher = UserDefaults.standard.value(forKey: "isTeacher") as! Bool
+       lblNavTitle.text = UserDefaults.standard.value( forKey: isTeacher ? "class_name": "child_name") as? String
+        let nib = UINib(nibName: "TeacherMenuItemCell", bundle: Bundle.main)
         
-       collectionView.registerNib(nib, forCellWithReuseIdentifier: "TeacherMenuItemCell")
+       collectionView.register(nib, forCellWithReuseIdentifier: "TeacherMenuItemCell")
+       
 
+        menuImage[0] = isTeacher ? "register-icon" : "responseMessage"
+        menuTitle[0] = isTeacher ? "Register" : "Response"
+        
       
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
        // (self.navigationController?.tabBarController as! TabBarController)
     }
@@ -54,9 +60,9 @@ class TeacherMenuViewController
 extension TeacherMenuViewController{
 
 
-    @IBAction func btnBack(sender: UIButton) {
+    @IBAction func btnBack(_ sender: UIButton) {
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
       // self.navigationController?.popViewControllerAnimated(true)
     }
 
@@ -65,45 +71,51 @@ extension TeacherMenuViewController{
 //MARK: --Collection view delegates
 extension TeacherMenuViewController:UICollectionViewDelegate,UICollectionViewDataSource{
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 9
     }
     
-    func collectionView(collectionView : UICollectionView,layout collectionViewLayout:UICollectionViewLayout,sizeForItemAtIndexPath indexPath:NSIndexPath) -> CGSize
+    func collectionView(_ collectionView : UICollectionView,layout collectionViewLayout:UICollectionViewLayout,sizeForItemAtIndexPath indexPath:IndexPath) -> CGSize
     {
-        let widthINR = (UIScreen.mainScreen().bounds.size.width - 20) / 3
-        let cellSize:CGSize = CGSizeMake(widthINR, widthINR)
+        let widthINR = (UIScreen.main.bounds.size.width - 20) / 3
+        let cellSize:CGSize = CGSize(width: widthINR, height: widthINR)
         return cellSize
     }
     
     // make a cell for each cell index path
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         // get a reference to our storyboard cell
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TeacherMenuItemCell", forIndexPath: indexPath) as! TeacherMenuItemCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeacherMenuItemCell", for: indexPath) as! TeacherMenuItemCell
         cell.imgBG.image = UIImage(named: menuImage[indexPath.row])
-        cell.viewScore.hidden = true
+        cell.viewScore.isHidden = true
         cell.lblMenuTitle.text = menuTitle[indexPath.row]
         
-        cell.backgroundColor = UIColor.whiteColor() // make cell more visible in our example project
+        cell.backgroundColor = UIColor.white // make cell more visible in our example project
         
         return cell
     }
     
     // MARK: - UICollectionViewDelegate protocol
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // handle tap events
         print("You selected cell #\(indexPath.item)!")
         didMenuSelect(indexPath.row)
 }
     
-    func didMenuSelect(menuIndex: Int){
+    func didMenuSelect(_ menuIndex: Int){
         
         switch menuIndex {
         case 0:
+            if isTeacher {
             let registerVC = RegisterViewController(nibName: "RegisterViewController", bundle: nil)
             self.navigationController?.pushViewController(registerVC, animated: true)
+            }
+            else{
+                let responseVC = ResponseMessageViewController(nibName: "ResponseMessageViewController", bundle: nil)
+                self.navigationController?.pushViewController(responseVC, animated: true)
+            }
           
         case 1:
             let messageVC = MessageMenuViewController(nibName: "MessageMenuViewController", bundle: nil)

@@ -25,19 +25,19 @@ class TabBarController: UITabBarController {
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
        // self.navigationController?.interactivePopGestureRecognizer?.enabled = false
        // self.tabBar.hidden = true;
         addTabView()
-        let nib = UINib(nibName: "TabBarItem", bundle: NSBundle.mainBundle())
-        tabBarCollectionView.registerNib(nib, forCellWithReuseIdentifier: "TabBarItem")
+        let nib = UINib(nibName: "TabBarItem", bundle: Bundle.main)
+        tabBarCollectionView.register(nib, forCellWithReuseIdentifier: "TabBarItem")
     }
     
     func addTabView() {
         
-        NSBundle.mainBundle().loadNibNamed("TabBar", owner: self, options: nil)
-        tabBarView.frame = CGRectMake(0, Helper.getScreenHeight()-CGFloat(kTabBarHeight), Helper.getScreenWidth(), CGFloat(kTabBarHeight))
+        Bundle.main.loadNibNamed("TabBar", owner: self, options: nil)
+        tabBarView.frame = CGRect(x: 0, y: Helper.getScreenHeight()-CGFloat(kTabBarHeight), width: Helper.getScreenWidth(), height: CGFloat(kTabBarHeight))
         self.view.addSubview(tabBarView)
         
     }
@@ -47,11 +47,11 @@ class TabBarController: UITabBarController {
 //MARK: CollectionView Data Source and Delegate
 extension TabBarController: UICollectionViewDelegate, UICollectionViewDataSource {
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collectionViewItems.count
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let row = indexPath.row
         selectedTabIndex = row
@@ -64,7 +64,7 @@ extension TabBarController: UICollectionViewDelegate, UICollectionViewDataSource
         
     }
     
-    func tabBarIconTaped(index: Int){
+    func tabBarIconTaped(_ index: Int){
     
 //        switch index {
 //        case 1:
@@ -80,16 +80,16 @@ extension TabBarController: UICollectionViewDelegate, UICollectionViewDataSource
     
 
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let tabBarItem = collectionView.dequeueReusableCellWithReuseIdentifier("TabBarItem", forIndexPath: indexPath) as! TabBarCollectionViewCell
+        let tabBarItem = collectionView.dequeueReusableCell(withReuseIdentifier: "TabBarItem", for: indexPath) as! TabBarCollectionViewCell
         tabBarItem.configureData(collectionViewItems[indexPath.row], selectedIndex: selectedTabIndex, row: indexPath.row)
         
         return tabBarItem
     }
     
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         
         let height = collectionView.bounds.size.height
         let width = collectionView.bounds.size.width / CGFloat(collectionViewItems.count)

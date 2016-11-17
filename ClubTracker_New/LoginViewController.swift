@@ -39,20 +39,20 @@ class LoginViewController: UIViewController {
 //MARK: Button Action
 extension LoginViewController{
     
-    @IBAction func btnLogin(sender: UIButton) {
+    @IBAction func btnLogin(_ sender: UIButton) {
         
         //check validation 
         validateField()
         
     }
-    @IBAction func btnIsTeacherPressed(sender: UIButton) {
+    @IBAction func btnIsTeacherPressed(_ sender: UIButton) {
         isTeacherButtonPressed = !isTeacherButtonPressed
         if isTeacherButtonPressed {
-            btnTeacherOutlet.setBackgroundImage(UIImage(named: "checkIcon"), forState: .Normal)
+            btnTeacherOutlet.setBackgroundImage(UIImage(named: "checkIcon"), for: UIControlState())
             
         }
         else{
-            btnTeacherOutlet.setBackgroundImage(UIImage(named: "unCheckIcon"), forState: .Normal)
+            btnTeacherOutlet.setBackgroundImage(UIImage(named: "unCheckIcon"), for: UIControlState())
         }
         
         
@@ -105,6 +105,7 @@ extension LoginViewController{
     ///goto next view controller
     func gotoNextPage(){
         let selectVC = SelectClassViewController(nibName: "SelectClassViewController", bundle: nil)
+        selectVC.isTeacher = isTeacherButtonPressed ? true: false
         self.navigationController?.pushViewController(selectVC, animated: true)
     }
 
@@ -115,18 +116,18 @@ extension LoginViewController{
 //MARK: Web Service Helper Method
 extension LoginViewController{
     
-    func checkUser(params: [String: String]){
+    func checkUser(_ params: [String: String]){
         
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        WebServiceHelper.login(params, onCompletion: { [weak self]
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        WebServiceHelper.login(params as [String : AnyObject]?, onCompletion: { [weak self]
             response in
             print(params)
             debugPrint(response)
-            MBProgressHUD.hideAllHUDsForView(self?.view, animated: true)
+            MBProgressHUD.hideAllHUDs(for: self?.view, animated: true)
             
             switch response.result {
                 
-            case .Success(let responseData) :
+            case .success(let responseData) :
                 
                 if let status_code = response.response?.statusCode {
                     
@@ -137,7 +138,7 @@ extension LoginViewController{
                         
                         if let userData = responseData as? [String: AnyObject] {
                             
-                                NSUserDefaults.standardUserDefaults().setValue(userData["token"], forKey: "userToken")
+                                UserDefaults.standard.setValue(userData["token"], forKey: "userToken")
                             
                                 //1.get user detail
                             self!.getUserDetail()
@@ -150,10 +151,10 @@ extension LoginViewController{
                         }
                         
                     case 401: // Login Unsuccessful
-                        self?.showAlertOnMainThread(responseData.valueForKey("error") as! String)
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey:"error") as! String)
                    
                     case 500: // Cannot Create Token
-                        self?.showAlertOnMainThread(responseData.valueForKey("error") as! String)
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey:"error") as! String)
                     default:
                         self?.showAlertOnMainThread(kServerError)
                         
@@ -161,7 +162,7 @@ extension LoginViewController{
                     
                 }
                 
-            case.Failure(let error):
+            case.failure(let error):
                 self?.showAlertOnMainThread(error.localizedDescription)
                 
             }
@@ -172,16 +173,16 @@ extension LoginViewController{
     
     func getUserDetail(){
         
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         WebServiceHelper.getUser(nil, onCompletion: { [weak self]
             response in
            
             debugPrint(response)
-            MBProgressHUD.hideAllHUDsForView(self?.view, animated: true)
+            MBProgressHUD.hideAllHUDs(for: self?.view, animated: true)
             
             switch response.result {
                 
-            case .Success(let responseData) :
+            case .success(let responseData) :
                 
                 if let status_code = response.response?.statusCode {
                     
@@ -194,8 +195,8 @@ extension LoginViewController{
                             
                             let club = userData["club"] as? [String:AnyObject]
                             let profile = userData["profile"] as? [String: AnyObject]
-                            NSUserDefaults.standardUserDefaults().setValue(club!["logo_link"], forKey: "clubLogo")
-                            NSUserDefaults.standardUserDefaults().setValue(profile!["club_id"],forKey:"club_id")
+                            UserDefaults.standard.setValue(club!["logo_link"], forKey: "clubLogo")
+                            UserDefaults.standard.setValue(profile!["club_id"],forKey:"club_id")
                             
                             //go to next page
                             self!.gotoNextPage()
@@ -206,10 +207,10 @@ extension LoginViewController{
                         }
                         
                     case 401: // Login Unsuccessful
-                        self?.showAlertOnMainThread(responseData.valueForKey("error") as! String)
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey:"error") as! String)
                         
                     case 500: // Internal Server Error
-                        self?.showAlertOnMainThread(responseData.valueForKey("error") as! String)
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey:"error") as! String)
                     
                     default:
                         self?.showAlertOnMainThread(kServerError)
@@ -218,7 +219,7 @@ extension LoginViewController{
                     
                 }
                 
-            case.Failure(let error):
+            case.failure(let error):
                 self?.showAlertOnMainThread(error.localizedDescription)
                 
             }

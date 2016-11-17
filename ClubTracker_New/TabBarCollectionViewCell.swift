@@ -18,7 +18,7 @@ class TabBarCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
     
-    func configureData(data:String, selectedIndex: Int, row: Int) {
+    func configureData(_ data:String, selectedIndex: Int, row: Int) {
         
         self.tabItemLabel.text = data
       //  let imageString = data[1]

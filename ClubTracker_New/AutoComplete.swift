@@ -18,15 +18,15 @@ class AutoComplete: NSObject {
     static let sharedInstance = AutoComplete()
     //MARK: Custom Function
     
-    func pupilNameSuggestionFromPupilName(substring: String)->[String]
+    func pupilNameSuggestionFromPupilName(_ substring: String)->[String]
     {
         var childName = substring
-        pupilNameSuggestion.removeAll(keepCapacity: false)
+        pupilNameSuggestion.removeAll(keepingCapacity: false)
        
         for curString in pupilName
         {
-            childName = substring.stringByReplacingOccurrencesOfString("%20", withString: " ")
-            if curString.capitalizedString.hasPrefix(childName.capitalizedString){
+            childName = substring.replacingOccurrences(of: "%20", with: " ")
+            if curString.capitalized.hasPrefix(childName.capitalized){
                 pupilNameSuggestion.append(curString)
             }
         }

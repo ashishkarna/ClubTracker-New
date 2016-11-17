@@ -21,29 +21,34 @@ class InboxViewController: UIViewController {
     var inboxMessageList = [Inbox]()
     var club_id = ""
     var class_id = ""
+    var child_id = ""
+    var isTeacher = false
+    
       override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        lblClassName.text = NSUserDefaults.standardUserDefaults().valueForKey("class_name") as? String
-        club_id = (NSUserDefaults.standardUserDefaults().valueForKey("club_id") as? String)!
-        class_id = (NSUserDefaults.standardUserDefaults().valueForKey("class_id") as? String)!
+        isTeacher = UserDefaults.standard.value(forKey: "isTeacher") as! Bool
+        lblClassName.text = UserDefaults.standard.value(forKey: isTeacher ? "class_name" : "child_name") as? String
+        child_id = (UserDefaults.standard.value(forKey: "child_id") as? String)!
+        club_id = (UserDefaults.standard.value(forKey: "club_id") as? String)!
+        class_id = (UserDefaults.standard.value(forKey: "class_id") as? String)!
 
         
-        tableInbox.registerNib(UINib(nibName: "InboxMessageTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "InboxCell")
+        tableInbox.register(UINib(nibName: "InboxMessageTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "InboxCell")
         Helper.setTableViewDesign(tableInbox)
+        tableInbox.isHidden = true
+        
+        var params = [String: AnyObject]()
+        params["club_id"] = club_id as AnyObject?
+        params["class_id"] = class_id as AnyObject?
+        if !isTeacher{
+           params["child_id"] = child_id as AnyObject?
+        }
+        getInbox(params)
     }
 
     
-    override func viewWillAppear(animated: Bool) {
-        tableInbox.hidden = true
-        
-        var params = [String: AnyObject]()
-        params["club_id"] = club_id
-        params["class_id"] = class_id
-        getInbox(params)
-        
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -59,18 +64,21 @@ class InboxViewController: UIViewController {
 
 extension InboxViewController{
     
-    @IBAction func btnBack(sender: UIButton) {
-        self.navigationController?.popViewControllerAnimated(true)
+    @IBAction func btnBack(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
         
     }
         
-    @IBAction func btnSearchTextTapped(sender: UIButton) {
+    @IBAction func btnSearchTextTapped(_ sender: UIButton) {
         
         if Helper.isNotBlank(txtSearch.text!){
             var params = [String: AnyObject]()
-            params["club_id"] = club_id
-            params["class_id"] = class_id
-            params["search_text"] = txtSearch.text!
+            params["club_id"] = club_id as AnyObject?
+            params["class_id"] = class_id as AnyObject?
+            if !isTeacher{
+                params ["child_id"] = child_id as AnyObject?
+            }
+            params["search_text"] = txtSearch.text! as AnyObject?
             getInbox(params)
             
         }
@@ -82,15 +90,15 @@ extension InboxViewController{
 
 
 //MARK: TableView Delegate
-extension InboxViewController:UITableViewDelegate{
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension InboxViewController:UITableViewDelegate,UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return inboxMessageList.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("InboxCell") as! InboxMessageTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "InboxCell") as! InboxMessageTableViewCell
         cell.lblTo.text = " From: "
         cell.lblDate.text = " Date: "
         cell.lblSubject.text = " Subject: "
@@ -111,7 +119,7 @@ extension InboxViewController:UITableViewDelegate{
         
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = MessageDetailViewController(nibName: "MessageDetailViewController", bundle: nil)
         detailVC.navTitle = "Inbox"
         detailVC.inboxMessageDetail = inboxMessageList[indexPath.row]
@@ -125,7 +133,7 @@ extension InboxViewController:UITableViewDelegate{
 
 //MARK: View Controller Helper Method
 extension InboxViewController{
-    func setInbox(data: [AnyObject]){
+    func setInbox(_ data: [AnyObject]){
          inboxMessageList.removeAll()
         for singleItem in data{
             
@@ -141,6 +149,7 @@ extension InboxViewController{
             singleInbox.watched = item["watched"] as? String
             singleInbox.reminder = item["reminder"] as? String
             singleInbox.message_from = item["message_from"] as? String
+            singleInbox.from_name = item["from_name"] as? String
             singleInbox.created_at = item["created_at"] as? String
             
             inboxMessageList.append(singleInbox)
@@ -152,7 +161,7 @@ extension InboxViewController{
         else{
             tableHeight.constant = CGFloat(inboxMessageList.count * 45)
         }
-       tableInbox.hidden = false
+       tableInbox.isHidden = false
         
     }
     
@@ -163,16 +172,16 @@ extension InboxViewController{
 extension InboxViewController{
     
     
-    func getInbox(params: [String: AnyObject]){
+    func getInbox(_ params: [String: AnyObject]){
         
-        MBProgressHUD.showHUDAddedTo(self.tableInbox, animated: true)
-        WebServiceHelper.getTeacherInbox(params, onCompletion: {[weak self]
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        WebServiceHelper.getTeacherInbox(params, url: (isTeacher ? kGetTeacherInboxUrl: kGetParentInboxUrl),onCompletion: {[weak self]
             response in
-            MBProgressHUD.hideAllHUDsForView(self?.tableInbox, animated: true)
+            MBProgressHUD.hideAllHUDs(for: self?.view, animated: true)
             
             switch response.result {
                 
-            case .Success(let responseData) :
+            case .success(let responseData) :
                 
                 if let status_code = response.response?.statusCode {
                     
@@ -184,7 +193,7 @@ extension InboxViewController{
                             
                             if let responseResult = outboxData["response"] as? [String:AnyObject]{
                                 let inboxList = responseResult["inboxMessages"] as? [AnyObject]
-                                if inboxList?.count > 0{
+                                if (inboxList?.count)! > 0{
                                     self?.setInbox(inboxList!)
                                     self!.tableInbox.reloadData()
                                     
@@ -198,10 +207,10 @@ extension InboxViewController{
                         }
                         
                     case 301: // Login Unsuccessful
-                        self?.showAlertOnMainThread(responseData.valueForKey("error") as! String)
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey: "error") as! String)
                         
                     case 500: // Cannot Create Token
-                        self?.showAlertOnMainThread(responseData.valueForKey("error") as! String)
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey: "error") as! String)
                     default:
                         self?.showAlertOnMainThread(kServerError)
                         
@@ -209,7 +218,7 @@ extension InboxViewController{
                     
                 }
                 
-            case.Failure(let error):
+            case.failure(let error):
                 self?.showAlertOnMainThread(error.localizedDescription)
                 
             }

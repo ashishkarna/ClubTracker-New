@@ -11,11 +11,14 @@ import UIKit
 class MessageMenuViewController: UIViewController {
 
     @IBOutlet weak var lblClassName: UILabel!
+    var isTeacher = false
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        lblClassName.text = NSUserDefaults.standardUserDefaults().valueForKey("class_name") as? String
+        isTeacher = UserDefaults.standard.value(forKey: "isTeacher") as! Bool
+        lblClassName.text = UserDefaults.standard.value(forKey: isTeacher ? "class_name" : "child_name") as? String
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,9 +32,9 @@ class MessageMenuViewController: UIViewController {
 //MARK: BUTTON Action
 extension MessageMenuViewController{
 
-    @IBAction func btnBack(sender: UIButton) {
+    @IBAction func btnBack(_ sender: UIButton) {
         
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     
@@ -39,26 +42,31 @@ extension MessageMenuViewController{
     
     
     
-    @IBAction func btnNew(sender: UIButton) {
+    @IBAction func btnNew(_ sender: UIButton) {
      
         let newMessageVC = NewMessageViewController(nibName: "NewMessageViewController", bundle: nil)
         self.navigationController?.pushViewController(newMessageVC, animated: true)
     }
     
 
-    @IBAction func btnUrgentMessage(sender: UIButton) {
+    @IBAction func btnUrgentMessage(_ sender: UIButton) {
+        if !isTeacher{
+            self.showAlertOnMainThread("Sorry! Only Teacher have access to it.")
+        }
+        else{
         let urgentVC = UrgentMessageViewController(nibName: "UrgentMessageViewController", bundle: nil)
        
         self.navigationController?.pushViewController(urgentVC, animated: true)
+        }
     }
 
     
-    @IBAction func btnInbox(sender: UIButton) {
+    @IBAction func btnInbox(_ sender: UIButton) {
         let inboxVC = InboxViewController(nibName: "InboxViewController", bundle: nil)
         self.navigationController?.pushViewController(inboxVC, animated: true)
     }
     
-    @IBAction func btnOutbox(sender: UIButton) {
+    @IBAction func btnOutbox(_ sender: UIButton) {
         let outboxVC = OutboxViewController(nibName: "OutboxViewController", bundle: nil)
         self.navigationController?.pushViewController(outboxVC, animated: true)
     }

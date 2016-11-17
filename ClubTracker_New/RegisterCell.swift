@@ -28,14 +28,14 @@ class RegisterCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
 
     
-    func setAttendanceStatus(status:Int){
+    func setAttendanceStatus(_ status:Int){
        
         switch status {
         case 0://abs
@@ -74,7 +74,7 @@ class RegisterCell: UITableViewCell {
     }
     
     
-    @IBAction func btnTapped(sender: UIButton) {
+    @IBAction func btnTapped(_ sender: UIButton) {
         didButtonTapped = true
        
         switch sender.tag {

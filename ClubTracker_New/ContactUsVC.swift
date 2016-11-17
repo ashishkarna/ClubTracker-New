@@ -24,8 +24,8 @@ class ContactUsVC: UIViewController {
 
 //MARK: Button Action
 extension ContactUsVC{
-    @IBAction func btnBack(sender: UIButton) {
-        self.navigationController?.popViewControllerAnimated(true)
+    @IBAction func btnBack(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
     }
 
     

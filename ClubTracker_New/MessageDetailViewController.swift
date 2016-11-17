@@ -35,7 +35,7 @@ class MessageDetailViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        lblClassName.text = NSUserDefaults.standardUserDefaults().valueForKey("class_name") as? String
+        lblClassName.text = UserDefaults.standard.value(forKey: "class_name") as? String
         
         lblFrom.text = isOutbox ? "To: " : "From: "
         lblDate.text = "Date: "
@@ -90,7 +90,7 @@ class MessageDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         self.lblNavTitle.text = navTitle
     }
 
@@ -98,9 +98,9 @@ class MessageDetailViewController: UIViewController {
 
 extension MessageDetailViewController{
 
-    @IBAction func btnBack(sender: UIButton) {
+    @IBAction func btnBack(_ sender: UIButton) {
         
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
 

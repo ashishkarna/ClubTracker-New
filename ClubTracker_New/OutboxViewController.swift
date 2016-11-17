@@ -18,28 +18,35 @@ class OutboxViewController: UIViewController {
     var outboxMessageList = [Outbox]()
     var club_id = ""
     var class_id = ""
+    var child_id = ""
+    var isTeacher = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        lblClassName.text = NSUserDefaults.standardUserDefaults().valueForKey("class_name") as? String
-        club_id = (NSUserDefaults.standardUserDefaults().valueForKey("club_id") as? String)!
-        class_id = (NSUserDefaults.standardUserDefaults().valueForKey("class_id") as? String)!
-        tableOutbox.registerNib(UINib(nibName: "InboxMessageTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "InboxCell")
+        isTeacher = UserDefaults.standard.value(forKey: "isTeacher") as! Bool
+        lblClassName.text = UserDefaults.standard.value(forKey: isTeacher ? "class_name": "child_name") as? String
+        child_id = (UserDefaults.standard.value(forKey: "child_id") as? String)!
+        club_id = (UserDefaults.standard.value(forKey: "club_id") as? String)!
+        class_id = (UserDefaults.standard.value(forKey: "class_id") as? String)!
+        tableOutbox.register(UINib(nibName: "InboxMessageTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "InboxCell")
+        
         Helper.setTableViewDesign(tableOutbox)
+        tableOutbox.isHidden = true
+        
+        var params = [String: AnyObject]()
+        params["club_id"] = club_id as AnyObject?
+        params["class_id"] = class_id as AnyObject?
+        if !isTeacher{
+            params["child_id"] = child_id as AnyObject?
+        }
+        getOutbox(params)
+        
         
     }
     
-    override func viewWillAppear(animated: Bool) {
-        tableOutbox.hidden = true
-        
-        var params = [String: AnyObject]()
-        params["club_id"] = club_id
-        params["class_id"] = class_id
-        getOutbox(params)
-        
-    }
+  
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -51,17 +58,20 @@ class OutboxViewController: UIViewController {
 
 extension OutboxViewController{
     
-    @IBAction func btnBack(sender: UIButton) {
-        self.navigationController?.popViewControllerAnimated(true)
+    @IBAction func btnBack(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
         
     }
     
-    @IBAction func btnSearchTextTapped(sender: UIButton) {
+    @IBAction func btnSearchTextTapped(_ sender: UIButton) {
         if Helper.isNotBlank(txtSearch.text!){
             var params = [String: AnyObject]()
-            params["club_id"] = club_id
-            params["class_id"] = class_id
-            params["search_text"] = txtSearch.text!
+            params["club_id"] = club_id as AnyObject?
+            params["class_id"] = class_id as AnyObject?
+            if !isTeacher{
+                params["child_id"] = child_id as AnyObject?
+            }
+            params["search_text"] = txtSearch.text! as AnyObject?
             getOutbox(params)
         
         }
@@ -72,15 +82,15 @@ extension OutboxViewController{
 }
 
 //MARK: TableView Delegate
-extension OutboxViewController:UITableViewDelegate{
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension OutboxViewController:UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
      
         return outboxMessageList.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("InboxCell") as! InboxMessageTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "InboxCell") as! InboxMessageTableViewCell
         cell.lblTo.text = " To: "
         cell.lblDate.text = " Date: "
         cell.lblSubject.text = " Subject: "
@@ -100,7 +110,7 @@ extension OutboxViewController:UITableViewDelegate{
         
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = MessageDetailViewController(nibName: "MessageDetailViewController", bundle: nil)
         detailVC.navTitle = "Outbox"
         detailVC.outboxMessageDetail = outboxMessageList[indexPath.row]
@@ -115,7 +125,7 @@ extension OutboxViewController:UITableViewDelegate{
 
 //MARK: View Controller Helper Method
 extension OutboxViewController{
-    func setOutbox(data: [AnyObject]){
+    func setOutbox(_ data: [AnyObject]){
         outboxMessageList.removeAll()
         for singleItem in data{
             
@@ -144,7 +154,7 @@ extension OutboxViewController{
         else{
             tableHeight.constant = CGFloat(outboxMessageList.count * 45)
         }
-        tableOutbox.hidden = false
+        tableOutbox.isHidden = false
     
     }
 
@@ -158,16 +168,18 @@ extension OutboxViewController{
 extension OutboxViewController{
 
     
-    func getOutbox(params: [String: AnyObject]){
+    func getOutbox(_ params: [String: AnyObject]){
         
-        MBProgressHUD.showHUDAddedTo(self.tableOutbox, animated: true)
-        WebServiceHelper.getTeacherOutbox(params, onCompletion: {[weak self]
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        WebServiceHelper.getTeacherOutbox(params,url: isTeacher ? kGetTeacherOutboxUrl : kGetParentOutboxUrl, onCompletion: {[weak self]
+            
             response in
-            MBProgressHUD.hideAllHUDsForView(self?.tableOutbox, animated: true)
+            debugPrint(response)
+            MBProgressHUD.hideAllHUDs(for: self?.view, animated: true)
             
             switch response.result {
                 
-            case .Success(let responseData) :
+            case .success(let responseData) :
                 
                 if let status_code = response.response?.statusCode {
                     
@@ -179,7 +191,7 @@ extension OutboxViewController{
                         
                             if let responseResult = outboxData["response"] as? [String:AnyObject]{
                                 let outboxList = responseResult["outboxmessage"] as? [AnyObject]
-                                if outboxList?.count > 0{
+                                if (outboxList?.count)! > 0{
                                     self?.setOutbox(outboxList!)
                                     self!.tableOutbox.reloadData()
                                     
@@ -193,10 +205,10 @@ extension OutboxViewController{
                         }
                         
                     case 301: // Login Unsuccessful
-                        self?.showAlertOnMainThread(responseData.valueForKey("error") as! String)
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey: "error") as! String)
                         
                     case 500: // Cannot Create Token
-                        self?.showAlertOnMainThread(responseData.valueForKey("error") as! String)
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey: "error") as! String)
                     default:
                         self?.showAlertOnMainThread(kServerError)
                         
@@ -204,7 +216,7 @@ extension OutboxViewController{
                     
                 }
                 
-            case.Failure(let error):
+            case.failure(let error):
                 self?.showAlertOnMainThread(error.localizedDescription)
                 
             }

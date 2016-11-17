@@ -25,6 +25,7 @@ let kServerError = "Server Error"
 let kLoginUserUrl = DomainName + "login"
 let kAuthenticatedUserUrl = DomainName + "getAuthenticatedUser"
 
+//MARK: TECACHER SECTION
 //MARK: CLASS
 let kgetAllClassesUrl = DomainName + "getAllClasses"
 
@@ -45,3 +46,19 @@ let kGetTeacherOutboxDetailUrl = DomainName + "getTeacherOutboxDetail"
 let KGetTeacherRequestUrl = DomainName + "getTeacherRequests"
 let kCompletedAllPriorRequestsUrl = DomainName + "completedAllPriorRequests"
 let kGetParentListUrl = DomainName + "getParents"
+
+
+
+//MARK: PARENT SECTION
+
+let kgetMyChildrenUrl = DomainName + "getMyChildren"
+
+let kgetUrgentRequestsUrl = DomainName + "getUrgentRequests"
+
+//MARK: Parent Message
+let kGetParentInboxUrl = DomainName + "getInbox"
+let kGetParentOutboxUrl = DomainName + "getOutbox"
+
+let kGetClassTeachersUrl = DomainName + "getClassTeachers"
+let kSendMessageToTeacherUrl = DomainName + "saveParentMessage"
+

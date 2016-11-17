@@ -26,14 +26,14 @@ class FAQVC: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        txtSearchItem.addTarget(self, action: #selector(didChangeText(_:)), forControlEvents:UIControlEvents.EditingChanged)
+        txtSearchItem.addTarget(self, action: #selector(didChangeText(_:)), for:UIControlEvents.editingChanged)
         
         //MARK: Target TableView
-        self.faqTableView.registerNib(UINib(nibName: "FAQCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "FAQCell")
+        self.faqTableView.register(UINib(nibName: "FAQCell", bundle: Bundle.main), forCellReuseIdentifier: "FAQCell")
         setTableViewDesign(self.faqTableView)
         
         //MARK:Dropdown Pupil TableView
-        self.dropdownTableView.registerNib(UINib(nibName: "AutoCompleteCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "AutoCompleteCell")
+        self.dropdownTableView.register(UINib(nibName: "AutoCompleteCell", bundle: Bundle.main), forCellReuseIdentifier: "AutoCompleteCell")
         
         setTableViewDesign(self.dropdownTableView)
         
@@ -47,14 +47,14 @@ class FAQVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
        // (self.navigationController?.tabBarController as! TabBarController)
     }
     
     
-    func didChangeText(textField: UITextField){
-        dropdownTableView.hidden = false
+    func didChangeText(_ textField: UITextField){
+        dropdownTableView.isHidden = false
         
         if !textField.text!.isEmpty {
             
@@ -73,26 +73,26 @@ class FAQVC: UIViewController {
             
         }else{
             
-            dropdownTableView.hidden = true
+            dropdownTableView.isHidden = true
             
         }
 
     
     }
-    func setTableViewDesign(tableView: UITableView){
+    func setTableViewDesign(_ tableView: UITableView){
         
-        tableView.layer.shadowColor = UIColor.blackColor().CGColor
-        tableView.layer.shadowOffset = CGSizeMake(0, 4)
+        tableView.layer.shadowColor = UIColor.black.cgColor
+        tableView.layer.shadowOffset = CGSize(width: 0, height: 4)
         tableView.layer.shadowOpacity = 0.2
         
-        tableView.layer.borderColor = UIColor.lightGrayColor().CGColor
+        tableView.layer.borderColor = UIColor.lightGray.cgColor
         tableView.layer.cornerRadius = 1.0
         tableView.layer.borderWidth = 1.0
         tableView.layer.cornerRadius = 2.0
         tableView.layer.masksToBounds = true
         
         if tableView.tag == 0 {
-            tableView.hidden = true
+            tableView.isHidden = true
         }
     
 
@@ -103,8 +103,8 @@ class FAQVC: UIViewController {
 //MARK: Button Action
 extension FAQVC{
 
-    @IBAction func btnBack(sender: UIButton) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func btnBack(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
 
 }
@@ -113,7 +113,7 @@ extension FAQVC{
     extension FAQVC : UITableViewDelegate{
         
         //MARK:Table View Deligates
-        func  tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        func  tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             if tableView.tag == 0 {
                 return self.searchList.count
             }else{
@@ -122,19 +122,19 @@ extension FAQVC{
             }
         }
         
-        func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             
             return 45
         }
         
-        func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell {
             
             if tableView.tag == 0 {
-                let cell = tableView.dequeueReusableCellWithIdentifier("AutoCompleteCell") as! AutoCompleteCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AutoCompleteCell") as! AutoCompleteCell
                 cell.lblPupil.text = searchList[indexPath.row]
                 return cell
             }else{
-                let  cell = tableView.dequeueReusableCellWithIdentifier("FAQCell") as! FAQCell
+                let  cell = tableView.dequeueReusableCell(withIdentifier: "FAQCell") as! FAQCell
                 cell.itemCell.text = itemList[indexPath.row]
                 return cell
             }
@@ -142,10 +142,10 @@ extension FAQVC{
             
         }
         
-        func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             if tableView.tag == 0 {
                 txtSearchItem.text = searchList[indexPath.row]
-                dropdownTableView.hidden = true
+                dropdownTableView.isHidden = true
               
             }
 }

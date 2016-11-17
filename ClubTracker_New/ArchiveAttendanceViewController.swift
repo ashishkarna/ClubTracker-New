@@ -29,18 +29,18 @@ class ArchiveAttendanceViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        lblClassName.text = NSUserDefaults.standardUserDefaults().valueForKey("class_name") as? String
+        lblClassName.text = UserDefaults.standard.value(forKey: "class_name") as? String
         if childList.count > 0 {
 //        club_Id = childList[0].club_id
 //        class_id = childList[0].class_id
-        club_id = (NSUserDefaults.standardUserDefaults().valueForKey("club_id") as? String)!
-        class_id = (NSUserDefaults.standardUserDefaults().valueForKey("class_id") as? String)!
+        club_id = (UserDefaults.standard.value(forKey: "club_id") as? String)!
+        class_id = (UserDefaults.standard.value(forKey: "class_id") as? String)!
         updateVew()
             var params = [String : String]()
-            let formatter = NSDateFormatter()
+            let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd"
            
-            params["date"] = formatter.stringFromDate(NSDate())
+            params["date"] = formatter.string(from: Date())
             
             
             params["club_id"] = club_id!
@@ -53,7 +53,7 @@ class ArchiveAttendanceViewController: UIViewController {
             })
 
         }
-        tableAttendance.registerNib(UINib(nibName: "RegisterCell",bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "RegisterCell")
+        tableAttendance.register(UINib(nibName: "RegisterCell",bundle: Bundle.main), forCellReuseIdentifier: "RegisterCell")
         Helper.setTableViewDesign(tableAttendance)
         
     }
@@ -69,7 +69,7 @@ class ArchiveAttendanceViewController: UIViewController {
 //MARK: Button Action 
 extension ArchiveAttendanceViewController{
     ///Select Date
-    @IBAction func btnSelectDate(sender: UIButton) {
+    @IBAction func btnSelectDate(_ sender: UIButton) {
         
         if !isPickerShowing{
            showHidePicker()
@@ -80,14 +80,14 @@ extension ArchiveAttendanceViewController{
     
     
     //Cancel Button
-    @IBAction func btnCancelTapped(sender: UIButton) {
+    @IBAction func btnCancelTapped(_ sender: UIButton) {
         showHidePicker()
     }
 
     
     
     ///Done Button
-    @IBAction func btnDoneTapped(sender: UIButton) {
+    @IBAction func btnDoneTapped(_ sender: UIButton) {
             getAttendancebyDate()
      
     }
@@ -96,9 +96,9 @@ extension ArchiveAttendanceViewController{
     
     
     ///Back Button
-    @IBAction func btnBack(sender: UIButton) {
+    @IBAction func btnBack(_ sender: UIButton) {
         
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
 }
 
@@ -107,7 +107,7 @@ extension ArchiveAttendanceViewController{
 extension ArchiveAttendanceViewController{
     func showHidePicker(){
        
-        UIView.animateWithDuration(0.5, animations: {
+        UIView.animate(withDuration: 0.5, animations: {
             self.pickerConstraint.constant = self.isPickerShowing ? -260.0 : 60.0
             self.view.layoutIfNeeded()
             }, completion: nil)
@@ -117,7 +117,7 @@ extension ArchiveAttendanceViewController{
     
     
     //set child array
-    func setChildsWithAttendance(data: [AnyObject]){
+    func setChildsWithAttendance(_ data: [AnyObject]){
         childList.removeAll()
         for item in data{
             let singleChild = Child()
@@ -141,27 +141,27 @@ extension ArchiveAttendanceViewController{
     func updateVew(){
 
         //setting todays date
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
-        lblSelectedDate.text = formatter.stringFromDate(NSDate())
+        lblSelectedDate.text = formatter.string(from: Date())
        
     }
     
     //get attendance by date
     func getAttendancebyDate(){
     
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
-        lblSelectedDate.text = formatter.stringFromDate(pickerDate.date)
+        lblSelectedDate.text = formatter.string(from: pickerDate.date)
         showHidePicker()
     
         var params = [String : String]()
         params["date"] = lblSelectedDate.text!
-        if childList.count > 0{
+        //if childList.count > 0{
             params["club_id"] = club_id!
             params["class_id"] = class_id!
-        }
-      //  childList.removeAll()
+        //}
+        childList.removeAll()
         getChildAttendanceByDate(params, onCompletion: {
             success in
             self.tableAttendance.reloadData()
@@ -174,16 +174,16 @@ extension ArchiveAttendanceViewController{
 
 //MARK: TableView Delegate
 
-extension ArchiveAttendanceViewController:UITableViewDelegate{
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension ArchiveAttendanceViewController:UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return childList.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
         let childItem = childList[indexPath.row]
-        let cell = tableView.dequeueReusableCellWithIdentifier("RegisterCell") as! RegisterCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RegisterCell") as! RegisterCell
         cell.lblName.text = childItem.firstName! + " " + childItem.lastName!
         
         let status = Int(childItem.status!)!
@@ -200,18 +200,18 @@ extension ArchiveAttendanceViewController:UITableViewDelegate{
 extension ArchiveAttendanceViewController{
 
     //GET Child BY DATE
-    func getChildAttendanceByDate(params: [String: String],onCompletion:(success: Bool)->()){
+    func getChildAttendanceByDate(_ params: [String: String],onCompletion:@escaping (_ success: Bool)->()){
         
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        WebServiceHelper.getChildAttendance(params, onCompletion: { [weak self]
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        WebServiceHelper.getChildAttendance(params as [String : AnyObject]?, onCompletion: { [weak self]
             response in
             print(params)
             debugPrint(response)
-            MBProgressHUD.hideAllHUDsForView(self?.view, animated: true)
+            MBProgressHUD.hideAllHUDs(for: self?.view, animated: true)
             
             switch response.result {
                 
-            case .Success(let responseData) :
+            case .success(let responseData) :
                 
                 if let status_code = response.response?.statusCode {
                     
@@ -224,7 +224,7 @@ extension ArchiveAttendanceViewController{
                             
                             let childDataList = childData["attendances"] as? [AnyObject]
                             self!.setChildsWithAttendance(childDataList!)
-                            onCompletion(success: true)
+                            onCompletion(true)
                         }
                         
                         
@@ -236,7 +236,7 @@ extension ArchiveAttendanceViewController{
                         self?.showAlertOnMainThread("No Result Found")
                         
                     case 401: // Login Unsuccessful
-                        self?.showAlertOnMainThread(responseData.valueForKey("error") as! String)
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey: "error") as! String)
                     
                     case 404:
                         self?.showAlertOnMainThread("Attendance record not found")
@@ -244,7 +244,7 @@ extension ArchiveAttendanceViewController{
                         self!.tableAttendance.reloadData()
                         
                     case 500: // Cannot Create Token
-                        self?.showAlertOnMainThread(responseData.valueForKey("error") as! String)
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey: "error") as! String)
                         
                     default:
                         self?.showAlertOnMainThread(kServerError)
@@ -253,7 +253,7 @@ extension ArchiveAttendanceViewController{
                     
                 }
                 
-            case.Failure(let error):
+            case.failure(let error):
                 self?.showAlertOnMainThread(error.localizedDescription)
                 
             }

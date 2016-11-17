@@ -33,14 +33,14 @@ class ShopItemDetailViewController: UIViewController {
    }
 extension ShopItemDetailViewController{
 
-    @IBAction func btnBack(sender: UIButton) {
-        self.navigationController?.popViewControllerAnimated(true)
+    @IBAction func btnBack(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
     }
 
-    @IBAction func btnStockEdit(sender: UIButton) {
+    @IBAction func btnStockEdit(_ sender: UIButton) {
     }
     
-    @IBAction func btnAddItem(sender: UIButton) {
+    @IBAction func btnAddItem(_ sender: UIButton) {
     }
     
 

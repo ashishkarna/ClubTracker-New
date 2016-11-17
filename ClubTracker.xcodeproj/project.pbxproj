@@ -22,6 +22,8 @@
 		476FEF051D9FDE6700EEC5D4 /* FAQVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 476FEF011D9FDE6700EEC5D4 /* FAQVC.xib */; };
 		476FEF061D9FDE6700EEC5D4 /* HelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476FEF021D9FDE6700EEC5D4 /* HelpVC.swift */; };
 		476FEF071D9FDE6700EEC5D4 /* HelpVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 476FEF031D9FDE6700EEC5D4 /* HelpVC.xib */; };
+		479004B41DD8115E0086502B /* ResponseMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479004B21DD8115E0086502B /* ResponseMessageViewController.swift */; };
+		479004B51DD8115E0086502B /* ResponseMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 479004B31DD8115E0086502B /* ResponseMessageViewController.xib */; };
 		479FCA011D9EE025007891E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479FCA001D9EE025007891E9 /* AppDelegate.swift */; };
 		479FCA081D9EE025007891E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 479FCA071D9EE025007891E9 /* Assets.xcassets */; };
 		479FCA0B1D9EE025007891E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 479FCA091D9EE025007891E9 /* LaunchScreen.storyboard */; };
@@ -125,6 +127,8 @@
 		476FEF011D9FDE6700EEC5D4 /* FAQVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FAQVC.xib; sourceTree = "<group>"; };
 		476FEF021D9FDE6700EEC5D4 /* HelpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpVC.swift; sourceTree = "<group>"; };
 		476FEF031D9FDE6700EEC5D4 /* HelpVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpVC.xib; sourceTree = "<group>"; };
+		479004B21DD8115E0086502B /* ResponseMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseMessageViewController.swift; sourceTree = "<group>"; };
+		479004B31DD8115E0086502B /* ResponseMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResponseMessageViewController.xib; sourceTree = "<group>"; };
 		479FC9FD1D9EE025007891E9 /* ClubTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClubTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		479FCA001D9EE025007891E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		479FCA071D9EE025007891E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -274,6 +278,15 @@
 				476FEEEE1D9FCF6E00EEC5D4 /* TabBarItem.xib */,
 			);
 			name = "Tab Bar View";
+			sourceTree = "<group>";
+		};
+		479004B61DD811630086502B /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				479004B21DD8115E0086502B /* ResponseMessageViewController.swift */,
+				479004B31DD8115E0086502B /* ResponseMessageViewController.xib */,
+			);
+			name = Response;
 			sourceTree = "<group>";
 		};
 		479FC9F41D9EE025007891E9 = {
@@ -446,6 +459,7 @@
 				479FCA5F1D9EE47A007891E9 /* Chat */,
 				479FCA5E1D9EE460007891E9 /* Message */,
 				479FCA5D1D9EE440007891E9 /* Register */,
+				479004B61DD811630086502B /* Response */,
 			);
 			name = Menu;
 			sourceTree = "<group>";
@@ -807,6 +821,7 @@
 				479FCA191D9EE025007891E9 /* Frameworks */,
 				479FCA1A1D9EE025007891E9 /* Resources */,
 				FF76447B966B96CE999A01F6 /* [CP] Copy Pods Resources */,
+				44B2D82F3620553EB417E6A8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -831,6 +846,7 @@
 					479FC9FC1D9EE025007891E9 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = JK9C975RTZ;
+						LastSwiftMigration = 0810;
 					};
 					479FCA101D9EE025007891E9 = {
 						CreatedOnToolsVersion = 7.3;
@@ -882,6 +898,7 @@
 				479FCA6D1D9EE5B0007891E9 /* LoginViewController.xib in Resources */,
 				479FCA4E1D9EE3B4007891E9 /* AutoCompleteCell.xib in Resources */,
 				47F316271DA2E64800D740FD /* ContactUsVC.xib in Resources */,
+				479004B51DD8115E0086502B /* ResponseMessageViewController.xib in Resources */,
 				47F096C01DCF045E0002DF9C /* UrgentMessageDetailViewController.xib in Resources */,
 				47F316101DA2C0F200D740FD /* ShopItemDetailViewController.xib in Resources */,
 				47F316161DA2CC8800D740FD /* AddShopItemViewController.xib in Resources */,
@@ -922,6 +939,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		44B2D82F3620553EB417E6A8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ClubTrackerUITests/Pods-ClubTrackerUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		5F7070C1148E7A6F1A404E6F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -949,7 +981,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		9750E96081E58230495B4FC4 /* [CP] Check Pods Manifest.lock */ = {
@@ -964,7 +996,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		B7AF3733549E2215E683D12D /* [CP] Copy Pods Resources */ = {
@@ -994,7 +1026,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		F68BB8EBB1CF0A93AFC39B5C /* [CP] Copy Pods Resources */ = {
@@ -1059,6 +1091,7 @@
 				4738FA591DB7ECC700F10698 /* Details.swift in Sources */,
 				479FCA6C1D9EE5B0007891E9 /* LoginViewController.swift in Sources */,
 				476FEEE91D9FCCB600EEC5D4 /* TeacherMenuItemCell.swift in Sources */,
+				479004B41DD8115E0086502B /* ResponseMessageViewController.swift in Sources */,
 				479FCA4D1D9EE3B4007891E9 /* AutoCompleteCell.swift in Sources */,
 				479FCA391D9EE2F1007891E9 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				479FCA431D9EE37E007891E9 /* AutoComplete.swift in Sources */,
@@ -1235,9 +1268,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.karma.ClubTracker;
 				PRODUCT_NAME = ClubTracker;
-				PROVISIONING_PROFILE = "baec0f67-7c76-4691-9760-44710e8fecf6";
+				PROVISIONING_PROFILE = "a589d8fa-1226-4bc2-a21d-eef07059ddbd";
 				SWIFT_OBJC_BRIDGING_HEADER = "ClubTracker_New/ClubTracker-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -1254,8 +1288,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.karma.ClubTracker;
 				PRODUCT_NAME = ClubTracker;
-				PROVISIONING_PROFILE = "baec0f67-7c76-4691-9760-44710e8fecf6";
+				PROVISIONING_PROFILE = "a589d8fa-1226-4bc2-a21d-eef07059ddbd";
 				SWIFT_OBJC_BRIDGING_HEADER = "ClubTracker_New/ClubTracker-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

@@ -22,7 +22,7 @@ class ShopMenuViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        collectionView.registerNib(UINib(nibName: "ShopListItemCell", bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: "ShopCell")
+        collectionView.register(UINib(nibName: "ShopListItemCell", bundle: Bundle.main), forCellWithReuseIdentifier: "ShopCell")
         
     }
 
@@ -36,11 +36,11 @@ class ShopMenuViewController: UIViewController {
 //MARK: BUTTON ACTION
 extension ShopMenuViewController{
     
-    @IBAction func btnBack(sender: UIButton) {
-        self.navigationController?.popViewControllerAnimated(true)
+    @IBAction func btnBack(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func btnAddShopItem(sender: UIButton) {
+    @IBAction func btnAddShopItem(_ sender: UIButton) {
         
         let addItemVC = AddShopItemViewController(nibName: "AddShopItemViewController", bundle: nil)
         self.navigationController?.pushViewController(addItemVC, animated: true)
@@ -53,23 +53,23 @@ extension ShopMenuViewController{
 
 //MARK: --Collection delegate
 extension ShopMenuViewController:UICollectionViewDelegate{
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
     }
     
-    func collectionView(collectionView : UICollectionView,layout collectionViewLayout:UICollectionViewLayout,sizeForItemAtIndexPath indexPath:NSIndexPath) -> CGSize
+    func collectionView(_ collectionView : UICollectionView,layout collectionViewLayout:UICollectionViewLayout,sizeForItemAtIndexPath indexPath:IndexPath) -> CGSize
     {
 //        let width = ((UIScreen.mainScreen().bounds.size.width - 8) / (CGFloat)(numberOfColumn))
 //        let cellSize:CGSize = CGSizeMake(width, 100)
 //        return cellSize
       
         let widthINR = (collectionView.bounds.size.width - 10) / 2
-        let cellSize:CGSize = CGSizeMake(widthINR, widthINR)
+        let cellSize:CGSize = CGSize(width: widthINR, height: widthINR)
         return cellSize
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ShopCell", forIndexPath: indexPath) as! ShopListItemCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAtIndexPath indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShopCell", for: indexPath) as! ShopListItemCell
         
         
         cell.imgView.image = UIImage(named: "icon.png")
@@ -80,7 +80,7 @@ extension ShopMenuViewController:UICollectionViewDelegate{
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
        
         let itemDetailVC = ShopItemDetailViewController(nibName: "ShopItemDetailViewController", bundle: nil)
         self.navigationController?.pushViewController(itemDetailVC, animated: true)

@@ -8,7 +8,7 @@
 
 import UIKit
 //MARK: Textfield tag
-let kSendMessage = 0
+let kGetParents = 0
 let kDeadlineDate = 1
 let kEventDate = 2
 let kTime = 3
@@ -20,6 +20,7 @@ class NewMessageViewController: UIViewController {
     //MARK: Normal Outlet
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBOutlet weak var requireActionView: UIView!
     @IBOutlet weak var lblClassName: UILabel!
     @IBOutlet weak var txtSendMessageTo: UITextField!
     @IBOutlet weak var txtMessageSubject: UITextField!
@@ -47,42 +48,51 @@ class NewMessageViewController: UIViewController {
     @IBOutlet weak var pickerBottomConstraint: NSLayoutConstraint!
     
     
+    //MARK: TableView 
+    
+    @IBOutlet weak var lblSetReminder: UILabel!
+    @IBOutlet weak var tableSetReminder: UITableView!
+    
     var parentList = [Parent]()
+    var teacherList = [Teacher]()
     var club_id: String = ""
     var class_id: String = ""
+    var child_id: String = ""
     
     var isPickerShowing = false
     var pickerViewTag = -1
     var isRequiredActionTapped = false
     var isSetReminder = false
     var selectedParent = Parent()
-    
+    var selectedTeacher = Teacher()
+    var currentTextField : UITextField?
+    var isTeacher = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        lblClassName.text = NSUserDefaults.standardUserDefaults().valueForKey("class_name") as? String
-        club_id = (NSUserDefaults.standardUserDefaults().valueForKey("club_id") as? String)!
-        class_id = (NSUserDefaults.standardUserDefaults().valueForKey("class_id") as? String)!
+        isTeacher = UserDefaults.standard.value(forKey: "isTeacher") as! Bool
+        lblClassName.text = UserDefaults.standard.value(forKey: isTeacher ? "class_name": "child_name") as? String
+        club_id = (UserDefaults.standard.value(forKey: "club_id") as? String)!
+        class_id = (UserDefaults.standard.value(forKey: "class_id") as? String)!
+        if !isTeacher{
+            requireActionView.alpha = 0
+            child_id = (UserDefaults.standard.value(forKey: "class_id") as? String)!
+        }
+        tableSendMessageTo.register(UINib(nibName: "AutoCompleteCell",bundle: Bundle.main), forCellReuseIdentifier: "AutoCompleteCell")
         
-        
-        tableSendMessageTo.registerNib(UINib(nibName: "AutoCompleteCell",bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "AutoCompleteCell")
+        tableSetReminder.register(UINib(nibName: "AutoCompleteCell",bundle: Bundle.main), forCellReuseIdentifier: "AutoCompleteCell")
         
         Helper.setTableViewDesign(tableSendMessageTo)
-        tableSendMessageTo.hidden = true
-        
-        txtSendMessageTo.addTarget(self, action: #selector(didChangeText(_:)), forControlEvents: .EditingDidBegin)
-        
-        txtSendMessageTo.addTarget(self, action: #selector(removeTable), forControlEvents: .EditingDidEnd)
-        txtDeadlineDate.addTarget(self, action: #selector(didChangeText(_:)), forControlEvents:.EditingDidBegin)
-        txtEventDate.addTarget(self, action: #selector(didChangeText(_:)), forControlEvents:.EditingDidBegin)
-        txtTime.addTarget(self, action: #selector(didChangeText(_:)), forControlEvents:.EditingDidBegin)
-       
+        Helper.setTableViewDesign(tableSetReminder)
+        tableSendMessageTo.isHidden = true
+        tableSetReminder.isHidden = true
+
         
     }
-    override func viewWillAppear(animated: Bool) {
-        viewTrailingConstraint.constant = -UIScreen.mainScreen().bounds.size.width
+    override func viewWillAppear(_ animated: Bool) {
+        viewTrailingConstraint.constant = -UIScreen.main.bounds.size.width
     }
     
     override func didReceiveMemoryWarning() {
@@ -97,13 +107,13 @@ class NewMessageViewController: UIViewController {
 extension NewMessageViewController{
 
     //MARK: Nav Bar button Action
-    @IBAction func btnBack(sender: UIButton) {
-        self.navigationController?.popViewControllerAnimated(true)
+    @IBAction func btnBack(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     
     
-    @IBAction func btnSend(sender: UIButton) {
+    @IBAction func btnSend(_ sender: UIButton) {
        
         validateField()
         
@@ -111,18 +121,31 @@ extension NewMessageViewController{
 
     //MARK: Required Action Switch Control
     
-    @IBAction func switchRequiredAction(sender: UISwitch) {
+    @IBAction func switchRequiredAction(_ sender: UISwitch) {
        
-        isRequiredActionTapped = sender.on ? true : false
-        
-        viewTrailingConstraint.constant = sender.on ? 0 : -Helper.getScreenWidth()
-        let newPosition = CGPoint(x: Helper.getScreenWidth(),y: 0)
-        scrollView.contentOffset = sender.on ? newPosition : scrollView.frame.origin
+        if isTeacher{
+            isRequiredActionTapped = sender.isOn ? true : false
+            self.currentTextField?.resignFirstResponder()
+            viewTrailingConstraint.constant = sender.isOn ? 0 : -Helper.getScreenWidth()
+            let newPosition = CGPoint(x: Helper.getScreenWidth(),y: 0)
+            scrollView.contentOffset = sender.isOn ? newPosition : scrollView.frame.origin
+        }
    
     }
+    @IBAction func btnSetReminderTapped(_ sender: UIButton) {
+          self.currentTextField?.resignFirstResponder()
+        if tableSetReminder.isHidden == false {
+            tableSetReminder.isHidden = true
+        }
+        else{
+        tableSetReminder.isHidden = false
+      
+        tableSetReminder.reloadData()
+        }
+    }
     
-    @IBAction func switchSetReminder(sender: UISwitch) {
-        if sender.on {
+    @IBAction func switchSetReminder(_ sender: UISwitch) {
+        if sender.isOn {
             isSetReminder = true
         }
         else{
@@ -133,6 +156,8 @@ extension NewMessageViewController{
     
     
     
+
+    
     
     
     
@@ -140,27 +165,27 @@ extension NewMessageViewController{
     
     
     //MARK: Picker Control Button
-    @IBAction func btnCancel(sender: UIButton) {
+    @IBAction func btnCancel(_ sender: UIButton) {
         showHidePicker()
     }
     
     
     
-    @IBAction func btnDone(sender: UIButton) {
-        let formatter = NSDateFormatter()
+    @IBAction func btnDone(_ sender: UIButton) {
+        let formatter = DateFormatter()
         switch pickerViewTag {
         case 1:
             formatter.dateFormat = "yyyy-MM-dd"
             
-            txtDeadlineDate.text = formatter.stringFromDate(pickerDate.date)
+            txtDeadlineDate.text = formatter.string(from: pickerDate.date)
         
         case 2:
             formatter.dateFormat = "yyyy-MM-dd"
-            txtEventDate.text = formatter.stringFromDate(pickerDate.date)
+            txtEventDate.text = formatter.string(from: pickerDate.date)
         
         case 3:
             formatter.dateFormat = "hh:mm:ss a"
-            txtTime.text = formatter.stringFromDate(pickerDate.date)
+            txtTime.text = formatter.string(from: pickerDate.date)
         
         default:
             break
@@ -169,41 +194,30 @@ extension NewMessageViewController{
     }
     
     
-    @IBAction func btnPickerSelectDate(sender: UIButton) {
-        
-        
-        
-    }
-    
-    
-    
-    
-}
-
-//MARK: TextField Helper Method
-extension NewMessageViewController{
-
-    func didChangeText(textField: UITextField){
-        
-        switch textField.tag{
-        
-        case kSendMessage:
+    @IBAction func btnPickerSelectDate(_ sender: UIButton) {
+        self.currentTextField?.resignFirstResponder()
+        switch sender.tag{
+            
+        case kGetParents:
             var params = [String: AnyObject]()
-            params["club_id"] = club_id
-            params["class_id"] = class_id
-            getParents(params)
-
-        
+            params["club_id"] = club_id as AnyObject?
+            params["class_id"] = class_id as AnyObject?
+            if isTeacher{
+                getParents(params)
+            }else{
+                getTeachers(params)
+            }
+   
         case kDeadlineDate:
             if !isPickerShowing {
-                self.pickerDate.datePickerMode = UIDatePickerMode.Date
+                self.pickerDate.datePickerMode = UIDatePickerMode.date
                 showHidePicker()
                 pickerViewTag = 1
             }
             
         case kEventDate:
             if !isPickerShowing{
-                self.pickerDate.datePickerMode = UIDatePickerMode.Date
+                self.pickerDate.datePickerMode = UIDatePickerMode.date
                 showHidePicker()
                 pickerViewTag = 2
                 
@@ -211,61 +225,145 @@ extension NewMessageViewController{
             
         case kTime:
             if !isPickerShowing{
-                self.pickerDate.datePickerMode = UIDatePickerMode.Time
+                self.pickerDate.datePickerMode = UIDatePickerMode.time
                 showHidePicker()
                 pickerViewTag = 3
             }
             
         case kReminder:
             if !isPickerShowing{
-                self.pickerDate.datePickerMode = UIDatePickerMode.DateAndTime
+                self.pickerDate.datePickerMode = UIDatePickerMode.dateAndTime
                 showHidePicker()
                 pickerViewTag = 4
             }
             
         default:
             break
+     
         
         }
         
-    
-    
     }
     
-    func removeTable(){
-        tableSendMessageTo.hidden = true
+    
+    
+    
+}
+
+//MARK: SCROLL view Delegate
+extension NewMessageViewController: UIScrollViewDelegate{
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        //self.currentTextField?.resignFirstResponder()
+        if isPickerShowing{
+            showHidePicker()
+        }
     }
 
 }
 
+//MARK: TextField Helper Method
+extension NewMessageViewController: UITextFieldDelegate{
+
+//    func didChangeText(textField: UITextField){
+//        
+//        switch textField.tag{
+//        
+//        case kSendMessage:
+//            var params = [String: AnyObject]()
+//            params["club_id"] = club_id
+//            params["class_id"] = class_id
+//            getParents(params)
+//
+//        
+//
+//        default:
+//            break
+//        
+//        }
+    
+    
+    
+  //  }
+    
+//    func removeTable(){
+//        tableSendMessageTo.hidden = true
+//    }
+
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.currentTextField = textField
+        tableSetReminder.isHidden = true
+       // showHidePicker()
+    }
+}
+
 //MARK: TableViewDelegate
 
-extension NewMessageViewController: UITableViewDelegate{
+extension NewMessageViewController: UITableViewDelegate, UITableViewDataSource
+{
 
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        
-        return parentList.count
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        var rowCount: Int?
+        switch tableView.tag{
+        case 0:
+            rowCount = isTeacher ? parentList.count : teacherList.count
+        case 1:
+          rowCount = 21
+        default:
+            break
+        }
+        return rowCount!
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AutoCompleteCell") as! AutoCompleteCell
+        if tableView.tag == 0{
+            if isTeacher{
+            cell.lblPupil.text = parentList[indexPath.row].name
+            }
+            else{
+               cell.lblPupil.text = teacherList[indexPath.row].name
+            }
+       
+        }
+            
+        else {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("AutoCompleteCell") as! AutoCompleteCell
-        cell.lblPupil.text = parentList[indexPath.row].name
+         cell.lblPupil.text = String(indexPath.row + 1)
         
+        }
         return cell
     }
 
     
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-      //1.select parent
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        selectedParent = parentList[indexPath.row]
-        txtSendMessageTo.text = parentList[indexPath.row].name
-        tableSendMessageTo.hidden = true
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch tableView.tag{
+        case 0:
+            
+            //1.select parent
+            tableView.deselectRow(at: indexPath, animated: true)
+            if isTeacher{
+            selectedParent = parentList[indexPath.row]
+            txtSendMessageTo.text = parentList[indexPath.row].name
+            }
+            else{
+                selectedTeacher = teacherList[indexPath.row]
+                txtSendMessageTo.text = teacherList[indexPath.row].name
+            }
+            tableSendMessageTo.isHidden = true
+            
+            //2.Update textField
+
+        case 1:
+            lblSetReminder.text = String(indexPath.row)
+            tableSetReminder.isHidden = true
+            
+        default:
+            break
         
-        //2.Update textField
+        }
         
     }
 
@@ -275,7 +373,7 @@ extension NewMessageViewController: UITableViewDelegate{
 //MARK: View Controller Helper Method
 extension NewMessageViewController{
 
-    func setParents(data: [AnyObject]){
+    func setParents(_ data: [AnyObject]){
         parentList.removeAll()
         for item  in data {
             let singleParent = Parent()
@@ -292,14 +390,32 @@ extension NewMessageViewController{
         }
         
         tableHeight.constant = CGFloat (self.parentList.count * 45)
-        tableSendMessageTo.hidden = false
+        tableSendMessageTo.isHidden = false
     }
 
 
+    func setTeachers(_ data: [AnyObject]){
+        teacherList.removeAll()
+        for singleItem  in data {
+            let item = singleItem as! [String: AnyObject]
+            let singleTeacher = Teacher()
+            singleTeacher.id = item["id"] as? Int
+            singleTeacher.name = item["ucfirst(users.name)"] as? String
+            singleTeacher.email = item["email"] as? String
     
-    func showHidePicker(){
+            
+            teacherList.append(singleTeacher)
+            
+        }
         
-        UIView.animateWithDuration(0.5, animations: {
+        tableHeight.constant = CGFloat (self.teacherList.count * 45)
+        tableSendMessageTo.isHidden = false
+        tableSendMessageTo.reloadData()
+    }
+
+    func showHidePicker(){
+       // self.currentTextField?.resignFirstResponder()
+        UIView.animate(withDuration: 0.5, animations: {
             self.pickerBottomConstraint.constant = self.isPickerShowing ? -260.0 : 60.0
             self.view.layoutIfNeeded()
             }, completion: nil)
@@ -309,44 +425,63 @@ extension NewMessageViewController{
     
     func validateField(){
         var params = [String: AnyObject]()
-        params["club_id"] = club_id
-        params["class_id"] = class_id
-        
+        params["club_id"] = club_id as AnyObject?
+        params["class_id"] = class_id as AnyObject?
+        if !isTeacher {
+           params["child_id"] = child_id as AnyObject?
+        }
         var hasError = false
         var errorMessage = ""
         
         if Helper.isNotBlank(txtSendMessageTo.text!){
-            if Helper.isSameText(txtSendMessageTo.text!, secondStr: selectedParent.name!){
-            params["to"] = selectedParent.id!
+            if Helper.isSameText(txtSendMessageTo.text!, secondStr: isTeacher ? selectedParent.name!: selectedTeacher.name!){
+                if isTeacher{
+                    params["to"] = selectedParent.id! as AnyObject?
+                }else{
+                    params["to"] = selectedTeacher.id! as AnyObject?
+                }
                 
             
             if Helper.isNotBlank(txtMessageSubject.text!) {
-                params["subject"] = txtMessageSubject.text!
+                params["subject"] = txtMessageSubject.text! as AnyObject?
                 
                 if Helper.isNotBlank(txtViewMessageDetails.text) {
-                    params["description"] = txtViewMessageDetails.text
+                    params["description"] = txtViewMessageDetails.text as AnyObject?
                     
                     if isRequiredActionTapped{
-                        params["urgent_request"] = isRequiredActionTapped ? "1":"0"
-                        
+                        params["urgent_request"] = (isRequiredActionTapped ? "1" : "0") as AnyObject
                         if Helper.isNotBlank(txtDeadlineDate.text!){
-                            params["deadline"] = txtDeadlineDate.text!
+                            params["deadline"] = txtDeadlineDate.text! as AnyObject?
                             
                             if Helper.isNotBlank(txtCost.text!) {
-                                params["cost"] = txtCost.text!
+                                params["cost"] = txtCost.text! as AnyObject?
                                 
                                 if Helper.isNotBlank(txtEventDate.text!) {
-                                    params["event_date"] = txtEventDate.text!
+                                    params["event_date"] = txtEventDate.text! as AnyObject?
+                                    
+                                    if Helper.isNotBlank(txtTime.text!) {
+                                        params["event_time"] = txtTime.text! as AnyObject?
+                                    
                                     
                                     if Helper.isNotBlank(txtPickUpPoint.text!) {
-                                        params["pickup_point"] = txtPickUpPoint.text!
-                                        
-                                        params["reminder"] = isSetReminder ? 1 : 0
+                                        params["pickup_point"] = txtPickUpPoint.text! as AnyObject?
+                                        if !Helper.isSameText(lblSetReminder.text!, secondStr: "Set Reminder: 0 Days"){
+                                            params["reminder"] = lblSetReminder.text! as AnyObject?
+                                        }
+                                        else{
+                                            params["reminder"] = "0" as AnyObject?
+                                        }
                                     }
                                     else{
                                         hasError = true
                                         errorMessage = "Please select pick up point."
                                     }
+                                }
+                                else{
+                                    hasError = true
+                                    errorMessage = "Please select event time."
+                                
+                                }
                                 }
                                 else{
                                     hasError = true
@@ -385,7 +520,7 @@ extension NewMessageViewController{
         }
         else{
             hasError = true
-            errorMessage = "Please Select Parent From the List."
+            errorMessage =  isTeacher ? "Please Select Parent From the List." : "Please Select Teacher From the List."
         }
         
        
@@ -404,16 +539,16 @@ extension NewMessageViewController{
 //MARK: Web Service Helper Method
 extension NewMessageViewController{
 
-    func getParents(params: [String: AnyObject]){
+    func getParents(_ params: [String: AnyObject]){
     
-        MBProgressHUD.showHUDAddedTo(self.tableSendMessageTo, animated: true)
-        WebServiceHelper.getParentList(params, onCompletion: {[weak self]
+        MBProgressHUD.showAdded(to: self.tableSendMessageTo, animated: true)
+        WebServiceHelper.getParentList(params,url: kGetParentListUrl, onCompletion: {[weak self]
             response in
-        MBProgressHUD.hideAllHUDsForView(self?.tableSendMessageTo, animated: true)
+        MBProgressHUD.hideAllHUDs(for: self?.tableSendMessageTo, animated: true)
            
             switch response.result {
                 
-            case .Success(let responseData) :
+            case .success(let responseData) :
                 
                 if let status_code = response.response?.statusCode {
                     
@@ -425,7 +560,7 @@ extension NewMessageViewController{
                         if let parentData = responseData as? [String: AnyObject] {
                             
                             let parentDataList = parentData["parents"] as? [AnyObject]
-                            if parentDataList?.count > 0{
+                            if (parentDataList?.count)! > 0{
                                 
                                 self!.setParents(parentDataList!)
                                 self?.tableSendMessageTo.reloadData()
@@ -442,10 +577,11 @@ extension NewMessageViewController{
                         }
                         
                     case 301: // Login Unsuccessful
-                        self?.showAlertOnMainThread(responseData.valueForKey("error") as! String)
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey:
+                            "error") as! String)
                         
                     case 500: // Cannot Create Token
-                        self?.showAlertOnMainThread(responseData.valueForKey("error") as! String)
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey:"error") as! String)
                     default:
                         self?.showAlertOnMainThread(kServerError)
                         
@@ -453,7 +589,7 @@ extension NewMessageViewController{
                     
                 }
                 
-            case.Failure(let error):
+            case.failure(let error):
                 self?.showAlertOnMainThread(error.localizedDescription)
                 
             }
@@ -465,16 +601,74 @@ extension NewMessageViewController{
     }
 
     
-    func sendMessage(params: [String: AnyObject]){
+    func getTeachers(_ params: [String: AnyObject]){
         
-        MBProgressHUD.showHUDAddedTo(self.tableSendMessageTo, animated: true)
-        WebServiceHelper.saveMessage(params, onCompletion: {[weak self]
+        MBProgressHUD.showAdded(to: self.tableSendMessageTo, animated: true)
+        WebServiceHelper.getParentList(params,url: kGetClassTeachersUrl, onCompletion: {[weak self]
             response in
-            MBProgressHUD.hideAllHUDsForView(self?.tableSendMessageTo, animated: true)
+            MBProgressHUD.hideAllHUDs(for: self?.tableSendMessageTo, animated: true)
             
             switch response.result {
                 
-            case .Success(let responseData) :
+            case .success(let responseData) :
+                
+                if let status_code = response.response?.statusCode {
+                    
+                    
+                    switch status_code {
+                        
+                    case 200 : //Successful Login
+                        
+                        if let teacherData = responseData as? [String: AnyObject]{
+                            
+                            if let responseResult = teacherData["response"] as? [String:AnyObject]{
+                                let teacherArray = responseResult["teachers"] as? [AnyObject]
+                                if (teacherArray?.count)! > 0{
+                                    self?.setTeachers(teacherArray!)
+                                    
+                                    
+                                }
+                                else{
+                                    self?.showAlertOnMainThread("No Result Found")
+                                }
+                                
+                            }
+                            
+                        }
+                    case 301: // Login Unsuccessful
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey:"error") as! String)
+                        
+                    case 500: // Cannot Create Token
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey:"error") as! String)
+                    default:
+                        self?.showAlertOnMainThread(kServerError)
+                        
+                    }
+                    
+                }
+                
+            case.failure(let error):
+                self?.showAlertOnMainThread(error.localizedDescription)
+                
+            }
+            
+            
+            
+            })
+        
+    }
+
+    
+    func sendMessage(_ params: [String: AnyObject]){
+        
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        WebServiceHelper.saveMessage(params,url: isTeacher ? kSaveMessageToParentUrl: kSendMessageToTeacherUrl , onCompletion: {[weak self]
+            response in
+            MBProgressHUD.hideAllHUDs(for: self?.view, animated: true)
+            
+            switch response.result {
+                
+            case .success(let responseData) :
                 
                 if let status_code = response.response?.statusCode {
                     
@@ -487,10 +681,10 @@ extension NewMessageViewController{
                             
                 
                     case 301: // Login Unsuccessful
-                        self?.showAlertOnMainThread(responseData.valueForKey("error") as! String)
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey: "error") as! String)
                         
                     case 500: // Cannot Create Token
-                        self?.showAlertOnMainThread(responseData.valueForKey("error") as! String)
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey:"error") as! String)
                     default:
                         self?.showAlertOnMainThread(kServerError)
                         
@@ -498,7 +692,7 @@ extension NewMessageViewController{
                     
                 }
                 
-            case.Failure(let error):
+            case.failure(let error):
                 self?.showAlertOnMainThread(error.localizedDescription)
                 
             }

@@ -21,11 +21,15 @@
             <string>Montserrat-Regular</string>
             <string>Montserrat-Regular</string>
             <string>Montserrat-Regular</string>
+            <string>Montserrat-Regular</string>
+            <string>Montserrat-Regular</string>
         </mutableArray>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UrgentMessageDetailViewController" customModule="ClubTracker" customModuleProvider="target">
             <connections>
+                <outlet property="btnOutletUpdate" destination="PJ7-AV-j63" id="Bp5-Zc-50w"/>
+                <outlet property="buttonView" destination="Aqa-EY-650" id="3uU-I1-4xR"/>
                 <outlet property="lblClassName" destination="oNG-os-zAa" id="VZ5-kh-ojm"/>
                 <outlet property="lblCost" destination="6Xy-2v-tvt" id="DA8-JT-cnv"/>
                 <outlet property="lblDate" destination="Tfj-5y-8id" id="sky-14-H3U"/>
@@ -37,8 +41,10 @@
                 <outlet property="lblSubject" destination="edO-YR-QEM" id="afk-j8-O8a"/>
                 <outlet property="lblTime" destination="rIk-XC-Sxh" id="rHS-3P-RqD"/>
                 <outlet property="lblTo" destination="8lV-fw-BN4" id="oMj-rf-BPX"/>
+                <outlet property="topSapceConstraint" destination="ZDg-WO-Aj8" id="2Kg-7I-lRi"/>
                 <outlet property="txtViewMessageDetail" destination="X6e-gg-rhX" id="Hi6-cO-yee"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewParentButton" destination="6ru-8U-CIM" id="BYD-AH-TT1"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -57,7 +63,10 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Urgent" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNr-ru-BpY">
-                            <rect key="frame" x="131.5" y="35" width="56.5" height="20"/>
+                            <rect key="frame" x="131" y="35" width="56.5" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="nRg-ML-ozu"/>
+                            </constraints>
                             <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -246,22 +255,76 @@
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                     </userDefinedRuntimeAttributes>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PJ7-AV-j63">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aqa-EY-650">
                                     <rect key="frame" x="15" y="738" width="290" height="45"/>
-                                    <color key="backgroundColor" red="0.6705882353" green="0.76470588240000004" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
-                                    <state key="normal" title="Update and Remind">
-                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                            <integer key="value" value="5"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                    <connections>
-                                        <action selector="btnUpdateAndRemind:" destination="-1" eventType="touchUpInside" id="mMA-rP-aZd"/>
-                                    </connections>
-                                </button>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PJ7-AV-j63">
+                                            <rect key="frame" x="0.0" y="0.0" width="290" height="45"/>
+                                            <color key="backgroundColor" red="0.6705882353" green="0.76470588240000004" blue="0.68085264099798659" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
+                                            <state key="normal" title="Update and Remind">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="btnUpdateAndRemind:" destination="-1" eventType="touchUpInside" id="mMA-rP-aZd"/>
+                                            </connections>
+                                        </button>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ru-8U-CIM">
+                                            <rect key="frame" x="0.0" y="0.0" width="290" height="45"/>
+                                            <subviews>
+                                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ds0-rU-Bwe">
+                                                    <rect key="frame" x="0.0" y="0.0" width="141" height="45"/>
+                                                    <color key="backgroundColor" red="0.6705882353" green="0.76470588240000004" blue="0.68085264099999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
+                                                    <state key="normal" title="Accept and pay">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="btnAcceptOrDeclinePressed:" destination="-1" eventType="touchUpInside" id="zlj-9Q-IhY"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ebb-Rg-B42">
+                                                    <rect key="frame" x="149" y="0.0" width="141" height="45"/>
+                                                    <color key="backgroundColor" red="0.6705882353" green="0.76470588240000004" blue="0.68085264099999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
+                                                    <state key="normal" title="Decline">
+                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="btnAcceptOrDeclinePressed:" destination="-1" eventType="touchUpInside" id="sCQ-oG-g7a"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="Ebb-Rg-B42" secondAttribute="trailing" id="6Zb-XW-Vpe"/>
+                                                <constraint firstItem="Ebb-Rg-B42" firstAttribute="top" secondItem="6ru-8U-CIM" secondAttribute="top" id="Lfr-9T-qfJ"/>
+                                                <constraint firstItem="Ebb-Rg-B42" firstAttribute="height" secondItem="Ds0-rU-Bwe" secondAttribute="height" id="UQY-hm-NCE"/>
+                                                <constraint firstItem="Ds0-rU-Bwe" firstAttribute="height" secondItem="6ru-8U-CIM" secondAttribute="height" id="e8M-if-wL7"/>
+                                                <constraint firstItem="Ebb-Rg-B42" firstAttribute="width" secondItem="Ds0-rU-Bwe" secondAttribute="width" id="jaa-za-vuX"/>
+                                                <constraint firstItem="Ds0-rU-Bwe" firstAttribute="top" secondItem="6ru-8U-CIM" secondAttribute="top" id="k80-2G-SUL"/>
+                                                <constraint firstItem="Ebb-Rg-B42" firstAttribute="leading" secondItem="Ds0-rU-Bwe" secondAttribute="trailing" constant="8" id="mLX-Z7-AuI"/>
+                                                <constraint firstItem="Ds0-rU-Bwe" firstAttribute="leading" secondItem="6ru-8U-CIM" secondAttribute="leading" id="rF3-I1-meh"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="6ru-8U-CIM" secondAttribute="bottom" id="0LI-kR-hQV"/>
+                                        <constraint firstAttribute="bottom" secondItem="PJ7-AV-j63" secondAttribute="bottom" id="3HD-SK-00q"/>
+                                        <constraint firstItem="PJ7-AV-j63" firstAttribute="top" secondItem="Aqa-EY-650" secondAttribute="top" id="CTY-yC-2uR"/>
+                                        <constraint firstAttribute="trailing" secondItem="PJ7-AV-j63" secondAttribute="trailing" id="SGB-vV-bVt"/>
+                                        <constraint firstAttribute="trailing" secondItem="6ru-8U-CIM" secondAttribute="trailing" id="STS-p5-UQ3"/>
+                                        <constraint firstItem="6ru-8U-CIM" firstAttribute="leading" secondItem="Aqa-EY-650" secondAttribute="leading" id="fVQ-zP-VtX"/>
+                                        <constraint firstItem="PJ7-AV-j63" firstAttribute="leading" secondItem="Aqa-EY-650" secondAttribute="leading" id="gdD-Bp-nPV"/>
+                                        <constraint firstItem="6ru-8U-CIM" firstAttribute="top" secondItem="Aqa-EY-650" secondAttribute="top" id="qpA-5c-YOD"/>
+                                    </constraints>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -276,6 +339,7 @@
                                 <constraint firstItem="rIk-XC-Sxh" firstAttribute="width" secondItem="Tfj-5y-8id" secondAttribute="width" id="7PQ-VG-D7b"/>
                                 <constraint firstItem="HlO-Dr-UUT" firstAttribute="leading" secondItem="X6e-gg-rhX" secondAttribute="leading" id="B7n-dY-IWE"/>
                                 <constraint firstItem="USz-q4-DjR" firstAttribute="height" secondItem="rP2-TJ-qOt" secondAttribute="height" id="BGA-nn-uPn"/>
+                                <constraint firstItem="Aqa-EY-650" firstAttribute="height" secondItem="USz-q4-DjR" secondAttribute="height" id="CB8-NJ-iir"/>
                                 <constraint firstItem="8lV-fw-BN4" firstAttribute="top" secondItem="LNB-VL-fJA" secondAttribute="top" constant="13" id="Cci-57-Dtj"/>
                                 <constraint firstItem="6Xy-2v-tvt" firstAttribute="leading" secondItem="HlO-Dr-UUT" secondAttribute="leading" id="Cy5-wN-P8G"/>
                                 <constraint firstItem="X6e-gg-rhX" firstAttribute="leading" secondItem="edO-YR-QEM" secondAttribute="leading" id="D73-kk-6OC"/>
@@ -286,17 +350,17 @@
                                 <constraint firstItem="8lV-fw-BN4" firstAttribute="leading" secondItem="LNB-VL-fJA" secondAttribute="leading" constant="15" id="RuL-3G-YhQ"/>
                                 <constraint firstItem="BXq-gN-u62" firstAttribute="top" secondItem="ASK-9f-Ypl" secondAttribute="bottom" constant="15" id="RuO-aY-8Ie"/>
                                 <constraint firstItem="HlO-Dr-UUT" firstAttribute="top" secondItem="X6e-gg-rhX" secondAttribute="bottom" constant="15" id="Sbq-tv-6dW"/>
+                                <constraint firstItem="Aqa-EY-650" firstAttribute="width" secondItem="USz-q4-DjR" secondAttribute="width" id="TAh-OM-qwl"/>
                                 <constraint firstItem="6Xy-2v-tvt" firstAttribute="width" secondItem="HlO-Dr-UUT" secondAttribute="width" id="XUL-pa-oi4"/>
                                 <constraint firstItem="BXq-gN-u62" firstAttribute="leading" secondItem="ASK-9f-Ypl" secondAttribute="leading" id="Xox-W4-aLU"/>
-                                <constraint firstItem="PJ7-AV-j63" firstAttribute="leading" secondItem="USz-q4-DjR" secondAttribute="leading" id="XtB-WP-3ho"/>
                                 <constraint firstItem="HlO-Dr-UUT" firstAttribute="width" secondItem="X6e-gg-rhX" secondAttribute="width" id="Y0A-9r-RsB"/>
                                 <constraint firstItem="rP2-TJ-qOt" firstAttribute="leading" secondItem="BXq-gN-u62" secondAttribute="leading" id="YVx-JQ-PGi"/>
+                                <constraint firstItem="Aqa-EY-650" firstAttribute="top" secondItem="USz-q4-DjR" secondAttribute="bottom" constant="15" id="ZDg-WO-Aj8"/>
+                                <constraint firstItem="Aqa-EY-650" firstAttribute="leading" secondItem="USz-q4-DjR" secondAttribute="leading" id="aYt-5g-89P"/>
                                 <constraint firstItem="ASK-9f-Ypl" firstAttribute="top" secondItem="rIk-XC-Sxh" secondAttribute="bottom" constant="15" id="b4h-O2-SXM"/>
                                 <constraint firstItem="rP2-TJ-qOt" firstAttribute="width" secondItem="BXq-gN-u62" secondAttribute="width" id="bh5-6w-3hF"/>
-                                <constraint firstAttribute="bottom" secondItem="PJ7-AV-j63" secondAttribute="bottom" constant="20" id="dJZ-BM-Ph8"/>
                                 <constraint firstItem="rP2-TJ-qOt" firstAttribute="top" secondItem="BXq-gN-u62" secondAttribute="bottom" constant="16" id="dXq-Ik-ZKp"/>
                                 <constraint firstItem="X6e-gg-rhX" firstAttribute="width" secondItem="edO-YR-QEM" secondAttribute="width" id="dg8-cg-8il"/>
-                                <constraint firstItem="PJ7-AV-j63" firstAttribute="top" secondItem="USz-q4-DjR" secondAttribute="bottom" constant="15" id="es6-85-Z0r"/>
                                 <constraint firstItem="rIk-XC-Sxh" firstAttribute="height" secondItem="Tfj-5y-8id" secondAttribute="height" id="gQa-69-dH4"/>
                                 <constraint firstItem="edO-YR-QEM" firstAttribute="width" secondItem="8lV-fw-BN4" secondAttribute="width" id="mCV-dd-Tli"/>
                                 <constraint firstItem="ASK-9f-Ypl" firstAttribute="height" secondItem="rIk-XC-Sxh" secondAttribute="height" id="mPC-g6-SdT"/>
@@ -307,20 +371,19 @@
                                 <constraint firstItem="rIk-XC-Sxh" firstAttribute="top" secondItem="Tfj-5y-8id" secondAttribute="bottom" constant="15" id="sgr-Ya-fOt"/>
                                 <constraint firstItem="Tfj-5y-8id" firstAttribute="top" secondItem="6Xy-2v-tvt" secondAttribute="bottom" constant="15" id="syB-6u-dXT"/>
                                 <constraint firstItem="edO-YR-QEM" firstAttribute="height" secondItem="8lV-fw-BN4" secondAttribute="height" id="tUJ-Vp-uk9"/>
-                                <constraint firstItem="PJ7-AV-j63" firstAttribute="width" secondItem="USz-q4-DjR" secondAttribute="width" id="tc2-hR-L2o"/>
                                 <constraint firstItem="edO-YR-QEM" firstAttribute="top" secondItem="8lV-fw-BN4" secondAttribute="bottom" constant="15" id="w09-P3-dnw"/>
+                                <constraint firstAttribute="bottom" secondItem="Aqa-EY-650" secondAttribute="bottom" constant="20" id="xdu-4B-koq"/>
                                 <constraint firstItem="Tfj-5y-8id" firstAttribute="width" secondItem="6Xy-2v-tvt" secondAttribute="width" id="xxe-I9-Wf1"/>
                                 <constraint firstAttribute="trailing" secondItem="8lV-fw-BN4" secondAttribute="trailing" constant="15" id="yQj-IC-8QE"/>
-                                <constraint firstItem="PJ7-AV-j63" firstAttribute="height" secondItem="USz-q4-DjR" secondAttribute="height" id="zAS-De-hM7"/>
                             </constraints>
                         </view>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="LNB-VL-fJA" secondAttribute="trailing" id="0DV-zr-v5B"/>
-                        <constraint firstItem="LNB-VL-fJA" firstAttribute="leading" secondItem="yKS-Dy-YMR" secondAttribute="leading" id="4op-Ar-t3U"/>
-                        <constraint firstAttribute="bottom" secondItem="LNB-VL-fJA" secondAttribute="bottom" id="55b-ls-10N"/>
-                        <constraint firstItem="LNB-VL-fJA" firstAttribute="top" secondItem="yKS-Dy-YMR" secondAttribute="top" id="Yic-Xe-400"/>
-                        <constraint firstItem="LNB-VL-fJA" firstAttribute="width" secondItem="yKS-Dy-YMR" secondAttribute="width" id="ecm-f9-yCN"/>
+                        <constraint firstItem="LNB-VL-fJA" firstAttribute="leading" secondItem="yKS-Dy-YMR" secondAttribute="leading" id="Q7k-JS-SOt"/>
+                        <constraint firstAttribute="trailing" secondItem="LNB-VL-fJA" secondAttribute="trailing" id="dbI-Dk-d3V"/>
+                        <constraint firstAttribute="bottom" secondItem="LNB-VL-fJA" secondAttribute="bottom" id="q2G-Ux-quT"/>
+                        <constraint firstItem="LNB-VL-fJA" firstAttribute="top" secondItem="yKS-Dy-YMR" secondAttribute="top" id="rA4-vY-kHL"/>
+                        <constraint firstItem="LNB-VL-fJA" firstAttribute="width" secondItem="yKS-Dy-YMR" secondAttribute="width" id="zzv-fg-s15"/>
                     </constraints>
                 </scrollView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Class Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oNG-os-zAa">

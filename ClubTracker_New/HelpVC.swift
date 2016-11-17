@@ -22,7 +22,7 @@ class HelpVC: UIViewController {
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //(self.navigationController?.tabBarController as! TabBarController)
     }
@@ -34,7 +34,7 @@ class HelpVC: UIViewController {
 //MARK: Button Action
 extension HelpVC{
 
-    @IBAction func btnBack(sender: UIButton) {
+    @IBAction func btnBack(_ sender: UIButton) {
         
         
         

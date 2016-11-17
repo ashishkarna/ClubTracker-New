@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 
 protocol tableListDelegates{
-    func tableViewDidselect(indexPath: NSIndexPath)
+    func tableViewDidselect(_ indexPath: IndexPath)
 }
 
 
@@ -33,22 +33,22 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        lblClassName.text = NSUserDefaults.standardUserDefaults().valueForKey("class_name") as? String
+        lblClassName.text = UserDefaults.standard.value(forKey: "class_name") as? String
         
-        tablePupil.registerNib(UINib(nibName: "RegisterCell",bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "RegisterCell")
+        tablePupil.register(UINib(nibName: "RegisterCell",bundle: Bundle.main), forCellReuseIdentifier: "RegisterCell")
         Helper.setTableViewDesign(tablePupil)
         
-        club_id = (NSUserDefaults.standardUserDefaults().valueForKey("club_id") as? String)!
-        class_id = (NSUserDefaults.standardUserDefaults().valueForKey("class_id") as? String)!
+        club_id = (UserDefaults.standard.value(forKey: "club_id") as? String)!
+        class_id = (UserDefaults.standard.value(forKey: "class_id") as? String)!
         
         var params = [String: String]()
         params["club_id"] =  club_id
         params["class_id"] = class_id
         
         //setting todays date
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
-        params["date"] = formatter.stringFromDate(NSDate())
+        params["date"] = formatter.string(from: Date())
         getChildAttendance(params, onCompletion:{
             success in
             
@@ -87,7 +87,7 @@ extension RegisterViewController{
     
     //button save tapped
     
-    @IBAction func btnSave(sender: UIButton) {
+    @IBAction func btnSave(_ sender: UIButton) {
         
         saveOrUpdateAttendance()
         
@@ -95,10 +95,10 @@ extension RegisterViewController{
 
     
     //If archive is switch on
-    @IBAction func btnSwitchTapped(sender: UISwitch) {
+    @IBAction func btnSwitchTapped(_ sender: UISwitch) {
      
         if childList.count > 0 {
-            if sender.on{
+            if sender.isOn{
                 setAllPresent("1")
             }
             else{
@@ -109,20 +109,20 @@ extension RegisterViewController{
         }
         
    
-    @IBAction func btnArchiveTapped(sender: UIButton) {
+    @IBAction func btnArchiveTapped(_ sender: UIButton) {
         
         let archiveVC = ArchiveAttendanceViewController(nibName: "ArchiveAttendanceViewController",bundle: nil)
         archiveVC.childList = childList
         self.navigationController?.pushViewController(archiveVC, animated: true)
     }
     
-    @IBAction func btnBack(sender: UIButton) {
+    @IBAction func btnBack(_ sender: UIButton) {
         
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
    //in
-    func buttonInTapped(sender: UIButton!) {
+    func buttonInTapped(_ sender: UIButton!) {
 //        print("Button tapped in")
         if (childList[sender.tag].status != "1"){
             
@@ -136,7 +136,7 @@ extension RegisterViewController{
     }
   
   //abs
-    func buttonAbsTapped(sender: UIButton!) {
+    func buttonAbsTapped(_ sender: UIButton!) {
 //        print("Button tapped abs")
         if childList[sender.tag].status != "0"{
             childList[sender.tag].status = "0"
@@ -148,7 +148,7 @@ extension RegisterViewController{
    }
     
     //late
-    func buttonLateTapped(sender: UIButton!) {
+    func buttonLateTapped(_ sender: UIButton!) {
         print("Button tapped late")
         if childList[sender.tag].status != "2"{
             childList[sender.tag].status = "2"
@@ -167,24 +167,24 @@ extension RegisterViewController{
 
 //MARK: TableView Delegate
 
-extension RegisterViewController:UITableViewDelegate{
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension RegisterViewController:UITableViewDelegate,UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return childList.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let childItem = childList[indexPath.row]
-        let cell = tableView.dequeueReusableCellWithIdentifier("RegisterCell") as! RegisterCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RegisterCell") as! RegisterCell
         cell.lblName.text = childItem.firstName! + " " + childItem.lastName!
         
         cell.btnIn.tag = indexPath.row
         cell.btnAbs.tag = indexPath.row
         cell.btnLate.tag = indexPath.row
         
-        cell.btnIn.addTarget(self, action: #selector(buttonInTapped), forControlEvents: .TouchUpInside)
-        cell.btnAbs.addTarget(self, action: #selector(buttonAbsTapped), forControlEvents: .TouchUpInside)
-        cell.btnLate.addTarget(self, action: #selector(buttonLateTapped), forControlEvents: .TouchUpInside)
+        cell.btnIn.addTarget(self, action: #selector(buttonInTapped), for: .touchUpInside)
+        cell.btnAbs.addTarget(self, action: #selector(buttonAbsTapped), for: .touchUpInside)
+        cell.btnLate.addTarget(self, action: #selector(buttonLateTapped), for: .touchUpInside)
        
         let status = Int(childItem.status!)!
         cell.setAttendanceStatus(status)
@@ -208,9 +208,9 @@ extension RegisterViewController{
         params["class_id"] = class_id
         
         //setting todays date
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
-        params["date"] = formatter.stringFromDate(NSDate())
+        params["date"] = formatter.string(from: Date())
         if (childList.count > 0){
         if isAttendanceTaken{
              self.updateAttendance() // update Attendance
@@ -231,20 +231,20 @@ extension RegisterViewController{
     func updateAttendance(){
         var params = [String: AnyObject]()
         
-        params["club_id"] =  club_id
-        params["class_id"] = class_id
+        params["club_id"] =  club_id as AnyObject?
+        params["class_id"] = class_id as AnyObject?
 
         var attendanceDetails = [[String:Int]]()
         for item in self.childList{
             attendanceDetails.append(["child_id":item.id!,"status":Int(item.status!)!])
             
         }
-        params["attendance_details"] = attendanceDetails
+        params["attendance_details"] = attendanceDetails as AnyObject?
         
         //setting todays date
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
-        params["date"] = formatter.stringFromDate(NSDate())
+        params["date"] = formatter.string(from: Date()) as AnyObject?
         print(params)
 
         self.updateChildAttendance(params, onCompletion: {
@@ -261,8 +261,8 @@ extension RegisterViewController{
     func saveAttendance(){
         
         var params = [String: AnyObject]()
-        params["club_id"] =  club_id
-        params["class_id"] = class_id
+        params["club_id"] =  club_id as AnyObject?
+        params["class_id"] = class_id as AnyObject?
         
         var attendanceDetails = [[String:Int]]()
         for item in self.childList{
@@ -270,7 +270,7 @@ extension RegisterViewController{
             
         }
         
-        params["attendance_details"] = attendanceDetails
+        params["attendance_details"] = attendanceDetails as AnyObject?
 
         print(params)
         self.saveChildAttendance(params, onCompletion: {
@@ -284,7 +284,7 @@ extension RegisterViewController{
     }
     
     //poulate all In
-    func setAllPresent(status: String){
+    func setAllPresent(_ status: String){
         //  if status == 1{
         for item in childList{
             item.status = status
@@ -296,7 +296,7 @@ extension RegisterViewController{
     
     
     //set child array with attendance
-    func setChildsWithAttendance(data: [AnyObject]){
+    func setChildsWithAttendance(_ data: [AnyObject]){
         childList.removeAll()
         for item in data{
             let singleChild = Child()
@@ -312,7 +312,7 @@ extension RegisterViewController{
     }
 
     //set child array
-    func setChilds(data: [AnyObject]){
+    func setChilds(_ data: [AnyObject]){
         childList.removeAll()
         for item in data{
             let singleChild = Child()
@@ -337,18 +337,18 @@ extension RegisterViewController{
     
     
     ///Get All Child
-    func getAllChild(params: [String: String],onCompletion:(success: Bool)->()){
+    func getAllChild(_ params: [String: String],onCompletion:@escaping (_ success: Bool)->()){
         
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        WebServiceHelper.getAllChilds(params, onCompletion: { [weak self]
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        WebServiceHelper.getAllChilds(params as [String : AnyObject]?, onCompletion: { [weak self]
             response in
             print(params)
             debugPrint(response)
-            MBProgressHUD.hideAllHUDsForView(self?.view, animated: true)
+            MBProgressHUD.hideAllHUDs(for: self?.view, animated: true)
             
             switch response.result {
                 
-            case .Success(let responseData) :
+            case .success(let responseData) :
                 
                 if let status_code = response.response?.statusCode {
                     
@@ -358,18 +358,18 @@ extension RegisterViewController{
                     case 200 : //Successful Login
                         
                         if let childData = responseData as? [String: AnyObject] {
-                        
+                            
                             let childDataList = childData["childs"] as? [AnyObject]
-                            if childDataList?.count > 0{
+                            if (childDataList?.count)! > 0{
                                 
                                 self!.setChilds(childDataList!)
-                                onCompletion(success: true)
+                                onCompletion(true)
                             }
                             else{
                                 
                                 self?.showAlertOnMainThread("No Result Found")
                             }
-
+                            
                         }
                             
                         else{
@@ -377,10 +377,10 @@ extension RegisterViewController{
                         }
                         
                     case 301: // Login Unsuccessful
-                        self?.showAlertOnMainThread(responseData.valueForKey("error") as! String)
-
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey: "error") as! String)
+                        
                     case 500: // Cannot Create Token
-                        self?.showAlertOnMainThread(responseData.valueForKey("error") as! String)
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey: "error") as! String)
                     default:
                         self?.showAlertOnMainThread(kServerError)
                         
@@ -388,27 +388,26 @@ extension RegisterViewController{
                     
                 }
                 
-            case.Failure(let error):
+            case.failure(let error):
                 self?.showAlertOnMainThread(error.localizedDescription)
                 
             }
-            })
+        })
         
     }
-    
     //Get Child Attendance
-    func getChildAttendance(params: [String: String],onCompletion:(success: Bool)->()){
+    func getChildAttendance(_ params: [String: String],onCompletion:@escaping (_ success: Bool)->()){
         
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        WebServiceHelper.getChildAttendance(params, onCompletion: { [weak self]
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        WebServiceHelper.getChildAttendance(params as [String : AnyObject]?, onCompletion: { [weak self]
             response in
             print(params)
             debugPrint(response)
-            MBProgressHUD.hideAllHUDsForView(self?.view, animated: true)
+            MBProgressHUD.hideAllHUDs(for: self?.view, animated: true)
             
             switch response.result {
                 
-            case .Success(let responseData) :
+            case .success(let responseData) :
                 
                 if let status_code = response.response?.statusCode {
                     
@@ -420,12 +419,12 @@ extension RegisterViewController{
                         if let childData = responseData as? [String: AnyObject] {
                             let childDataList = childData["attendances"] as? [AnyObject]
                         
-                            if childDataList?.count > 0{
+                            if (childDataList?.count)! > 0{
                                 
                                 self!.isAttendanceTaken = true
                                 self!.setChildsWithAttendance(childDataList!)
                                 self!.tablePupil.reloadData()
-                                onCompletion(success: true)
+                                onCompletion(true)
                             }
                             else{
                             
@@ -441,13 +440,13 @@ extension RegisterViewController{
                     case 404:
                         
                         //self?.showAlertOnMainThread("Attendance Record Not Found")
-                        onCompletion(success: false)
+                        onCompletion(false)
                         self!.isSaved = false
                     case 401: // Login Unsuccessful
-                        self?.showAlertOnMainThread(responseData.valueForKey("error") as! String)
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey:"error") as! String)
                         
                     case 500: // Cannot Create Token
-                        self?.showAlertOnMainThread(responseData.valueForKey("error") as! String)
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey:"error") as! String)
                     default:
                         self?.showAlertOnMainThread(kServerError)
                         
@@ -455,7 +454,7 @@ extension RegisterViewController{
                     
                 }
                 
-            case.Failure(let error):
+            case.failure(let error):
                 self?.showAlertOnMainThread(error.localizedDescription)
                 
             }
@@ -467,18 +466,18 @@ extension RegisterViewController{
 
     
     //Save Child
-    func saveChildAttendance(params: [String: AnyObject],onCompletion:(success: Bool)->()){
+    func saveChildAttendance(_ params: [String: AnyObject],onCompletion:@escaping (_ success: Bool)->()){
         
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         WebServiceHelper.saveChild(params, onCompletion: { [weak self]
             response in
             print(params)
             debugPrint(response)
-            MBProgressHUD.hideAllHUDsForView(self?.view, animated: true)
+            MBProgressHUD.hideAllHUDs(for: self?.view, animated: true)
             
             switch response.result {
                 
-            case .Success(let responseData) :
+            case .success(let responseData) :
                 
                 if let status_code = response.response?.statusCode {
                     
@@ -492,17 +491,17 @@ extension RegisterViewController{
                             let childDataList = childData["attendances"] as? [AnyObject]
                             self!.setChildsWithAttendance(childDataList!)
                             self?.isSaved = true
-                            onCompletion(success: true)
+                            onCompletion(true)
                         }
                     case 301: //already taken
                         self?.showAlertOnMainThread("Attendance already taken")
                     case 404:
                         self?.showAlertOnMainThread("Invalid data supplied")
                     case 401: // Login Unsuccessful
-                        self?.showAlertOnMainThread(responseData.valueForKey("error") as! String)
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey: "error") as! String)
                         
                     case 500: // Cannot Create Token
-                        self?.showAlertOnMainThread(responseData.valueForKey("error") as! String)
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey: "error") as! String)
                     default:
                         self?.showAlertOnMainThread(kServerError)
                         
@@ -510,32 +509,32 @@ extension RegisterViewController{
                     
                 }
                 
-            case.Failure(let error ):
-                let data = NSString(data: response.data!, encoding: NSUTF8StringEncoding)
+            case.failure(let error ):
+                let data = NSString(data: response.data!, encoding: String.Encoding.utf8.rawValue)
                 print(data)
                 self?.showAlertOnMainThread(error.localizedDescription)
                 
             }
-            })
+        })
         
     }
-
+    
     
     
     
     //Update Child
-    func updateChildAttendance(params: [String: AnyObject],onCompletion:(success: Bool)->()){
+    func updateChildAttendance(_ params: [String: AnyObject],onCompletion:@escaping (_ success: Bool)->()){
         
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         WebServiceHelper.updateChild(params, onCompletion: { [weak self]
             response in
             print(params)
             debugPrint(response)
-            MBProgressHUD.hideAllHUDsForView(self?.view, animated: true)
+            MBProgressHUD.hideAllHUDs(for: self?.view, animated: true)
             
             switch response.result {
                 
-            case .Success(let responseData) :
+            case .success(let responseData) :
                 
                 if let status_code = response.response?.statusCode {
                     switch status_code {
@@ -546,7 +545,7 @@ extension RegisterViewController{
                             
                             let childDataList = childData["attendances"] as? [AnyObject]
                             self!.setChildsWithAttendance(childDataList!)
-                            onCompletion(success: true)
+                            onCompletion(true)
                         }
                         
                         
@@ -558,10 +557,10 @@ extension RegisterViewController{
                     case 404:
                         self?.showAlertOnMainThread("Invalid data supplied")
                     case 401: // Login Unsuccessful
-                        self?.showAlertOnMainThread(responseData.valueForKey("error") as! String)
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey: "error") as! String)
                         
                     case 500: // Cannot Create Token
-                        self?.showAlertOnMainThread(responseData.valueForKey("error") as! String)
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey: "error") as! String)
                     default:
                         self?.showAlertOnMainThread(kServerError)
                         
@@ -569,14 +568,13 @@ extension RegisterViewController{
                     
                 }
                 
-            case.Failure(let error):
+            case.failure(let error):
                 self?.showAlertOnMainThread(error.localizedDescription)
                 
             }
-            })
+        })
         
     }
-
-
+    
+    
 }
-

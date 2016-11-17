@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -76,35 +76,45 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tD0-M9-lzn">
                                             <rect key="frame" x="0.0" y="147" width="290" height="45"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bYM-hY-OdL">
-                                                    <rect key="frame" x="0.0" y="0.0" width="212" height="45"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bYM-hY-OdL">
+                                                    <rect key="frame" x="0.0" y="0.0" width="211.5" height="45"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="textFieldView" translatesAutoresizingMaskIntoConstraints="NO" id="L8e-FF-31A">
-                                                            <rect key="frame" x="0.0" y="0.0" width="212" height="45"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="textFieldView" translatesAutoresizingMaskIntoConstraints="NO" id="L8e-FF-31A">
+                                                            <rect key="frame" x="0.0" y="0.0" width="211.5" height="45"/>
                                                         </imageView>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Class" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S5Y-Xa-Myl">
-                                                            <rect key="frame" x="15" y="0.0" width="197" height="45"/>
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Class" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S5Y-Xa-Myl">
+                                                            <rect key="frame" x="15" y="0.0" width="196.5" height="45"/>
                                                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                                             <textInputTraits key="textInputTraits"/>
                                                             <connections>
                                                                 <outlet property="delegate" destination="-1" id="8Es-Cy-rSK"/>
                                                             </connections>
                                                         </textField>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i9k-8m-Pbp">
+                                                            <rect key="frame" x="0.0" y="0.0" width="211.5" height="45"/>
+                                                            <connections>
+                                                                <action selector="btnSelect:" destination="-1" eventType="touchUpInside" id="yRI-Bo-o4A"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
+                                                        <constraint firstItem="i9k-8m-Pbp" firstAttribute="top" secondItem="bYM-hY-OdL" secondAttribute="top" id="3VS-Qq-Wgi"/>
                                                         <constraint firstItem="L8e-FF-31A" firstAttribute="top" secondItem="bYM-hY-OdL" secondAttribute="top" id="CUA-Gn-Qbg"/>
                                                         <constraint firstItem="L8e-FF-31A" firstAttribute="width" secondItem="bYM-hY-OdL" secondAttribute="width" id="Y3S-cQ-z52"/>
                                                         <constraint firstItem="L8e-FF-31A" firstAttribute="height" secondItem="bYM-hY-OdL" secondAttribute="height" id="dJC-O7-aZa"/>
                                                         <constraint firstItem="S5Y-Xa-Myl" firstAttribute="leading" secondItem="bYM-hY-OdL" secondAttribute="leading" constant="15" id="e7P-p9-Mkx"/>
+                                                        <constraint firstAttribute="bottom" secondItem="i9k-8m-Pbp" secondAttribute="bottom" id="eqO-9N-P2I"/>
+                                                        <constraint firstAttribute="trailing" secondItem="i9k-8m-Pbp" secondAttribute="trailing" id="g3t-wC-Lx1"/>
                                                         <constraint firstItem="L8e-FF-31A" firstAttribute="leading" secondItem="bYM-hY-OdL" secondAttribute="leading" id="gaL-yD-jE2"/>
                                                         <constraint firstAttribute="trailing" secondItem="S5Y-Xa-Myl" secondAttribute="trailing" id="hXd-SM-goR"/>
+                                                        <constraint firstItem="i9k-8m-Pbp" firstAttribute="leading" secondItem="bYM-hY-OdL" secondAttribute="leading" id="oMO-uV-dlH"/>
                                                         <constraint firstItem="S5Y-Xa-Myl" firstAttribute="top" secondItem="bYM-hY-OdL" secondAttribute="top" id="qTM-fX-pws"/>
                                                         <constraint firstAttribute="bottom" secondItem="S5Y-Xa-Myl" secondAttribute="bottom" id="sQF-8c-dAS"/>
                                                     </constraints>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iKk-3y-igx">
-                                                    <rect key="frame" x="216" y="0.0" width="74" height="45"/>
+                                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iKk-3y-igx">
+                                                    <rect key="frame" x="216.5" y="0.0" width="73.5" height="45"/>
                                                     <color key="backgroundColor" red="0.6705882353" green="0.76470588240000004" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
                                                     <state key="normal" title="GO">
@@ -132,8 +142,8 @@
                                                 <constraint firstItem="iKk-3y-igx" firstAttribute="centerY" secondItem="bYM-hY-OdL" secondAttribute="centerY" id="iSY-rE-x0Q"/>
                                             </constraints>
                                         </view>
-                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="45" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YHT-b5-D3N">
-                                            <rect key="frame" x="0.0" y="197" width="212" height="200"/>
+                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="45" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YHT-b5-D3N">
+                                            <rect key="frame" x="0.0" y="197" width="211.5" height="200"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="200" id="jSW-PW-IJU"/>

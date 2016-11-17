@@ -12,18 +12,18 @@ class Helper: NSObject{
 
     static func getScreenWidth() -> CGFloat {
         
-        return UIScreen.mainScreen().bounds.width
+        return UIScreen.main.bounds.width
         
     }
     
     static func getScreenHeight() -> CGFloat {
         
-        return UIScreen.mainScreen().bounds.height
+        return UIScreen.main.bounds.height
         
     }
     
     
-    static func getHeightDifference(contentSize: CGFloat) -> CGFloat {
+    static func getHeightDifference(_ contentSize: CGFloat) -> CGFloat {
         
         let viewHeight = Helper.getScreenHeight() - kExternalViewHeight
         if  contentSize < viewHeight {
@@ -33,7 +33,7 @@ class Helper: NSObject{
         return 0.0
     }
     
-    static func getHeightDifferenceWithoutTab(contentSize: CGFloat) -> CGFloat {
+    static func getHeightDifferenceWithoutTab(_ contentSize: CGFloat) -> CGFloat {
         
         let viewHeight = Helper.getScreenHeight() - kNavbarHeight
         if  contentSize < viewHeight {
@@ -47,15 +47,15 @@ class Helper: NSObject{
 
     static func getUniqueDeviceId() -> String {
         
-        var UUID: String? = NSUserDefaults.standardUserDefaults().valueForKey("UUID") as? String
+        var UUID: String? = UserDefaults.standard.value(forKey: "UUID") as? String
         
         if (UUID != nil){
             return UUID!
         }
         else {
             
-            UUID = NSUUID().UUIDString
-            NSUserDefaults.standardUserDefaults().setValue(UUID, forKey: "UUID")
+            UUID = Foundation.UUID().uuidString
+            UserDefaults.standard.setValue(UUID, forKey: "UUID")
             return UUID!
             
         }
@@ -64,16 +64,16 @@ class Helper: NSObject{
     
     //MARK: TextField Validator
     
-    static func isValidFullname(name: String) -> Bool{
+    static func isValidFullname(_ name: String) -> Bool{
         let fullNameRegex: NSString   = "^[a-zA-Z ]*$"
         let fullNameText: NSPredicate = NSPredicate(format: "SELF MATCHES %@", fullNameRegex)
         
-        return fullNameText.evaluateWithObject(name)
+        return fullNameText.evaluate(with: name)
         
         
     }
 
-    static func isSameText(firstStr: String, secondStr: String) -> Bool {
+    static func isSameText(_ firstStr: String, secondStr: String) -> Bool {
         if firstStr == secondStr {
             return true
         }
@@ -81,7 +81,7 @@ class Helper: NSObject{
     }
 
     
-    static func isNotBlank(name: String) -> Bool{
+    static func isNotBlank(_ name: String) -> Bool{
         
         if !name.isEmpty{
             return true
@@ -90,7 +90,7 @@ class Helper: NSObject{
         
     }
     
-    static func isContainsInStreetList(name: String) -> Bool {
+    static func isContainsInStreetList(_ name: String) -> Bool {
         
         if  AutoComplete.sharedInstance.pupilName.contains(name){
             return true
@@ -100,50 +100,50 @@ class Helper: NSObject{
     
     
     //MARK: DATE AND TIME FORMATTER
-    static func getDate(dateString: String)-> String{
+    static func getDate(_ dateString: String)-> String{
     
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let date = formatter.dateFromString(dateString)
+        let date = formatter.date(from: dateString)
         
         formatter.dateFormat = "yyyy-MM-dd"
-        let stringDate = formatter.stringFromDate(date!)
+        let stringDate = formatter.string(from: date!)
         return stringDate
         
     }
     
-    static func getSimpleTime(dateString:String)->String{
+    static func getSimpleTime(_ timeString:String)->String{
     
-        let formatter = NSDateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        let date = formatter.dateFromString(dateString)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "hh:mm:ss"
+        let date = formatter.date(from: timeString)
         
-        formatter.dateFormat = "hh:mm:ss a"
-        let time = formatter.stringFromDate(date!)
+        formatter.dateFormat = "hh:mm a"
+        let time = formatter.string(from: date!)
         return time
         
     }
     
-    static func getTime(dateString: String)-> String{
+    static func getTime(_ dateString: String)-> String{
         
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let date = formatter.dateFromString(dateString)
+        let date = formatter.date(from: dateString)
         
         formatter.dateFormat = "hh:mm:ss a"
-        let stringDate = formatter.stringFromDate(date!)
+        let stringDate = formatter.string(from: date!)
         return stringDate
         
     }
     
     //MARK: TableView Design
-   static func setTableViewDesign(tableView: UITableView){
+   static func setTableViewDesign(_ tableView: UITableView){
         
-        tableView.layer.shadowColor = UIColor.blackColor().CGColor
-        tableView.layer.shadowOffset = CGSizeMake(0, 4)
+        tableView.layer.shadowColor = UIColor.black.cgColor
+        tableView.layer.shadowOffset = CGSize(width: 0, height: 4)
         tableView.layer.shadowOpacity = 0.2
         
-        tableView.layer.borderColor = UIColor.lightGrayColor().CGColor
+        tableView.layer.borderColor = UIColor.lightGray.cgColor
         tableView.layer.cornerRadius = 1.0
         tableView.layer.borderWidth = 1.0
         tableView.layer.cornerRadius = 2.0
@@ -159,24 +159,24 @@ extension UIViewController {
     
     // MARK: - Show alert method
     
-    func showAlertOnMainThread(message: String = "Something went wrong.\nPlease try again later.") {
+    func showAlertOnMainThread(_ message: String = "Something went wrong.\nPlease try again later.") {
         
-        dispatch_async(dispatch_get_main_queue()) {
+        DispatchQueue.main.async {
             
-            let alert = UIAlertController(title: kApplicationName, message: message, preferredStyle: .Alert)
-            alert.addAction( UIAlertAction(title: "Ok", style: .Cancel, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
+            let alert = UIAlertController(title: kApplicationName, message: message, preferredStyle: .alert)
+            alert.addAction( UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
             
         }
     }
     
-    func showAlertTitleMessageOnMainThread(titleHead: String, message: String) {
+    func showAlertTitleMessageOnMainThread(_ titleHead: String, message: String) {
         
-        dispatch_async(dispatch_get_main_queue()) {
+        DispatchQueue.main.async {
             
-            let alert = UIAlertController(title: titleHead, message: message, preferredStyle: .Alert)
-            alert.addAction( UIAlertAction(title: "Ok", style: .Cancel, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
+            let alert = UIAlertController(title: titleHead, message: message, preferredStyle: .alert)
+            alert.addAction( UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
             
         }
     }

@@ -39,12 +39,12 @@ class AddShopItemViewController: UIViewController {
 //MARK: Button Action
 extension AddShopItemViewController{
 
-    @IBAction func btnBack(sender: UIButton) {
+    @IBAction func btnBack(_ sender: UIButton) {
         
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func btnTakePhoto(sender: UIButton) {
+    @IBAction func btnTakePhoto(_ sender: UIButton) {
     }
     
 

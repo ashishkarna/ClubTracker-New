@@ -23,11 +23,37 @@ class Child{
     var id: Int?
     var class_id: String?
     var club_id: String?
+    var section_id: String?
     var parent_id: String?
     var firstName: String?
     var lastName: String?
     var status: String?
+    var class_name: String?
     
+//    var gender: String?
+//    var date_of_birth : String?
+//    var join_date: String?
+//    var avatar: String?
+//    var passout_date: String?
+//    var email: String?
+//    var address: String?
+//    var latitude: String?
+//    var longitude: String?
+    
+    
+    
+}
+
+//MARK: Teacher
+class Teacher{
+    var id: Int?
+    var name: String?
+    var email: String?
+    var teacher_fullname: String?
+    var avatar: String?
+    var gender: String?
+    var date_of_birth: String?
+
 }
 
 //MARK: Parent
@@ -91,6 +117,7 @@ class UrgentRequest{
     var cost: String?
     var event_date: String?
     var pickup_point: String?
+    var event_time: String?
     var reminder: String?
     var message_to: String?
     var created_at: String?

@@ -12,10 +12,10 @@ import Alamofire
 class WebServiceHelper: NSObject {
     
     
-    private static func getHeaders() -> [String : String]? {
+    fileprivate static func getHeaders() -> [String : String]? {
         
         var headers: [String : String]
-        let auth = "Bearer " + (NSUserDefaults.standardUserDefaults().valueForKey("userToken") as? String)!
+        let auth = "Bearer " + (UserDefaults.standard.value(forKey: "userToken") as? String)!
         
         headers    = [
             "Authorization": auth
@@ -26,11 +26,11 @@ class WebServiceHelper: NSObject {
     }
     
 
-       private static func makeRequest(type: Alamofire.Method, url: String, params: [String : AnyObject]?,header: [String : String]?, onCompletion: (Response<AnyObject, NSError>) -> ()) {
+       fileprivate static func makeRequest(_ type: HTTPMethod, url: String, params: [String : AnyObject]?,header: [String : String]?, onCompletion: @escaping (DataResponse<Any>) -> ()) {
         //let paramters = try! NSJSONSerialization.JSONObjectWithData(params, options: [])
 
-        Alamofire.request(type, url, parameters: params ?? nil, headers:header ?? nil,encoding: .JSON).responseJSON(completionHandler: onCompletion)
-        
+     //   Alamofire.request(url, method: .post,  parameters: params ?? nil, headers:header ?? nil,encoding: .JSON).responseJSON(completionHandler: onCompletion)
+        Alamofire.request(url, method: type, parameters: params ?? nil, encoding: JSONEncoding.default, headers: header ?? nil).responseJSON(completionHandler: onCompletion)
     }
 
     
@@ -41,52 +41,51 @@ class WebServiceHelper: NSObject {
 
 extension WebServiceHelper{
 
-    static func login(params: [String : String]?,onCompletion:(Response<AnyObject,NSError>)->()){
+    static func login(_ params: [String : AnyObject]?,onCompletion:@escaping (DataResponse<Any>)->()){
         
-        self.makeRequest(.POST, url:kLoginUserUrl, params: params,header: nil, onCompletion: onCompletion)
+        self.makeRequest(.post,url: kLoginUserUrl,params: params,header: nil, onCompletion: onCompletion)
     }
 
 
     //GET USER DETAIL
-    static func getUser(params: [String : String]?,onCompletion:(Response<AnyObject,NSError>)->()){
+    static func getUser(_ params: [String : AnyObject]?,onCompletion:@escaping(DataResponse<Any>)->()){
         
-        self.makeRequest(.GET, url:kAuthenticatedUserUrl, params: nil,header: getHeaders(), onCompletion: onCompletion)
+        self.makeRequest(.get, url:kAuthenticatedUserUrl, params: nil,header: getHeaders(), onCompletion: onCompletion)
     }
-
 
 }
 
 
 //MARK: CLASS
 extension WebServiceHelper{
-    static func getAllClasses(params: [String : String]?,onCompletion:(Response<AnyObject,NSError>)->()){
+    static func getAllClasses(_ params: [String : AnyObject]?,onCompletion:@escaping (DataResponse<Any>)->()){
         
-        self.makeRequest(.GET, url:kgetAllClassesUrl, params: nil,header: getHeaders(), onCompletion: onCompletion)
+        self.makeRequest(.get, url:kgetAllClassesUrl, params: nil,header: getHeaders(), onCompletion: onCompletion)
     }
 
 }
 
 //MARK: CHILD
 extension WebServiceHelper{
-    static func getAllChilds(params: [String : String]?,onCompletion:(Response<AnyObject,NSError>)->()){
+    static func getAllChilds(_ params: [String : AnyObject]?,onCompletion:@escaping (DataResponse<Any>)->()){
         
-        self.makeRequest(.POST, url:kgetAllChildsUrl, params: params,header: getHeaders(), onCompletion: onCompletion)
+        self.makeRequest(.post, url:kgetAllChildsUrl, params: params,header: getHeaders(), onCompletion: onCompletion)
     }
     
-    static func saveChild(params: [String : AnyObject]?,onCompletion:(Response<AnyObject,NSError>)->()){
+    static func saveChild(_ params: [String : AnyObject]?,onCompletion:@escaping (DataResponse<Any>)->()){
         
         
-        self.makeRequest(.POST, url:ksaveChildAttendanceUrl, params: params,header: getHeaders(), onCompletion: onCompletion)
+        self.makeRequest(.post, url:ksaveChildAttendanceUrl, params: params,header: getHeaders(), onCompletion: onCompletion)
     }
     
-    static func updateChild(params: [String : AnyObject]?,onCompletion:(Response<AnyObject,NSError>)->()){
+    static func updateChild(_ params: [String : AnyObject]?,onCompletion:@escaping (DataResponse<Any>)->()){
         
-        self.makeRequest(.POST, url:kupdateChildAttendanceUrl, params: params,header: getHeaders(), onCompletion: onCompletion)
+        self.makeRequest(.post, url:kupdateChildAttendanceUrl, params: params,header: getHeaders(), onCompletion: onCompletion)
     }
     
-    static func getChildAttendance(params: [String : String]?,onCompletion:(Response<AnyObject,NSError>)->()){
+    static func getChildAttendance(_ params: [String : AnyObject]?,onCompletion:@escaping (DataResponse<Any>)->()){
         
-        self.makeRequest(.POST, url:kgetChildAttendanceUrl, params: params,header: getHeaders(), onCompletion: onCompletion)
+        self.makeRequest(.post, url:kgetChildAttendanceUrl, params: params,header: getHeaders(), onCompletion: onCompletion)
     }
 
     //MARK: GET
@@ -102,45 +101,64 @@ extension WebServiceHelper{
 //MARK: TEACHER MESSAGE
 extension WebServiceHelper{
     
-    static func saveMessage(params: [String : AnyObject]?,onCompletion:(Response<AnyObject,NSError>)->()){
-        self.makeRequest(.POST, url: kSaveMessageToParentUrl, params: params,header: getHeaders(), onCompletion: onCompletion)
+    static func saveMessage(_ params: [String : AnyObject]?,url: String,onCompletion:@escaping (DataResponse<Any>)->()){
+        self.makeRequest(.post, url: url, params: params,header: getHeaders(), onCompletion: onCompletion)
     }
     
     
-    static func getTeacherInboxCount(params: [String : AnyObject]?,onCompletion:(Response<AnyObject,NSError>)->()){
-        self.makeRequest(.POST, url:kGetTeacherInboxCountUrl, params: params,header: getHeaders(), onCompletion: onCompletion)
+    static func getTeacherInboxCount(_ params: [String : AnyObject]?,onCompletion:@escaping (DataResponse<Any>)->()){
+        self.makeRequest(.post, url:kGetTeacherInboxCountUrl, params: params,header: getHeaders(), onCompletion: onCompletion)
     }
     
     
-    static func getTeacherInbox(params: [String : AnyObject]?,onCompletion:(Response<AnyObject,NSError>)->()){
-        self.makeRequest(.POST, url:kGetTeacherInboxUrl, params: params,header: getHeaders(), onCompletion: onCompletion)
-    }
-
-    
-    static func getTeacherOutbox(params: [String : AnyObject]?,onCompletion:(Response<AnyObject,NSError>)->()){
-        self.makeRequest(.POST, url:kGetTeacherOutboxUrl, params: params,header: getHeaders(), onCompletion: onCompletion)
-    }
-    
-    
-    static func getTeacherInboxDetail(params: [String : AnyObject]?,onCompletion:(Response<AnyObject,NSError>)->()){
-        self.makeRequest(.POST, url: kGetTeacherInboxDetailUrl, params: params,header: getHeaders(), onCompletion: onCompletion)
+    static func getTeacherInbox(_ params: [String : AnyObject]?,url: String,onCompletion:@escaping (DataResponse<Any>)->()){
+        self.makeRequest(.post, url:url, params: params,header: getHeaders(), onCompletion: onCompletion)
     }
 
     
-    static func getTeacherOutboxDetail(params: [String : AnyObject]?,onCompletion:(Response<AnyObject,NSError>)->()){
-        self.makeRequest(.POST, url:kGetTeacherOutboxDetailUrl, params: params,header: getHeaders(), onCompletion: onCompletion)
+    static func getTeacherOutbox(_ params: [String : AnyObject]?,url:String,onCompletion:@escaping (DataResponse<Any>)->()){
+        self.makeRequest(.post, url:url, params: params,header: getHeaders(), onCompletion: onCompletion)
     }
     
     
-    static func getTeacherRequests(params: [String : AnyObject]?,onCompletion:(Response<AnyObject,NSError>)->()){
-        self.makeRequest(.POST, url:KGetTeacherRequestUrl, params: params,header: getHeaders(), onCompletion: onCompletion)
+    static func getTeacherInboxDetail(_ params: [String : AnyObject]?,onCompletion:@escaping (DataResponse<Any>)->()){
+        self.makeRequest(.post, url: kGetTeacherInboxDetailUrl, params: params,header: getHeaders(), onCompletion: onCompletion)
+    }
+
+    
+    static func getTeacherOutboxDetail(_ params: [String : AnyObject]?,onCompletion:@escaping (DataResponse<Any>)->()){
+        self.makeRequest(.post, url:kGetTeacherOutboxDetailUrl, params: params,header: getHeaders(), onCompletion: onCompletion)
     }
     
-    static func completedAllPriorRequests(params: [String : AnyObject]?,onCompletion:(Response<AnyObject,NSError>)->()){
-        self.makeRequest(.POST, url:kCompletedAllPriorRequestsUrl, params: params,header: getHeaders(), onCompletion: onCompletion)
-    }
-    static func getParentList(params: [String : AnyObject]?,onCompletion:(Response<AnyObject,NSError>)->()){
-        self.makeRequest(.POST, url:kGetParentListUrl, params: params,header: getHeaders(), onCompletion: onCompletion)
+    
+    static func getTeacherRequests(_ params: [String : AnyObject]?,onCompletion:@escaping (DataResponse<Any>)->()){
+        self.makeRequest(.post, url:KGetTeacherRequestUrl, params: params,header: getHeaders(), onCompletion: onCompletion)
     }
     
+    static func completedAllPriorRequests(_ params: [String : AnyObject]?,onCompletion:@escaping (DataResponse<Any>)->()){
+        self.makeRequest(.post, url:kCompletedAllPriorRequestsUrl, params: params,header: getHeaders(), onCompletion: onCompletion)
+    }
+    static func getParentList(_ params: [String : AnyObject]?,url: String ,onCompletion:@escaping (DataResponse<Any>)->()){
+        self.makeRequest(.post, url:url, params: params,header: getHeaders(), onCompletion: onCompletion)
+    }
+    
+}
+
+
+
+
+
+//MARK: PARENT SECTION
+
+extension WebServiceHelper{
+    static func getMyChildren(_ params: [String : AnyObject]?,onCompletion:@escaping (DataResponse<Any>)->()){
+        self.makeRequest(.get, url:kgetMyChildrenUrl, params: nil,header: getHeaders(), onCompletion: onCompletion)
+    }
+    
+    //response
+    static func getUrgentRequests(_ params: [String : AnyObject]?,onCompletion:@escaping (DataResponse<Any>)->()){
+        self.makeRequest(.post, url:kgetUrgentRequestsUrl, params: params,header: getHeaders(), onCompletion: onCompletion)
+    }
+    
+
 }

@@ -27,16 +27,16 @@ class SocialMediaVC: UIViewController {
 extension SocialMediaVC{
     
     //send
-    @IBAction func btnSend(sender: UIButton) {
+    @IBAction func btnSend(_ sender: UIButton) {
     }
 
     //back
-    @IBAction func btnBack(sender: UIButton) {
-        self.navigationController?.popViewControllerAnimated(true)
+    @IBAction func btnBack(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     //Camera Button
-    @IBAction func btnCamera(sender: UIButton) {
+    @IBAction func btnCamera(_ sender: UIButton) {
     }
     
 
@@ -44,15 +44,15 @@ extension SocialMediaVC{
     //MARK: Social Media
     
     ///Update on Facebook
-    @IBAction func btnFacebook(sender: UIButton) {
+    @IBAction func btnFacebook(_ sender: UIButton) {
     }
     
     ///Update on Twitter
-    @IBAction func btnTwitter(sender: UIButton) {
+    @IBAction func btnTwitter(_ sender: UIButton) {
     }
     
     ///Update on Instagram
-    @IBAction func btnInstagram(sender: UIButton) {
+    @IBAction func btnInstagram(_ sender: UIButton) {
     }
 
 }
