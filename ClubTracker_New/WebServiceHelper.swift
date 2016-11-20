@@ -53,6 +53,12 @@ extension WebServiceHelper{
         self.makeRequest(.get, url:kAuthenticatedUserUrl, params: nil,header: getHeaders(), onCompletion: onCompletion)
     }
 
+    
+    static func logout(_ params: [String : AnyObject]?,onCompletion:@escaping (DataResponse<Any>)->()){
+        
+        self.makeRequest(.get,url: kLogoutUrl,params: nil,header: getHeaders(), onCompletion: onCompletion)
+    }
+
 }
 
 

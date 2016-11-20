@@ -50,7 +50,6 @@ class SelectClassViewController: UIViewController {
         tableSelectClass.isHidden = true
     }
     
-    
 
  
 
@@ -139,6 +138,23 @@ extension SelectClassViewController{
         
     
     }
+    
+    //logout
+    @IBAction func btnLogOutTapped(_ sender: UIButton) {
+        
+        let alert = UIAlertController(title: kApplicationName, message: "Do you want to logout?", preferredStyle: .alert)
+        alert.addAction( UIAlertAction(title: "No", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Yes",style: .default){
+            _ in
+            self.logOut()
+        })
+        self.present(alert, animated: true, completion: nil)
+        
+        
+    }
+
+    
+    
  }
 
 
@@ -373,6 +389,53 @@ extension SelectClassViewController{
 
         
     }
+
+    //LOG-OUT
+    func logOut(){
+        
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        WebServiceHelper.logout(nil, onCompletion: { [weak self]
+            response in
+            
+            debugPrint(response)
+            MBProgressHUD.hideAllHUDs(for: self?.view, animated: true)
+            
+            switch response.result {
+                
+            case .success(let responseData) :
+                
+                if let status_code = response.response?.statusCode {
+                    
+                    
+                    switch status_code {
+                        
+                    case 200 : //Successful Login
+                        
+                        
+                        self?.showAlertOnMainThread("You are successfully logged out.")
+                        self?.navigationController?.popToRootViewController(animated: false)
+                            
+                    case 401: // Login Unsuccessful
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey:"error") as! String)
+                        
+                    case 500: // Internal Server Error
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey:"error") as! String)
+                        
+                    default:
+                        self?.showAlertOnMainThread(kServerError)
+                        
+                    }
+                    
+                }
+                
+            case.failure(let error):
+                self?.showAlertOnMainThread(error.localizedDescription)
+                
+            }
+        })
+        
+    }
+    
 
     
     //SET CHILDREN

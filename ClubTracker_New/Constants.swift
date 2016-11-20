@@ -23,6 +23,7 @@ let kServerError = "Server Error"
 
 //MARK: Login
 let kLoginUserUrl = DomainName + "login"
+let kLogoutUrl = DomainName + "logout"
 let kAuthenticatedUserUrl = DomainName + "getAuthenticatedUser"
 
 //MARK: TECACHER SECTION

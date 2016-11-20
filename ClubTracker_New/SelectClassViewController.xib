@@ -1,17 +1,20 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="Montserrat-Bold.ttf">
+        <array key="Montserrat-Bold.ttf">
             <string>Montserrat-Bold</string>
-            <string>Montserrat-Bold</string>
-        </mutableArray>
-        <mutableArray key="Montserrat-Regular.ttf">
+        </array>
+        <array key="Montserrat-Regular.ttf">
             <string>Montserrat-Regular</string>
-        </mutableArray>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SelectClassViewController" customModule="ClubTracker" customModuleProvider="target">
@@ -33,7 +36,7 @@
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8zD-eN-TJq">
                             <rect key="frame" x="0.0" y="68" width="320" height="1"/>
-                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="Esd-EO-0QQ"/>
                             </constraints>
@@ -44,17 +47,30 @@
                                 <constraint firstAttribute="width" constant="119" id="1Rr-eA-oF3"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XRh-H5-Hf8">
+                            <rect key="frame" x="266" y="32" width="29" height="27"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="29" id="ZDy-BI-1jg"/>
+                                <constraint firstAttribute="height" constant="27" id="yMK-E8-0x3"/>
+                            </constraints>
+                            <state key="normal" image="logOutIcon"/>
+                            <connections>
+                                <action selector="btnLogOutTapped:" destination="-1" eventType="touchUpInside" id="UKx-k6-u6y"/>
+                            </connections>
+                        </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.6705882352941176" green="0.76470588235294112" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.6705882352941176" green="0.76470588235294112" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="70" id="06y-VV-wzS"/>
+                        <constraint firstItem="XRh-H5-Hf8" firstAttribute="centerY" secondItem="fNr-ru-BpY" secondAttribute="centerY" id="4sG-wa-PWT"/>
                         <constraint firstItem="fNr-ru-BpY" firstAttribute="top" secondItem="5p0-iq-6AL" secondAttribute="top" constant="35" id="VLN-fy-9cM"/>
                         <constraint firstAttribute="bottom" secondItem="8zD-eN-TJq" secondAttribute="bottom" constant="1" id="e1O-vi-R74"/>
                         <constraint firstItem="8zD-eN-TJq" firstAttribute="leading" secondItem="5p0-iq-6AL" secondAttribute="leading" id="eh2-Xj-tM0"/>
                         <constraint firstItem="fNr-ru-BpY" firstAttribute="centerX" secondItem="8zD-eN-TJq" secondAttribute="centerX" constant="0.5" id="gCd-G9-p2Z"/>
+                        <constraint firstAttribute="trailing" secondItem="XRh-H5-Hf8" secondAttribute="trailing" constant="25" id="mff-OS-4r8"/>
                         <constraint firstAttribute="trailing" secondItem="8zD-eN-TJq" secondAttribute="trailing" id="ueK-JP-5ip"/>
                     </constraints>
                 </view>
@@ -97,7 +113,7 @@
                                                             </connections>
                                                         </button>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="i9k-8m-Pbp" firstAttribute="top" secondItem="bYM-hY-OdL" secondAttribute="top" id="3VS-Qq-Wgi"/>
                                                         <constraint firstItem="L8e-FF-31A" firstAttribute="top" secondItem="bYM-hY-OdL" secondAttribute="top" id="CUA-Gn-Qbg"/>
@@ -115,10 +131,10 @@
                                                 </view>
                                                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iKk-3y-igx">
                                                     <rect key="frame" x="216.5" y="0.0" width="73.5" height="45"/>
-                                                    <color key="backgroundColor" red="0.6705882353" green="0.76470588240000004" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.6705882353" green="0.76470588240000004" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
                                                     <state key="normal" title="GO">
-                                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="3"/>
@@ -128,7 +144,7 @@
                                                     </connections>
                                                 </button>
                                             </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="iKk-3y-igx" firstAttribute="leading" secondItem="bYM-hY-OdL" secondAttribute="trailing" constant="5" id="3cA-CN-JFy"/>
                                                 <constraint firstItem="iKk-3y-igx" firstAttribute="top" secondItem="tD0-M9-lzn" secondAttribute="top" id="Frp-kt-vyq"/>
@@ -144,18 +160,18 @@
                                         </view>
                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="45" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YHT-b5-D3N">
                                             <rect key="frame" x="0.0" y="197" width="211.5" height="200"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="200" id="jSW-PW-IJU"/>
                                             </constraints>
-                                            <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="separatorColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <outlet property="dataSource" destination="-1" id="gAF-Eb-5na"/>
                                                 <outlet property="delegate" destination="-1" id="aeI-uq-L7o"/>
                                             </connections>
                                         </tableView>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstItem="tD0-M9-lzn" firstAttribute="leading" secondItem="Caz-2t-zbA" secondAttribute="leading" id="00H-d1-mH8"/>
                                         <constraint firstItem="tD0-M9-lzn" firstAttribute="top" secondItem="2Xj-8S-GW9" secondAttribute="bottom" constant="50" id="OOW-iw-b2l"/>
@@ -170,7 +186,7 @@
                                     </constraints>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="Caz-2t-zbA" firstAttribute="leading" secondItem="0gt-vs-vCa" secondAttribute="leading" constant="15" id="61N-t0-D7K"/>
                                 <constraint firstItem="Caz-2t-zbA" firstAttribute="top" secondItem="0gt-vs-vCa" secondAttribute="top" constant="39" id="LRq-hi-BA5"/>
@@ -179,7 +195,7 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="0gt-vs-vCa" secondAttribute="trailing" id="FVq-hU-OFJ"/>
                         <constraint firstItem="0gt-vs-vCa" firstAttribute="leading" secondItem="ybB-G5-epT" secondAttribute="leading" id="Izh-KE-wc8"/>
@@ -189,7 +205,7 @@
                     </constraints>
                 </scrollView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="5p0-iq-6AL" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="9Z6-vU-hAu"/>
                 <constraint firstAttribute="bottom" secondItem="ybB-G5-epT" secondAttribute="bottom" id="AVg-li-ZyS"/>
@@ -204,7 +220,13 @@
         </view>
     </objects>
     <resources>
-        <image name="icon" width="76" height="76"/>
+        <image name="icon" width="60" height="60"/>
+        <image name="logOutIcon" width="50" height="50"/>
         <image name="textFieldView" width="214" height="44"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
+    </simulatedMetricsContainer>
 </document>
