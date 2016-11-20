@@ -9,5 +9,8 @@
 
 #import "TPKeyboardAvoidingScrollView.h"
 #import "MBProgressHUD.h"
+#import "CSChatViewController.h"
+#import "CSConfig.h"
+#import "JSONModel.h"
 
 #endif

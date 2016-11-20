@@ -22,6 +22,8 @@
 		476FEF051D9FDE6700EEC5D4 /* FAQVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 476FEF011D9FDE6700EEC5D4 /* FAQVC.xib */; };
 		476FEF061D9FDE6700EEC5D4 /* HelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476FEF021D9FDE6700EEC5D4 /* HelpVC.swift */; };
 		476FEF071D9FDE6700EEC5D4 /* HelpVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 476FEF031D9FDE6700EEC5D4 /* HelpVC.xib */; };
+		4771900D1DE1CF0A006CEE10 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4771900B1DE1CF0A006CEE10 /* ChatViewController.swift */; };
+		4771900E1DE1CF0A006CEE10 /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4771900C1DE1CF0A006CEE10 /* ChatViewController.xib */; };
 		479004B41DD8115E0086502B /* ResponseMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479004B21DD8115E0086502B /* ResponseMessageViewController.swift */; };
 		479004B51DD8115E0086502B /* ResponseMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 479004B31DD8115E0086502B /* ResponseMessageViewController.xib */; };
 		479FCA011D9EE025007891E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479FCA001D9EE025007891E9 /* AppDelegate.swift */; };
@@ -127,6 +129,8 @@
 		476FEF011D9FDE6700EEC5D4 /* FAQVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FAQVC.xib; sourceTree = "<group>"; };
 		476FEF021D9FDE6700EEC5D4 /* HelpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpVC.swift; sourceTree = "<group>"; };
 		476FEF031D9FDE6700EEC5D4 /* HelpVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpVC.xib; sourceTree = "<group>"; };
+		4771900B1DE1CF0A006CEE10 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		4771900C1DE1CF0A006CEE10 /* ChatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatViewController.xib; sourceTree = "<group>"; };
 		479004B21DD8115E0086502B /* ResponseMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseMessageViewController.swift; sourceTree = "<group>"; };
 		479004B31DD8115E0086502B /* ResponseMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResponseMessageViewController.xib; sourceTree = "<group>"; };
 		479FC9FD1D9EE025007891E9 /* ClubTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClubTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -503,6 +507,8 @@
 		479FCA5F1D9EE47A007891E9 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				4771900B1DE1CF0A006CEE10 /* ChatViewController.swift */,
+				4771900C1DE1CF0A006CEE10 /* ChatViewController.xib */,
 			);
 			name = Chat;
 			sourceTree = "<group>";
@@ -865,6 +871,7 @@
 			knownRegions = (
 				en,
 				Base,
+				hr,
 			);
 			mainGroup = 479FC9F41D9EE025007891E9;
 			productRefGroup = 479FC9FE1D9EE025007891E9 /* Products */;
@@ -902,6 +909,7 @@
 				47F096C01DCF045E0002DF9C /* UrgentMessageDetailViewController.xib in Resources */,
 				47F316101DA2C0F200D740FD /* ShopItemDetailViewController.xib in Resources */,
 				47F316161DA2CC8800D740FD /* AddShopItemViewController.xib in Resources */,
+				4771900E1DE1CF0A006CEE10 /* ChatViewController.xib in Resources */,
 				47E9E1191DA16E2D00C6B6A6 /* MessageTableViewCell.xib in Resources */,
 				476FEEE11D9FB3BD00EEC5D4 /* TeacherMenuViewController.xib in Resources */,
 				476FEF051D9FDE6700EEC5D4 /* FAQVC.xib in Resources */,
@@ -1083,6 +1091,7 @@
 			files = (
 				47F3161F1DA2E5A900D740FD /* TargetCell.swift in Sources */,
 				476FEF041D9FDE6700EEC5D4 /* FAQVC.swift in Sources */,
+				4771900D1DE1CF0A006CEE10 /* ChatViewController.swift in Sources */,
 				476FEF061D9FDE6700EEC5D4 /* HelpVC.swift in Sources */,
 				47FBF6E81DBCFEF700D93C6D /* ArchiveAttendanceViewController.swift in Sources */,
 				479FCA771D9EF445007891E9 /* SelectClassViewController.swift in Sources */,
