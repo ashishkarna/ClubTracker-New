@@ -9,32 +9,14 @@
 import UIKit
 
 
-class ChatViewController: UIViewController {
+class ChatViewController: UIViewController , LGChatControllerDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-
-//        NSDictionary *parameters = @{
-//            paramUserID : @"your_user_id",
-//            paramName : @"your_user_name",
-//            paramAvatarURL : @"http://url_to_your_avatar.jpg",
-//            paramRoomID: @"Your_room_id"
-//        };
-        
-        var params = [String :Sting]()
-        params["paramUserId"] = "your_user_id"
-        params["paramName"] = "username"
-        params["paramRoomID"] = "room_id"
-        
-//        CSChatViewController *viewController = [[CSChatViewController alloc] initWithParameters:parameters];
-//        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
-//        [self presentViewController:navigationController animated:YES completion:nil];
-        
-        let vc = ChatViewController(params)
-        let chatNav = UINavigationController(rootViewController: vc)
-        self.present(chatNav, animated: true, completion: nil)
+        super.viewDidLoad()
+        launchChatController()
         
     }
 
@@ -44,14 +26,32 @@ class ChatViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // MARK: Launch Chat Controller
+    
+    func launchChatController() {
+        let chatController = LGChatController()
+        chatController.opponentImage = UIImage(named: "User")
+        chatController.title = "Simple Chat"
+        let helloWorld = LGChatMessage(content: "Hello World!", sentBy: .User)
+        chatController.messages = [helloWorld]
+        chatController.delegate = self
+        self.navigationController?.pushViewController(chatController, animated: true)
     }
-    */
+    
+    // MARK: LGChatControllerDelegate
+    
+    func chatController(chatController: LGChatController, didAddNewMessage message: LGChatMessage) {
+        
+        print("Did Add Message: \(message.content)")
+    }
+    
+    func shouldChatController(chatController: LGChatController, addMessage message: LGChatMessage) -> Bool {
+        /*
+         Use this space to prevent sending a message, or to alter a message.  For example, you might want to hold a message until its successfully uploaded to a server.
+         */
+        return true
+    }
 
 }
+
+

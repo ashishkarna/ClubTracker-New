@@ -10,6 +10,7 @@
 		4738FA501DB7CB9E00F10698 /* WebServiceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4738FA4F1DB7CB9E00F10698 /* WebServiceHelper.swift */; };
 		4738FA541DB7CF2100F10698 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4738FA531DB7CF2100F10698 /* MBProgressHUD.m */; };
 		4738FA591DB7ECC700F10698 /* Details.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4738FA581DB7ECC700F10698 /* Details.swift */; };
+		474A94511DE4AA28001DB9A1 /* LGSimpleChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474A94501DE4AA28001DB9A1 /* LGSimpleChat.swift */; };
 		476FEEE01D9FB3BD00EEC5D4 /* TeacherMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476FEEDE1D9FB3BD00EEC5D4 /* TeacherMenuViewController.swift */; };
 		476FEEE11D9FB3BD00EEC5D4 /* TeacherMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 476FEEDF1D9FB3BD00EEC5D4 /* TeacherMenuViewController.xib */; };
 		476FEEE91D9FCCB600EEC5D4 /* TeacherMenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476FEEE71D9FCCB600EEC5D4 /* TeacherMenuItemCell.swift */; };
@@ -117,6 +118,7 @@
 		4738FA521DB7CF2100F10698 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		4738FA531DB7CF2100F10698 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		4738FA581DB7ECC700F10698 /* Details.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Details.swift; sourceTree = "<group>"; };
+		474A94501DE4AA28001DB9A1 /* LGSimpleChat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGSimpleChat.swift; sourceTree = "<group>"; };
 		476FEEDE1D9FB3BD00EEC5D4 /* TeacherMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherMenuViewController.swift; sourceTree = "<group>"; };
 		476FEEDF1D9FB3BD00EEC5D4 /* TeacherMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeacherMenuViewController.xib; sourceTree = "<group>"; };
 		476FEEE71D9FCCB600EEC5D4 /* TeacherMenuItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherMenuItemCell.swift; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 		479FCA2E1D9EE196007891E9 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				474A94501DE4AA28001DB9A1 /* LGSimpleChat.swift */,
 				4738FA511DB7CF0700F10698 /* MBProgressHUD */,
 				479FCA3E1D9EE342007891E9 /* Keyboard Avoiding */,
 				479FCA2F1D9EE2F0007891E9 /* ClubTracker-Bridging-Header.h */,
@@ -1099,6 +1102,7 @@
 				47F316261DA2E64800D740FD /* ContactUsVC.swift in Sources */,
 				4738FA591DB7ECC700F10698 /* Details.swift in Sources */,
 				479FCA6C1D9EE5B0007891E9 /* LoginViewController.swift in Sources */,
+				474A94511DE4AA28001DB9A1 /* LGSimpleChat.swift in Sources */,
 				476FEEE91D9FCCB600EEC5D4 /* TeacherMenuItemCell.swift in Sources */,
 				479004B41DD8115E0086502B /* ResponseMessageViewController.swift in Sources */,
 				479FCA4D1D9EE3B4007891E9 /* AutoCompleteCell.swift in Sources */,
