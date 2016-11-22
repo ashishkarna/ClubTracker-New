@@ -119,11 +119,14 @@ extension TeacherMenuViewController:UICollectionViewDelegate,UICollectionViewDat
           
         case 1:
             let messageVC = MessageMenuViewController(nibName: "MessageMenuViewController", bundle: nil)
+            if isTeacher{
+                messageVC.isTeacher = true
+            }
             self.navigationController?.pushViewController(messageVC, animated: true)
             
         case 2:
             let chatVC = ChatViewController(nibName:"ChatViewController", bundle:nil)
-            self.navigationController?.pushViewController(chatVC, animated: true)
+           // self.navigationController?.pushViewController(chatVC, animated: true)
             
         case 5:
             let targetVC = TargetVC(nibName: "TargetVC", bundle: nil)

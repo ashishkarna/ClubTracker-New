@@ -68,6 +68,9 @@ extension MessageMenuViewController{
     
     @IBAction func btnOutbox(_ sender: UIButton) {
         let outboxVC = OutboxViewController(nibName: "OutboxViewController", bundle: nil)
+        if isTeacher{
+            outboxVC.isTeacher = true
+        }
         self.navigationController?.pushViewController(outboxVC, animated: true)
     }
     

@@ -27,7 +27,9 @@ class OutboxViewController: UIViewController {
         // Do any additional setup after loading the view.
         isTeacher = UserDefaults.standard.value(forKey: "isTeacher") as! Bool
         lblClassName.text = UserDefaults.standard.value(forKey: isTeacher ? "class_name": "child_name") as? String
+        if !isTeacher{
         child_id = (UserDefaults.standard.value(forKey: "child_id") as? String)!
+        }
         club_id = (UserDefaults.standard.value(forKey: "club_id") as? String)!
         class_id = (UserDefaults.standard.value(forKey: "class_id") as? String)!
         tableOutbox.register(UINib(nibName: "InboxMessageTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "InboxCell")
