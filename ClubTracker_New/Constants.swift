@@ -63,3 +63,21 @@ let kGetParentOutboxUrl = DomainName + "getOutbox"
 let kGetClassTeachersUrl = DomainName + "getClassTeachers"
 let kSendMessageToTeacherUrl = DomainName + "saveParentMessage"
 
+
+
+
+
+//MARK: CHAT SECTION
+let kgetListOfPossibleChatMembersUrl = DomainName + "getListOfPossibleChatMembers"
+let kgetChatListsUrl = DomainName + "getChatLists"
+let kgetChatsofChatUrl = DomainName + "getChatsofChat"
+let ksendChatMessageUrl = DomainName + "sendChatMessage"
+
+
+
+
+
+
+
+
+

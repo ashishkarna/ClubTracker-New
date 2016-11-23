@@ -23,8 +23,6 @@
 		476FEF051D9FDE6700EEC5D4 /* FAQVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 476FEF011D9FDE6700EEC5D4 /* FAQVC.xib */; };
 		476FEF061D9FDE6700EEC5D4 /* HelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476FEF021D9FDE6700EEC5D4 /* HelpVC.swift */; };
 		476FEF071D9FDE6700EEC5D4 /* HelpVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 476FEF031D9FDE6700EEC5D4 /* HelpVC.xib */; };
-		4771900D1DE1CF0A006CEE10 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4771900B1DE1CF0A006CEE10 /* ChatViewController.swift */; };
-		4771900E1DE1CF0A006CEE10 /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4771900C1DE1CF0A006CEE10 /* ChatViewController.xib */; };
 		479004B41DD8115E0086502B /* ResponseMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479004B21DD8115E0086502B /* ResponseMessageViewController.swift */; };
 		479004B51DD8115E0086502B /* ResponseMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 479004B31DD8115E0086502B /* ResponseMessageViewController.xib */; };
 		479FCA011D9EE025007891E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479FCA001D9EE025007891E9 /* AppDelegate.swift */; };
@@ -49,6 +47,14 @@
 		479FCA741D9EF104007891E9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479FCA731D9EF104007891E9 /* Constants.swift */; };
 		479FCA771D9EF445007891E9 /* SelectClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479FCA751D9EF445007891E9 /* SelectClassViewController.swift */; };
 		479FCA781D9EF445007891E9 /* SelectClassViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 479FCA761D9EF445007891E9 /* SelectClassViewController.xib */; };
+		47B4DF8F1DE5F7E7006EFBFB /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B4DF8D1DE5F7E7006EFBFB /* ChatListViewController.swift */; };
+		47B4DF901DE5F7E7006EFBFB /* ChatListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47B4DF8E1DE5F7E7006EFBFB /* ChatListViewController.xib */; };
+		47B4DF941DE5F801006EFBFB /* ChatDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B4DF921DE5F801006EFBFB /* ChatDetailViewController.swift */; };
+		47B4DF951DE5F801006EFBFB /* ChatDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47B4DF931DE5F801006EFBFB /* ChatDetailViewController.xib */; };
+		47B4DF991DE5FAA5006EFBFB /* CreateChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B4DF971DE5FAA5006EFBFB /* CreateChatViewController.swift */; };
+		47B4DF9A1DE5FAA5006EFBFB /* CreateChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47B4DF981DE5FAA5006EFBFB /* CreateChatViewController.xib */; };
+		47B4DFA21DE61BC1006EFBFB /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B4DFA01DE61BC1006EFBFB /* ChatCell.swift */; };
+		47B4DFA31DE61BC1006EFBFB /* ChatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47B4DFA11DE61BC1006EFBFB /* ChatCell.xib */; };
 		47E984A11DA0F624003DC18C /* MessageMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E9849F1DA0F624003DC18C /* MessageMenuViewController.swift */; };
 		47E984A21DA0F624003DC18C /* MessageMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47E984A01DA0F624003DC18C /* MessageMenuViewController.xib */; };
 		47E9E1071DA15E8000C6B6A6 /* NewMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E9E1051DA15E8000C6B6A6 /* NewMessageViewController.swift */; };
@@ -131,8 +137,6 @@
 		476FEF011D9FDE6700EEC5D4 /* FAQVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FAQVC.xib; sourceTree = "<group>"; };
 		476FEF021D9FDE6700EEC5D4 /* HelpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpVC.swift; sourceTree = "<group>"; };
 		476FEF031D9FDE6700EEC5D4 /* HelpVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpVC.xib; sourceTree = "<group>"; };
-		4771900B1DE1CF0A006CEE10 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		4771900C1DE1CF0A006CEE10 /* ChatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatViewController.xib; sourceTree = "<group>"; };
 		479004B21DD8115E0086502B /* ResponseMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseMessageViewController.swift; sourceTree = "<group>"; };
 		479004B31DD8115E0086502B /* ResponseMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResponseMessageViewController.xib; sourceTree = "<group>"; };
 		479FC9FD1D9EE025007891E9 /* ClubTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClubTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -168,6 +172,14 @@
 		479FCA731D9EF104007891E9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		479FCA751D9EF445007891E9 /* SelectClassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectClassViewController.swift; sourceTree = "<group>"; };
 		479FCA761D9EF445007891E9 /* SelectClassViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectClassViewController.xib; sourceTree = "<group>"; };
+		47B4DF8D1DE5F7E7006EFBFB /* ChatListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
+		47B4DF8E1DE5F7E7006EFBFB /* ChatListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatListViewController.xib; sourceTree = "<group>"; };
+		47B4DF921DE5F801006EFBFB /* ChatDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatDetailViewController.swift; sourceTree = "<group>"; };
+		47B4DF931DE5F801006EFBFB /* ChatDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatDetailViewController.xib; sourceTree = "<group>"; };
+		47B4DF971DE5FAA5006EFBFB /* CreateChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateChatViewController.swift; sourceTree = "<group>"; };
+		47B4DF981DE5FAA5006EFBFB /* CreateChatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateChatViewController.xib; sourceTree = "<group>"; };
+		47B4DFA01DE61BC1006EFBFB /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		47B4DFA11DE61BC1006EFBFB /* ChatCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatCell.xib; sourceTree = "<group>"; };
 		47E9849F1DA0F624003DC18C /* MessageMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageMenuViewController.swift; sourceTree = "<group>"; };
 		47E984A01DA0F624003DC18C /* MessageMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageMenuViewController.xib; sourceTree = "<group>"; };
 		47E9E1051DA15E8000C6B6A6 /* NewMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMessageViewController.swift; sourceTree = "<group>"; };
@@ -392,6 +404,7 @@
 			children = (
 				479FCA531D9EE3BA007891E9 /* AutoComplete */,
 				479FCA541D9EE3C4007891E9 /* FAQ */,
+				47B4DFA41DE61BC5006EFBFB /* Chat Cell */,
 			);
 			name = "Custom Cell";
 			sourceTree = "<group>";
@@ -510,8 +523,9 @@
 		479FCA5F1D9EE47A007891E9 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				4771900B1DE1CF0A006CEE10 /* ChatViewController.swift */,
-				4771900C1DE1CF0A006CEE10 /* ChatViewController.xib */,
+				47B4DF911DE5F7EE006EFBFB /* Chat List */,
+				47B4DF961DE5F811006EFBFB /* Chat Detail */,
+				47B4DF9B1DE5FAA8006EFBFB /* Create Chat */,
 			);
 			name = Chat;
 			sourceTree = "<group>";
@@ -616,6 +630,42 @@
 				479FCA701D9EECEE007891E9 /* Montserrat-Regular.ttf */,
 			);
 			name = Fonts;
+			sourceTree = "<group>";
+		};
+		47B4DF911DE5F7EE006EFBFB /* Chat List */ = {
+			isa = PBXGroup;
+			children = (
+				47B4DF8D1DE5F7E7006EFBFB /* ChatListViewController.swift */,
+				47B4DF8E1DE5F7E7006EFBFB /* ChatListViewController.xib */,
+			);
+			name = "Chat List";
+			sourceTree = "<group>";
+		};
+		47B4DF961DE5F811006EFBFB /* Chat Detail */ = {
+			isa = PBXGroup;
+			children = (
+				47B4DF921DE5F801006EFBFB /* ChatDetailViewController.swift */,
+				47B4DF931DE5F801006EFBFB /* ChatDetailViewController.xib */,
+			);
+			name = "Chat Detail";
+			sourceTree = "<group>";
+		};
+		47B4DF9B1DE5FAA8006EFBFB /* Create Chat */ = {
+			isa = PBXGroup;
+			children = (
+				47B4DF971DE5FAA5006EFBFB /* CreateChatViewController.swift */,
+				47B4DF981DE5FAA5006EFBFB /* CreateChatViewController.xib */,
+			);
+			name = "Create Chat";
+			sourceTree = "<group>";
+		};
+		47B4DFA41DE61BC5006EFBFB /* Chat Cell */ = {
+			isa = PBXGroup;
+			children = (
+				47B4DFA01DE61BC1006EFBFB /* ChatCell.swift */,
+				47B4DFA11DE61BC1006EFBFB /* ChatCell.xib */,
+			);
+			name = "Chat Cell";
 			sourceTree = "<group>";
 		};
 		47E9E1011DA15E5900C6B6A6 /* New */ = {
@@ -902,6 +952,7 @@
 				47F3162B1DA2E6CA00D740FD /* SocialMediaVC.xib in Resources */,
 				47F316221DA2E5A900D740FD /* TargetVC.xib in Resources */,
 				47F3161A1DA2E10700D740FD /* TutorialViewController.xib in Resources */,
+				47B4DF951DE5F801006EFBFB /* ChatDetailViewController.xib in Resources */,
 				479FCA781D9EF445007891E9 /* SelectClassViewController.xib in Resources */,
 				479FCA0B1D9EE025007891E9 /* LaunchScreen.storyboard in Resources */,
 				47F3160C1DA2B30A00D740FD /* ShopListItemCell.xib in Resources */,
@@ -912,7 +963,6 @@
 				47F096C01DCF045E0002DF9C /* UrgentMessageDetailViewController.xib in Resources */,
 				47F316101DA2C0F200D740FD /* ShopItemDetailViewController.xib in Resources */,
 				47F316161DA2CC8800D740FD /* AddShopItemViewController.xib in Resources */,
-				4771900E1DE1CF0A006CEE10 /* ChatViewController.xib in Resources */,
 				47E9E1191DA16E2D00C6B6A6 /* MessageTableViewCell.xib in Resources */,
 				476FEEE11D9FB3BD00EEC5D4 /* TeacherMenuViewController.xib in Resources */,
 				476FEF051D9FDE6700EEC5D4 /* FAQVC.xib in Resources */,
@@ -928,7 +978,10 @@
 				47E9E1081DA15E8000C6B6A6 /* NewMessageViewController.xib in Resources */,
 				47F316071DA2B02300D740FD /* ShopMenuViewController.xib in Resources */,
 				47EAF60A1DA02CA200AFFFEC /* RegisterViewController.xib in Resources */,
+				47B4DF901DE5F7E7006EFBFB /* ChatListViewController.xib in Resources */,
 				47F316201DA2E5A900D740FD /* TargetCell.xib in Resources */,
+				47B4DFA31DE61BC1006EFBFB /* ChatCell.xib in Resources */,
+				47B4DF9A1DE5FAA5006EFBFB /* CreateChatViewController.xib in Resources */,
 				47E9E11E1DA170FE00C6B6A6 /* MessageDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1093,8 +1146,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				47F3161F1DA2E5A900D740FD /* TargetCell.swift in Sources */,
+				47B4DF941DE5F801006EFBFB /* ChatDetailViewController.swift in Sources */,
 				476FEF041D9FDE6700EEC5D4 /* FAQVC.swift in Sources */,
-				4771900D1DE1CF0A006CEE10 /* ChatViewController.swift in Sources */,
 				476FEF061D9FDE6700EEC5D4 /* HelpVC.swift in Sources */,
 				47FBF6E81DBCFEF700D93C6D /* ArchiveAttendanceViewController.swift in Sources */,
 				479FCA771D9EF445007891E9 /* SelectClassViewController.swift in Sources */,
@@ -1113,10 +1166,12 @@
 				47F316061DA2B02300D740FD /* ShopMenuViewController.swift in Sources */,
 				47E9E1181DA16E2D00C6B6A6 /* MessageTableViewCell.swift in Sources */,
 				47E9E1231DA1721A00C6B6A6 /* InboxMessageTableViewCell.swift in Sources */,
+				47B4DF991DE5FAA5006EFBFB /* CreateChatViewController.swift in Sources */,
 				479FCA4F1D9EE3B4007891E9 /* FAQCell.swift in Sources */,
 				47E984A11DA0F624003DC18C /* MessageMenuViewController.swift in Sources */,
 				47F096BF1DCF045E0002DF9C /* UrgentMessageDetailViewController.swift in Sources */,
 				4738FA501DB7CB9E00F10698 /* WebServiceHelper.swift in Sources */,
+				47B4DF8F1DE5F7E7006EFBFB /* ChatListViewController.swift in Sources */,
 				47EAF6091DA02CA200AFFFEC /* RegisterViewController.swift in Sources */,
 				47F316151DA2CC8800D740FD /* AddShopItemViewController.swift in Sources */,
 				479FCA381D9EE2F1007891E9 /* TPKeyboardAvoidingCollectionView.m in Sources */,
@@ -1131,6 +1186,7 @@
 				47F3160F1DA2C0F200D740FD /* ShopItemDetailViewController.swift in Sources */,
 				479FCA451D9EE37E007891E9 /* Helper.swift in Sources */,
 				47EAF60E1DA02D8900AFFFEC /* RegisterCell.swift in Sources */,
+				47B4DFA21DE61BC1006EFBFB /* ChatCell.swift in Sources */,
 				476FEEEF1D9FCF6E00EEC5D4 /* TabBarController.swift in Sources */,
 				47E9E11D1DA170FE00C6B6A6 /* MessageDetailViewController.swift in Sources */,
 				47F316191DA2E10700D740FD /* TutorialViewController.swift in Sources */,
@@ -1276,12 +1332,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Daniel Hughes (JK9C975RTZ)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Daniel Hughes (JK9C975RTZ)";
+				DEVELOPMENT_TEAM = JK9C975RTZ;
 				INFOPLIST_FILE = ClubTracker_New/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.karma.ClubTracker;
 				PRODUCT_NAME = ClubTracker;
-				PROVISIONING_PROFILE = "a589d8fa-1226-4bc2-a21d-eef07059ddbd";
+				PROVISIONING_PROFILE = "66209881-2a08-4ec6-a12f-d034bbba722f";
+				PROVISIONING_PROFILE_SPECIFIER = ClubTracker_Distribution;
 				SWIFT_OBJC_BRIDGING_HEADER = "ClubTracker_New/ClubTracker-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1296,12 +1354,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Daniel Hughes (JK9C975RTZ)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Daniel Hughes (JK9C975RTZ)";
+				DEVELOPMENT_TEAM = JK9C975RTZ;
 				INFOPLIST_FILE = ClubTracker_New/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.karma.ClubTracker;
 				PRODUCT_NAME = ClubTracker;
-				PROVISIONING_PROFILE = "a589d8fa-1226-4bc2-a21d-eef07059ddbd";
+				PROVISIONING_PROFILE = "66209881-2a08-4ec6-a12f-d034bbba722f";
+				PROVISIONING_PROFILE_SPECIFIER = ClubTracker_Distribution;
 				SWIFT_OBJC_BRIDGING_HEADER = "ClubTracker_New/ClubTracker-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};

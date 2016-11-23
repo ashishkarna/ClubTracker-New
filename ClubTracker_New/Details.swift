@@ -127,3 +127,39 @@ class UrgentRequest{
 }
 
 
+
+//MARK: Chat Member
+class ChatMember{
+    var id : String?
+    var member_name: String?
+    var name:String?
+    var email: String?
+    
+
+}
+
+
+//MARK: Chat List Detail
+class ChatDetail{
+    var id: String?
+    var uuid: String?
+    var created_by: String?
+    var chat_name: String?
+    var status: String?
+    var unseen_chats: String?
+    var last_message: String?
+    var last_message_time: String?
+
+}
+
+class ChatsOfChat{
+    var chat_id: String?
+    var uuid : String?
+    var member_id: String?
+    var message: String?
+    var uploads: String?
+    var member_name: String?
+    var avatar: String?
+    
+}
+

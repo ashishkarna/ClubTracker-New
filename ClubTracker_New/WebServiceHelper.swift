@@ -145,7 +145,7 @@ extension WebServiceHelper{
         self.makeRequest(.post, url:kCompletedAllPriorRequestsUrl, params: params,header: getHeaders(), onCompletion: onCompletion)
     }
     static func getParentList(_ params: [String : AnyObject]?,url: String ,onCompletion:@escaping (DataResponse<Any>)->()){
-        self.makeRequest(.post, url:url, params: params,header: getHeaders(), onCompletion: onCompletion)
+        self.makeRequest(.post, url:url, params: params ,header: getHeaders(), onCompletion: onCompletion)
     }
     
 }
@@ -167,4 +167,26 @@ extension WebServiceHelper{
     }
     
 
+}
+
+
+
+
+//MARK: CHAT SECTION
+
+extension WebServiceHelper{
+    static func getChatLists(onCompletion:@escaping (DataResponse<Any>)->()){
+        self.makeRequest(.get, url:kgetChatListsUrl, params: nil,header: getHeaders(), onCompletion: onCompletion)
+    }
+    
+    static func getChatsofChat(_ params: [String : AnyObject]?,onCompletion:@escaping (DataResponse<Any>)->()){
+        self.makeRequest(.post, url:kgetChatsofChatUrl, params:params,header: getHeaders(), onCompletion: onCompletion)
+    }
+    
+    
+    static func sendChatMessage(_ params: [String : AnyObject]?,onCompletion:@escaping (DataResponse<Any>)->()){
+        self.makeRequest(.post, url:ksendChatMessageUrl, params:params,header: getHeaders(), onCompletion: onCompletion)
+    }
+
+    
 }
