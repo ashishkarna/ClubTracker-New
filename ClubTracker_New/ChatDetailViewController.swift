@@ -59,9 +59,12 @@ extension ChatDetailViewController{
     @IBAction func sendButtonPressed(_ sender: UIButton) {
         //send message / chat
         if Helper.isNotBlank(textMessage.text!){
-        let params:[String: AnyObject] = ["uuid": sentMember.uuid! as AnyObject,"message": textMessage.text! as AnyObject]
-            
+            let params:[String: AnyObject] = ["uuid": (sentMember.uuid! as AnyObject?)!,"message": (textMessage.text! as AnyObject?)!]
+        
+          
+            print(params)
             self.sendChatMessage(params)
+            
         }
         
     }
@@ -83,7 +86,8 @@ extension ChatDetailViewController:UITableViewDelegate,UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell") as! ChatCell
         let chatMessage = chatsOfChatList[indexPath.row]
         cell.lblChatMessage.text = chatMessage.message
-        
+     
+
         
         return cell
         
@@ -185,7 +189,7 @@ extension ChatDetailViewController{
     func sendChatMessage(_ params: [String: AnyObject]){
         
         MBProgressHUD.showAdded(to: self.view, animated: true)
-        WebServiceHelper.getChatsofChat(params as [String : AnyObject]?,onCompletion: {[weak self]
+        WebServiceHelper.sendChatMessage(params as [String : AnyObject]?,onCompletion: {[weak self]
             response in
             MBProgressHUD.hideAllHUDs(for: self?.view, animated: true)
             
@@ -199,7 +203,8 @@ extension ChatDetailViewController{
                     switch status_code {
                         
                     case 200 : //Successful Login
-                      
+                       self?.getChatsOfChat()
+                       self?.textMessage.text = ""
                         break
                         
                     case 301: // Login Unsuccessful

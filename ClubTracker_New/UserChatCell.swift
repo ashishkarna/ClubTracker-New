@@ -1,21 +1,15 @@
 //
-//  ChatCell.swift
+//  UserChatCell.swift
 //  ClubTracker
 //
-//  Created by Ashish Karna on 11/24/16.
+//  Created by ashish karna on 11/24/16.
 //  Copyright © 2016 Ashish Karna. All rights reserved.
 //
 
 import UIKit
 
-class ChatCell: UITableViewCell {
+class UserChatCell: UITableViewCell {
 
-    @IBOutlet weak var lblChatMessage: UILabel!
-    
- 
-
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

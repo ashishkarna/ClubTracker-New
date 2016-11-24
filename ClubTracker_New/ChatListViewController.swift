@@ -23,6 +23,11 @@ class ChatListViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        tableChatList.register(UINib(nibName: "ChatListCell", bundle: Bundle.main), forCellReuseIdentifier: "ChatListCell")
+        Helper.setTableViewDesign(tableChatList)
+        tableChatList.isHidden = true
+
+        getChatLists()
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,30 +69,34 @@ extension ChatListViewController:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "InboxCell") as! InboxMessageTableViewCell
-        cell.lblTo.text = " Chat name: "
-        cell.lblDate.text = " Time: "
-        cell.lblSubject.text = " Last message: "
-        cell.lblTime.isHidden = true
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatListCell") as! ChatListCell
+        cell.lblChatName.text = " Chat name: "
+        cell.lblTime.text = " Time: "
+        cell.lblLastMessage.text = " Last message: "
+       
      
         let chatMessage = chatMessageList[indexPath.row]
         
-        cell.lblTo.text = cell.lblTo.text! + chatMessage.chat_name!
-        cell.lblDate.text = cell.lblDate.text! + Helper.getTime(chatMessage.last_message_time!)
-        cell.lblSubject.text = cell.lblSubject.text! + chatMessage.last_message!
+        cell.lblChatName.text = cell.lblChatName.text! + chatMessage.chat_name!
+        cell.lblTime.text = cell.lblTime.text! + Helper.getTime(chatMessage.last_message_time!)
+        cell.lblLastMessage.text = cell.lblLastMessage.text! + chatMessage.last_message!
         
         return cell
         
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        
+       tableView.deselectRow(at: indexPath, animated: true)
         let chatDetailVC = ChatDetailViewController(nibName:"ChatDetailViewController", bundle: nil )
         chatDetailVC.sentMember = chatMessageList[indexPath.row]
         self.navigationController?.pushViewController(chatDetailVC, animated: true)
+
+        
         
     }
     
+
     
 }
 
@@ -112,10 +121,10 @@ extension ChatListViewController{
             
         }
         if chatMessageList.count > 6{
-            tableHeight.constant = CGFloat(6 * 45)
+            tableHeight.constant = CGFloat(6 * 65)
         }
         else{
-            tableHeight.constant = CGFloat(chatMessageList.count * 45)
+           tableHeight.constant = CGFloat(chatMessageList.count * 65)
         }
         tableChatList.isHidden = false
         tableChatList.reloadData()

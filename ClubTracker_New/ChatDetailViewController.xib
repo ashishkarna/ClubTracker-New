@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -40,26 +40,24 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNr-ru-BpY">
-                            <rect key="frame" x="141.5" y="35" width="38.5" height="20"/>
+                            <rect key="frame" x="141" y="35" width="39" height="20"/>
                             <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gid-Es-yag">
-                            <rect key="frame" x="-2" y="36.5" width="53" height="22"/>
+                            <rect key="frame" x="-2" y="37" width="53" height="22"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="22" id="4zS-fC-AGz"/>
                                 <constraint firstAttribute="width" constant="53" id="QmH-eH-E3g"/>
                             </constraints>
                             <state key="normal" image="backBtn"/>
                             <connections>
-                                <action selector="backButtonPressed:" destination="-1" eventType="touchUpInside" id="vlW-EY-mWu"/>
-                                <action selector="btnBack:" destination="-1" eventType="touchUpInside" id="Cr4-dK-HYj"/>
                                 <action selector="buttonBackPressed:" destination="-1" eventType="touchUpInside" id="VXE-Pc-HIF"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pug-tk-hrP">
-                            <rect key="frame" x="274" y="28.5" width="38" height="34"/>
+                            <rect key="frame" x="274" y="29" width="38" height="34"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="34" id="fbO-lX-wjD"/>
                                 <constraint firstAttribute="width" constant="38" id="ncV-iT-GVs"/>
@@ -91,7 +89,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="320" height="438"/>
                             <subviews>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="adR-9N-Ai9">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="438"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="388"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <connections>
                                         <outlet property="dataSource" destination="-1" id="f3J-7m-ZAy"/>
@@ -99,7 +97,7 @@
                                     </connections>
                                 </tableView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O7U-f2-rBY">
-                                    <rect key="frame" x="0.0" y="443" width="320" height="45"/>
+                                    <rect key="frame" x="0.0" y="393" width="320" height="45"/>
                                     <subviews>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Send Message" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mQ5-dN-NYS">
                                             <rect key="frame" x="8" y="0.0" width="228" height="45"/>
@@ -145,7 +143,7 @@
                                 <constraint firstItem="adR-9N-Ai9" firstAttribute="width" secondItem="59H-dR-SfD" secondAttribute="width" id="fvZ-Ni-vGk"/>
                                 <constraint firstItem="O7U-f2-rBY" firstAttribute="leading" secondItem="adR-9N-Ai9" secondAttribute="leading" id="kLj-tY-mdh"/>
                                 <constraint firstItem="O7U-f2-rBY" firstAttribute="width" secondItem="adR-9N-Ai9" secondAttribute="width" id="sto-CK-jde"/>
-                                <constraint firstAttribute="bottom" secondItem="O7U-f2-rBY" secondAttribute="bottom" constant="-50" id="wpC-ut-Ghi"/>
+                                <constraint firstAttribute="bottom" secondItem="O7U-f2-rBY" secondAttribute="bottom" id="wpC-ut-Ghi"/>
                                 <constraint firstItem="adR-9N-Ai9" firstAttribute="leading" secondItem="59H-dR-SfD" secondAttribute="leading" id="yfT-wd-Lun"/>
                             </constraints>
                         </view>
