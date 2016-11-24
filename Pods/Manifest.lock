@@ -1,0 +1,18 @@
+PODS:
+  - Alamofire (4.1.0)
+  - CalendarView (1.1.2):
+    - SwiftMoment (~> 0.1)
+  - SwiftMoment (0.7)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.1.0)
+  - CalendarView
+
+SPEC CHECKSUMS:
+  Alamofire: e266cf991b933498df791e645e0d8ac294492153
+  CalendarView: 35d51b70586213604edec22a585d105273f6e191
+  SwiftMoment: dc6dd27012e267819104cbb03f74ff9192dd0b42
+
+PODFILE CHECKSUM: 2a2257d2aebb4f54b42323587c9f459091321887
+
+COCOAPODS: 1.1.1
