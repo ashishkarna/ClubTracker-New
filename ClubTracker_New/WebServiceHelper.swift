@@ -175,6 +175,12 @@ extension WebServiceHelper{
 //MARK: CHAT SECTION
 
 extension WebServiceHelper{
+    
+    static func getListOfPossibleChatMembers(_ params: [String : AnyObject]?,url: String ,onCompletion:@escaping (DataResponse<Any>)->()){
+        self.makeRequest(.get, url:url, params: params ,header: getHeaders(), onCompletion: onCompletion)
+    }
+    
+    
     static func getChatLists(onCompletion:@escaping (DataResponse<Any>)->()){
         self.makeRequest(.get, url:kgetChatListsUrl, params: nil,header: getHeaders(), onCompletion: onCompletion)
     }
@@ -186,6 +192,12 @@ extension WebServiceHelper{
     
     static func sendChatMessage(_ params: [String : AnyObject]?,onCompletion:@escaping (DataResponse<Any>)->()){
         self.makeRequest(.post, url:ksendChatMessageUrl, params:params,header: getHeaders(), onCompletion: onCompletion)
+    }
+
+    
+    
+    static func createChat(_ params: [String : AnyObject]?,onCompletion:@escaping (DataResponse<Any>)->()){
+        self.makeRequest(.post, url:kcreateChatUrl, params:params,header: getHeaders(), onCompletion: onCompletion)
     }
 
     

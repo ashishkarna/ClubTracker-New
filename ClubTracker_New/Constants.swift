@@ -72,6 +72,11 @@ let kgetListOfPossibleChatMembersUrl = DomainName + "getListOfPossibleChatMember
 let kgetChatListsUrl = DomainName + "getChatLists"
 let kgetChatsofChatUrl = DomainName + "getChatsofChat"
 let ksendChatMessageUrl = DomainName + "sendChatMessage"
+let kcreateChatUrl = DomainName + "createChat"
+
+
+
+
 
 
 

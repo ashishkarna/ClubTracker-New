@@ -10,6 +10,7 @@ import UIKit
 
 class ChatDetailViewController: UIViewController {
 
+    @IBOutlet weak var btnAdd: UIButton!
     @IBOutlet weak var textMessage: UITextField!
     @IBOutlet weak var tableChat: UITableView!
     
@@ -21,14 +22,18 @@ class ChatDetailViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+       btnAdd.isHidden = true
        tableChat.register(UINib(nibName: "ChatCell",bundle: Bundle.main), forCellReuseIdentifier: "ChatCell")
+        tableChat.register(UINib(nibName: "UserChatCell",bundle: Bundle.main), forCellReuseIdentifier: "UserChatCell")
+        tableChat.estimatedRowHeight = 200
+       tableChat.rowHeight = UITableViewAutomaticDimension
        // Helper.setTableViewDesign(tableMember)
         tableChat.isHidden = true
         getChatsOfChat()
    
 
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -83,17 +88,41 @@ extension ChatDetailViewController:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell") as! ChatCell
-        let chatMessage = chatsOfChatList[indexPath.row]
-        cell.lblChatMessage.text = chatMessage.message
-     
+       // var cell = UITableViewCell()
+         let chatMessage = chatsOfChatList[indexPath.row]
+        if sentMember.created_by == chatMessage.member_id{
+            
+           let cell = tableView.dequeueReusableCell(withIdentifier: "UserChatCell") as! UserChatCell
+           
+            if chatMessage.message != nil {
+               cell.lblChatMessage.text = chatMessage.message
+            }
 
-        
-        return cell
-        
+            return cell
+        }
+        else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell") as! ChatCell
+            if chatMessage.message != nil {
+                cell.lblChatMessage.text = chatMessage.message
+                
+                
+            }
+            return cell
+            
+        }
+
+    }
+ 
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
     
-  
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+ 
     
 }
 

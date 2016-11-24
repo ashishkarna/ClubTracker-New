@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -19,6 +19,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatDetailViewController" customModule="ClubTracker" customModuleProvider="target">
             <connections>
+                <outlet property="btnAdd" destination="Pug-tk-hrP" id="xXU-lj-b2C"/>
                 <outlet property="tableChat" destination="adR-9N-Ai9" id="H7M-mx-2XC"/>
                 <outlet property="textMessage" destination="mQ5-dN-NYS" id="UhZ-85-rbm"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -40,13 +41,13 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNr-ru-BpY">
-                            <rect key="frame" x="141" y="35" width="39" height="20"/>
+                            <rect key="frame" x="141.5" y="35" width="38.5" height="20"/>
                             <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gid-Es-yag">
-                            <rect key="frame" x="-2" y="37" width="53" height="22"/>
+                            <rect key="frame" x="-2" y="36.5" width="53" height="22"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="22" id="4zS-fC-AGz"/>
                                 <constraint firstAttribute="width" constant="53" id="QmH-eH-E3g"/>
@@ -57,7 +58,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pug-tk-hrP">
-                            <rect key="frame" x="274" y="29" width="38" height="34"/>
+                            <rect key="frame" x="274" y="28.5" width="38" height="34"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="34" id="fbO-lX-wjD"/>
                                 <constraint firstAttribute="width" constant="38" id="ncV-iT-GVs"/>
@@ -88,7 +89,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="59H-dR-SfD">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="438"/>
                             <subviews>
-                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="adR-9N-Ai9">
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="adR-9N-Ai9">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="388"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <connections>

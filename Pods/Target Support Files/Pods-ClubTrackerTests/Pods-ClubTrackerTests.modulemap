@@ -1,0 +1,6 @@
+framework module Pods_ClubTrackerTests {
+  umbrella header "Pods-ClubTrackerTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

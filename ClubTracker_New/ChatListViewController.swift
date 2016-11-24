@@ -17,7 +17,7 @@ class ChatListViewController: UIViewController {
     
     
     var chatMessageList = [ChatDetail]()
-   
+    var isComingFromCreateChat = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +30,14 @@ class ChatListViewController: UIViewController {
         getChatLists()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        isComingFromCreateChat = (UserDefaults.standard.value(forKey: "isComingFromCreateChat") != nil)
+        if isComingFromCreateChat{
+            getChatLists()
+            UserDefaults.standard.removeObject(forKey: "isComingFromCreateChat")
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -76,11 +84,15 @@ extension ChatListViewController:UITableViewDelegate,UITableViewDataSource{
        
      
         let chatMessage = chatMessageList[indexPath.row]
-        
+        if chatMessage.chat_name != nil{
         cell.lblChatName.text = cell.lblChatName.text! + chatMessage.chat_name!
+        }
+        if chatMessage.last_message != nil{
         cell.lblTime.text = cell.lblTime.text! + Helper.getTime(chatMessage.last_message_time!)
+        }
+        if chatMessage.last_message != nil{
         cell.lblLastMessage.text = cell.lblLastMessage.text! + chatMessage.last_message!
-        
+        }
         return cell
         
     }

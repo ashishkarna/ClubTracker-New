@@ -41,6 +41,9 @@ class CreateChatViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    
+ 
+    
 }
 
 //MARK: Button Action Method
@@ -50,6 +53,7 @@ extension CreateChatViewController{
     
     @IBAction func buttonBackPressed(_ sender: UIButton) {
         
+     
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -62,6 +66,45 @@ extension CreateChatViewController{
         
     }
 
+    
+    
+    @IBAction func createButtonPressed(_ sender: UIButton) {
+        var params = [String: AnyObject]()
+        var hasError = false
+        var errorMessage = ""
+        if !Helper.isSameText(lblChatMember.text!, secondStr: "To"){
+            var memberList = [String]()
+            memberList.append(selectedMember.id!)
+            params["member"] = memberList as AnyObject?
+            if Helper.isNotBlank(textChatName.text!){
+                params["chat_name"] = textChatName.text! as AnyObject?
+                if Helper.isNotBlank(textViewOpeningMessage.text){
+                    params["message"] = textViewOpeningMessage.text as AnyObject?
+                }
+                else{
+                    hasError = true
+                    errorMessage = "Please Send a Opening Message."
+                }
+            }
+            else{
+                hasError = true
+                errorMessage = "Please Choose a Chat Subject"
+            }
+        
+        }else{
+            hasError = true
+            errorMessage = "Please Select the Member."
+        }
+        
+        
+        if hasError{
+            showAlertOnMainThread(errorMessage)
+        }
+        else{
+            createChat(params)
+        }
+    }
+    
 }
 
 
@@ -87,7 +130,7 @@ extension CreateChatViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedMember = chatMemberList[indexPath.row]
-        textChatName.text = selectedMember.name
+        lblChatMember.text = selectedMember.name
         tableMember.isHidden = true
             
     }
@@ -129,7 +172,7 @@ extension CreateChatViewController{
     func getPossibleChatMember(){
         
         MBProgressHUD.showAdded(to: self.tableMember, animated: true)
-        WebServiceHelper.getParentList(nil,url: kgetListOfPossibleChatMembersUrl, onCompletion: {[weak self]
+        WebServiceHelper.getListOfPossibleChatMembers(nil,url: kgetListOfPossibleChatMembersUrl, onCompletion: {[weak self]
             response in
             MBProgressHUD.hideAllHUDs(for: self?.tableMember, animated: true)
             
@@ -184,6 +227,58 @@ extension CreateChatViewController{
     }
 
 
+    
+    
+    
+    func createChat(_ params: [String: AnyObject]){
+        
+        MBProgressHUD.showAdded(to: self.tableMember, animated: true)
+        WebServiceHelper.createChat(params, onCompletion: {[weak self]
+            response in
+            MBProgressHUD.hideAllHUDs(for: self?.tableMember, animated: true)
+            
+            switch response.result {
+                
+            case .success(let responseData) :
+                
+                if let status_code = response.response?.statusCode {
+                    
+                    
+                    switch status_code {
+                        
+                    case 200 : //Successful Login
+                        
+                        if let teacherData = responseData as? [String: AnyObject]{
+                            
+                            if let responseResult = teacherData["response"] as? [String:AnyObject]{
+                                let message = responseResult["messsage"] as? String
+                                self?.showAlertOnMainThread(message!)
+                                UserDefaults.standard.set(true, forKey: "isComingFromCreateChat")
+                            }
+                            
+                        }
+                    case 301: // Login Unsuccessful
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey:"error") as! String)
+                        
+                    case 500: // Cannot Create Token
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey:"error") as! String)
+                    default:
+                        self?.showAlertOnMainThread(kServerError)
+                        
+                    }
+                    
+                }
+                
+            case.failure(let error):
+                self?.showAlertOnMainThread(error.localizedDescription)
+                
+            }
+            
+            
+            
+        })
+        
+    }
 
 }
 

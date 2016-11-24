@@ -9,6 +9,9 @@
 import UIKit
 
 class UserChatCell: UITableViewCell {
+    
+    
+    @IBOutlet weak var lblChatMessage: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
