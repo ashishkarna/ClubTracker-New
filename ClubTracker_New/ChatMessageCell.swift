@@ -1,18 +1,20 @@
 //
-//  ChatCell.swift
+//  ChatMessageCell.swift
 //  ClubTracker
 //
-//  Created by Ashish Karna on 11/24/16.
+//  Created by ashish karna on 11/25/16.
 //  Copyright © 2016 Ashish Karna. All rights reserved.
 //
 
 import UIKit
 
-class ChatCell: UITableViewCell {
+class ChatMessageCell: UITableViewCell {
 
-    @IBOutlet weak var lblChatMessage: UILabel!
     
- 
+    @IBOutlet weak var lblUserName: UILabel!
+    @IBOutlet weak var lblSentMessage: UILabel!
+
+    @IBOutlet weak var lblOtherName: UILabel!
 
     
     

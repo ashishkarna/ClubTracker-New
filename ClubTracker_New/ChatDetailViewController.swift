@@ -8,40 +8,39 @@
 
 import UIKit
 
-class ChatDetailViewController: UIViewController {
-
+class ChatDetailViewController: UIViewController{
+    
     @IBOutlet weak var btnAdd: UIButton!
     @IBOutlet weak var textMessage: UITextField!
     @IBOutlet weak var tableChat: UITableView!
     
-
+    
     var sentMember = ChatDetail()
     var chatsOfChatList = [ChatsOfChat]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
-       btnAdd.isHidden = true
-       tableChat.register(UINib(nibName: "ChatCell",bundle: Bundle.main), forCellReuseIdentifier: "ChatCell")
-        tableChat.register(UINib(nibName: "UserChatCell",bundle: Bundle.main), forCellReuseIdentifier: "UserChatCell")
-        tableChat.estimatedRowHeight = 200
-       tableChat.rowHeight = UITableViewAutomaticDimension
-       // Helper.setTableViewDesign(tableMember)
+        btnAdd.isHidden = true
+        
+        tableChat.register(UINib(nibName: "ChatMessageCell", bundle: Bundle.main), forCellReuseIdentifier: "ChatMessageCell")
+        tableChat.estimatedRowHeight = 500
+        tableChat.rowHeight = UITableViewAutomaticDimension
         tableChat.isHidden = true
         getChatsOfChat()
-   
-
+        
+        
     }
     
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
- 
- 
+    
+    
 }
 
 
@@ -49,14 +48,14 @@ class ChatDetailViewController: UIViewController {
 
 extension ChatDetailViewController{
     
-
+    
     @IBAction func buttonBackPressed(_ sender: UIButton) {
         
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func addChatMemberButtonPressed(_ sender: UIButton) {
-    // add possible chat member in group
+        // add possible chat member in group
         
     }
     
@@ -65,8 +64,8 @@ extension ChatDetailViewController{
         //send message / chat
         if Helper.isNotBlank(textMessage.text!){
             let params:[String: AnyObject] = ["uuid": (sentMember.uuid! as AnyObject?)!,"message": (textMessage.text! as AnyObject?)!]
-        
-          
+            
+            
             print(params)
             self.sendChatMessage(params)
             
@@ -78,7 +77,7 @@ extension ChatDetailViewController{
 
 
 
-//MARK: TableView Delegate 
+//MARK: TableView Delegate
 
 extension ChatDetailViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -88,44 +87,36 @@ extension ChatDetailViewController:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-       // var cell = UITableViewCell()
-         let chatMessage = chatsOfChatList[indexPath.row]
+        
+        let chatMessage = chatsOfChatList[indexPath.row]
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatMessageCell") as! ChatMessageCell
+        if chatMessage.message != nil {
+            cell.lblSentMessage.text = chatMessage.message
+        }
+        
+        //design setup
         if sentMember.created_by == chatMessage.member_id{
             
-           let cell = tableView.dequeueReusableCell(withIdentifier: "UserChatCell") as! UserChatCell
-           
-            if chatMessage.message != nil {
-               cell.lblChatMessage.text = chatMessage.message
+            if chatMessage.member_name != nil{
+                
+                cell.lblUserName.text = chatMessage.member_name
+                cell.lblOtherName.alpha = 0
+                cell.lblSentMessage.textAlignment = .right
             }
-
-            return cell
         }
         else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell") as! ChatCell
-            if chatMessage.message != nil {
-                cell.lblChatMessage.text = chatMessage.message
-                
-                
-            }
-            return cell
-            
+            cell.lblOtherName.text = chatMessage.member_name
+            cell.lblUserName.alpha = 0
         }
-
-    }
- 
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        
+        return cell
+        
     }
     
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
-    }
     
- 
     
 }
-
 
 //MARK: View Controller Helper Method
 extension ChatDetailViewController{
@@ -139,18 +130,21 @@ extension ChatDetailViewController{
             singleChatMessage.member_id = item["member_id"] as? String
             singleChatMessage.member_name = item["member_name"] as? String
             singleChatMessage.message = item["message"] as? String
- 
+            
             chatsOfChatList.append(singleChatMessage)
             
         }
-       
+        
         
         tableChat.isHidden = false
+        
         tableChat.reloadData()
+        //        let indexPath = NSIndexPath(forRow: 15, inSection: 0)
+        //        tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: true)
     }
-
-
-
+    
+    
+    
 }
 
 
@@ -213,7 +207,7 @@ extension ChatDetailViewController{
         })
         
     }
-
+    
     
     func sendChatMessage(_ params: [String: AnyObject]){
         
@@ -232,8 +226,9 @@ extension ChatDetailViewController{
                     switch status_code {
                         
                     case 200 : //Successful Login
-                       self?.getChatsOfChat()
-                       self?.textMessage.text = ""
+                        self?.getChatsOfChat()
+                        
+                        self?.textMessage.text = ""
                         break
                         
                     case 301: // Login Unsuccessful
@@ -258,7 +253,7 @@ extension ChatDetailViewController{
         })
         
     }
-
+    
 }
 
 

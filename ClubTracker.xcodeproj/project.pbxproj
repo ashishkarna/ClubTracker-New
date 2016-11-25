@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4734728E1DE7076900E827B1 /* UserChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4734728C1DE7076900E827B1 /* UserChatCell.swift */; };
-		4734728F1DE7076900E827B1 /* UserChatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4734728D1DE7076900E827B1 /* UserChatCell.xib */; };
+		472FDD051DE859BC005AF42D /* ChatMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472FDD031DE859BC005AF42D /* ChatMessageCell.swift */; };
+		472FDD061DE859BC005AF42D /* ChatMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 472FDD041DE859BC005AF42D /* ChatMessageCell.xib */; };
 		4738FA501DB7CB9E00F10698 /* WebServiceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4738FA4F1DB7CB9E00F10698 /* WebServiceHelper.swift */; };
 		4738FA541DB7CF2100F10698 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4738FA531DB7CF2100F10698 /* MBProgressHUD.m */; };
 		4738FA591DB7ECC700F10698 /* Details.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4738FA581DB7ECC700F10698 /* Details.swift */; };
@@ -55,8 +55,6 @@
 		47B4DF951DE5F801006EFBFB /* ChatDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47B4DF931DE5F801006EFBFB /* ChatDetailViewController.xib */; };
 		47B4DF991DE5FAA5006EFBFB /* CreateChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B4DF971DE5FAA5006EFBFB /* CreateChatViewController.swift */; };
 		47B4DF9A1DE5FAA5006EFBFB /* CreateChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47B4DF981DE5FAA5006EFBFB /* CreateChatViewController.xib */; };
-		47B4DFA21DE61BC1006EFBFB /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B4DFA01DE61BC1006EFBFB /* ChatCell.swift */; };
-		47B4DFA31DE61BC1006EFBFB /* ChatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47B4DFA11DE61BC1006EFBFB /* ChatCell.xib */; };
 		47DD89EA1DE6F0840061DA37 /* ChatListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DD89E81DE6F0840061DA37 /* ChatListCell.swift */; };
 		47DD89EB1DE6F0840061DA37 /* ChatListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47DD89E91DE6F0840061DA37 /* ChatListCell.xib */; };
 		47E984A11DA0F624003DC18C /* MessageMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E9849F1DA0F624003DC18C /* MessageMenuViewController.swift */; };
@@ -124,8 +122,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4734728C1DE7076900E827B1 /* UserChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserChatCell.swift; sourceTree = "<group>"; };
-		4734728D1DE7076900E827B1 /* UserChatCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserChatCell.xib; sourceTree = "<group>"; };
+		472FDD031DE859BC005AF42D /* ChatMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessageCell.swift; sourceTree = "<group>"; };
+		472FDD041DE859BC005AF42D /* ChatMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatMessageCell.xib; sourceTree = "<group>"; };
 		4738FA4F1DB7CB9E00F10698 /* WebServiceHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServiceHelper.swift; sourceTree = "<group>"; };
 		4738FA521DB7CF2100F10698 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		4738FA531DB7CF2100F10698 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
@@ -184,8 +182,6 @@
 		47B4DF931DE5F801006EFBFB /* ChatDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatDetailViewController.xib; sourceTree = "<group>"; };
 		47B4DF971DE5FAA5006EFBFB /* CreateChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateChatViewController.swift; sourceTree = "<group>"; };
 		47B4DF981DE5FAA5006EFBFB /* CreateChatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateChatViewController.xib; sourceTree = "<group>"; };
-		47B4DFA01DE61BC1006EFBFB /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
-		47B4DFA11DE61BC1006EFBFB /* ChatCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatCell.xib; sourceTree = "<group>"; };
 		47DD89E81DE6F0840061DA37 /* ChatListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListCell.swift; sourceTree = "<group>"; };
 		47DD89E91DE6F0840061DA37 /* ChatListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatListCell.xib; sourceTree = "<group>"; };
 		47E9849F1DA0F624003DC18C /* MessageMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageMenuViewController.swift; sourceTree = "<group>"; };
@@ -671,10 +667,8 @@
 		47B4DFA41DE61BC5006EFBFB /* Chat Cell */ = {
 			isa = PBXGroup;
 			children = (
-				47B4DFA01DE61BC1006EFBFB /* ChatCell.swift */,
-				47B4DFA11DE61BC1006EFBFB /* ChatCell.xib */,
-				4734728C1DE7076900E827B1 /* UserChatCell.swift */,
-				4734728D1DE7076900E827B1 /* UserChatCell.xib */,
+				472FDD031DE859BC005AF42D /* ChatMessageCell.swift */,
+				472FDD041DE859BC005AF42D /* ChatMessageCell.xib */,
 			);
 			name = "Chat Cell";
 			sourceTree = "<group>";
@@ -970,7 +964,6 @@
 				47E9E1141DA16B0C00C6B6A6 /* OutboxViewController.xib in Resources */,
 				476FEEEA1D9FCCB600EEC5D4 /* TeacherMenuItemCell.xib in Resources */,
 				476FEEF21D9FCF6E00EEC5D4 /* TabBarItem.xib in Resources */,
-				4734728F1DE7076900E827B1 /* UserChatCell.xib in Resources */,
 				47F3162B1DA2E6CA00D740FD /* SocialMediaVC.xib in Resources */,
 				47F316221DA2E5A900D740FD /* TargetVC.xib in Resources */,
 				47F3161A1DA2E10700D740FD /* TutorialViewController.xib in Resources */,
@@ -987,6 +980,7 @@
 				47F316101DA2C0F200D740FD /* ShopItemDetailViewController.xib in Resources */,
 				47F316161DA2CC8800D740FD /* AddShopItemViewController.xib in Resources */,
 				47E9E1191DA16E2D00C6B6A6 /* MessageTableViewCell.xib in Resources */,
+				472FDD061DE859BC005AF42D /* ChatMessageCell.xib in Resources */,
 				476FEEE11D9FB3BD00EEC5D4 /* TeacherMenuViewController.xib in Resources */,
 				476FEF051D9FDE6700EEC5D4 /* FAQVC.xib in Resources */,
 				47FBF6E91DBCFEF700D93C6D /* ArchiveAttendanceViewController.xib in Resources */,
@@ -1003,7 +997,6 @@
 				47EAF60A1DA02CA200AFFFEC /* RegisterViewController.xib in Resources */,
 				47B4DF901DE5F7E7006EFBFB /* ChatListViewController.xib in Resources */,
 				47F316201DA2E5A900D740FD /* TargetCell.xib in Resources */,
-				47B4DFA31DE61BC1006EFBFB /* ChatCell.xib in Resources */,
 				47B4DF9A1DE5FAA5006EFBFB /* CreateChatViewController.xib in Resources */,
 				47E9E11E1DA170FE00C6B6A6 /* MessageDetailViewController.xib in Resources */,
 			);
@@ -1173,6 +1166,7 @@
 				476FEF041D9FDE6700EEC5D4 /* FAQVC.swift in Sources */,
 				476FEF061D9FDE6700EEC5D4 /* HelpVC.swift in Sources */,
 				47FBF6E81DBCFEF700D93C6D /* ArchiveAttendanceViewController.swift in Sources */,
+				472FDD051DE859BC005AF42D /* ChatMessageCell.swift in Sources */,
 				479FCA771D9EF445007891E9 /* SelectClassViewController.swift in Sources */,
 				47E9E1071DA15E8000C6B6A6 /* NewMessageViewController.swift in Sources */,
 				47F316261DA2E64800D740FD /* ContactUsVC.swift in Sources */,
@@ -1190,7 +1184,6 @@
 				47E9E1181DA16E2D00C6B6A6 /* MessageTableViewCell.swift in Sources */,
 				47E9E1231DA1721A00C6B6A6 /* InboxMessageTableViewCell.swift in Sources */,
 				47B4DF991DE5FAA5006EFBFB /* CreateChatViewController.swift in Sources */,
-				4734728E1DE7076900E827B1 /* UserChatCell.swift in Sources */,
 				479FCA4F1D9EE3B4007891E9 /* FAQCell.swift in Sources */,
 				47E984A11DA0F624003DC18C /* MessageMenuViewController.swift in Sources */,
 				47DD89EA1DE6F0840061DA37 /* ChatListCell.swift in Sources */,
@@ -1211,7 +1204,6 @@
 				47F3160F1DA2C0F200D740FD /* ShopItemDetailViewController.swift in Sources */,
 				479FCA451D9EE37E007891E9 /* Helper.swift in Sources */,
 				47EAF60E1DA02D8900AFFFEC /* RegisterCell.swift in Sources */,
-				47B4DFA21DE61BC1006EFBFB /* ChatCell.swift in Sources */,
 				476FEEEF1D9FCF6E00EEC5D4 /* TabBarController.swift in Sources */,
 				47E9E11D1DA170FE00C6B6A6 /* MessageDetailViewController.swift in Sources */,
 				47F316191DA2E10700D740FD /* TutorialViewController.swift in Sources */,
