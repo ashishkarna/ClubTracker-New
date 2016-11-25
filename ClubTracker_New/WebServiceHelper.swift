@@ -101,6 +101,24 @@ extension WebServiceHelper{
     
 }
 
+//MARK: diary
+extension WebServiceHelper{
+    static func getAllDiary(_ params: [String : AnyObject]?,onCompletion:@escaping (DataResponse<Any>)->()){
+        
+        self.makeRequest(.post, url:kgetAllDiaryUrl, params: params,header: getHeaders(), onCompletion: onCompletion)
+    }
+    
+    static func getAllDiaryDetail(_ params: [String : AnyObject]?,onCompletion:@escaping (DataResponse<Any>)->()){
+        
+        self.makeRequest(.post, url:kGetDiaryDetailByIdentifierURL, params: params,header: getHeaders(), onCompletion: onCompletion)
+    }
+    
+    //MARK: GET
+    
+    
+    
+    
+}
 
 
 

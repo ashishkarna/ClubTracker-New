@@ -163,3 +163,14 @@ class ChatsOfChat{
     
 }
 
+class DiaryModel{
+    var identifier: String?
+    var eventTitle : String?
+    var eventDescritpion: String?
+    var eventDate: String?
+    var eventTime: String?
+    var pickPoint: String?
+    var createdAt: String?
+    
+}
+

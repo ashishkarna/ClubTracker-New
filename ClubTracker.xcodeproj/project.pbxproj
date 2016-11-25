@@ -100,6 +100,10 @@
 		54D1B40D4B4A264D5B9DF269 /* Pods_ClubTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7F22AF019E497760B8E5C22 /* Pods_ClubTrackerUITests.framework */; };
 		B2F2FAE04C12E51120AD5CF4 /* Pods_ClubTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF1BCB89C64864D966C0603 /* Pods_ClubTracker.framework */; };
 		D9CF17B387F7E90AF4F05C3A /* Pods_ClubTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFF0A83065DE49B499CB828D /* Pods_ClubTrackerTests.framework */; };
+		E81B219A1DE6FFF400A4B5E7 /* DiaryListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81B21981DE6FFF400A4B5E7 /* DiaryListCell.swift */; };
+		E81B219B1DE6FFF400A4B5E7 /* DiaryListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E81B21991DE6FFF400A4B5E7 /* DiaryListCell.xib */; };
+		E863D9E11DE6B487006CBA30 /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E863D9DF1DE6B487006CBA30 /* DiaryViewController.swift */; };
+		E863D9E21DE6B487006CBA30 /* DiaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E863D9E01DE6B487006CBA30 /* DiaryViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -228,6 +232,10 @@
 		94862218F74BB116541E2D72 /* Pods-ClubTrackerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClubTrackerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ClubTrackerUITests/Pods-ClubTrackerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A5B0B5F3FA55A1260972392D /* Pods-ClubTrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClubTrackerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ClubTrackerTests/Pods-ClubTrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C6D797BF6B4D3C83D32D4FF4 /* Pods-ClubTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClubTrackerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ClubTrackerTests/Pods-ClubTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
+		E81B21981DE6FFF400A4B5E7 /* DiaryListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryListCell.swift; sourceTree = "<group>"; };
+		E81B21991DE6FFF400A4B5E7 /* DiaryListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiaryListCell.xib; sourceTree = "<group>"; };
+		E863D9DF1DE6B487006CBA30 /* DiaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
+		E863D9E01DE6B487006CBA30 /* DiaryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiaryViewController.xib; sourceTree = "<group>"; };
 		EA4591030FC68917FC228F68 /* Pods-ClubTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClubTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-ClubTracker/Pods-ClubTracker.release.xcconfig"; sourceTree = "<group>"; };
 		EFF0A83065DE49B499CB828D /* Pods_ClubTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClubTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7F22AF019E497760B8E5C22 /* Pods_ClubTrackerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClubTrackerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -533,6 +541,10 @@
 		479FCA601D9EE484007891E9 /* Diary */ = {
 			isa = PBXGroup;
 			children = (
+				E863D9DF1DE6B487006CBA30 /* DiaryViewController.swift */,
+				E863D9E01DE6B487006CBA30 /* DiaryViewController.xib */,
+				E81B21981DE6FFF400A4B5E7 /* DiaryListCell.swift */,
+				E81B21991DE6FFF400A4B5E7 /* DiaryListCell.xib */,
 			);
 			name = Diary;
 			sourceTree = "<group>";
@@ -948,6 +960,7 @@
 				479FCA501D9EE3B4007891E9 /* FAQCell.xib in Resources */,
 				47E9E1141DA16B0C00C6B6A6 /* OutboxViewController.xib in Resources */,
 				476FEEEA1D9FCCB600EEC5D4 /* TeacherMenuItemCell.xib in Resources */,
+				E863D9E21DE6B487006CBA30 /* DiaryViewController.xib in Resources */,
 				476FEEF21D9FCF6E00EEC5D4 /* TabBarItem.xib in Resources */,
 				47F3162B1DA2E6CA00D740FD /* SocialMediaVC.xib in Resources */,
 				47F316221DA2E5A900D740FD /* TargetVC.xib in Resources */,
@@ -971,6 +984,7 @@
 				476FEF071D9FDE6700EEC5D4 /* HelpVC.xib in Resources */,
 				47E9E10C1DA16AE700C6B6A6 /* UrgentMessageViewController.xib in Resources */,
 				479FCA711D9EECEE007891E9 /* Montserrat-Bold.ttf in Resources */,
+				E81B219B1DE6FFF400A4B5E7 /* DiaryListCell.xib in Resources */,
 				476FEEF01D9FCF6E00EEC5D4 /* TabBar.xib in Resources */,
 				47E9E1241DA1721A00C6B6A6 /* InboxMessageTableViewCell.xib in Resources */,
 				47E984A21DA0F624003DC18C /* MessageMenuViewController.xib in Resources */,
@@ -1186,10 +1200,12 @@
 				47F3160F1DA2C0F200D740FD /* ShopItemDetailViewController.swift in Sources */,
 				479FCA451D9EE37E007891E9 /* Helper.swift in Sources */,
 				47EAF60E1DA02D8900AFFFEC /* RegisterCell.swift in Sources */,
+				E81B219A1DE6FFF400A4B5E7 /* DiaryListCell.swift in Sources */,
 				47B4DFA21DE61BC1006EFBFB /* ChatCell.swift in Sources */,
 				476FEEEF1D9FCF6E00EEC5D4 /* TabBarController.swift in Sources */,
 				47E9E11D1DA170FE00C6B6A6 /* MessageDetailViewController.swift in Sources */,
 				47F316191DA2E10700D740FD /* TutorialViewController.swift in Sources */,
+				E863D9E11DE6B487006CBA30 /* DiaryViewController.swift in Sources */,
 				476FEEF11D9FCF6E00EEC5D4 /* TabBarCollectionViewCell.swift in Sources */,
 				47F3160B1DA2B30A00D740FD /* ShopListItemCell.swift in Sources */,
 				479FCA741D9EF104007891E9 /* Constants.swift in Sources */,

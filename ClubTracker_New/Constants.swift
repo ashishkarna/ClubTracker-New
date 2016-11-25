@@ -75,8 +75,9 @@ let ksendChatMessageUrl = DomainName + "sendChatMessage"
 
 
 
-
-
+//MARK:- DIARY
+let kgetAllDiaryUrl = DomainName + "getTeacherDiary"
+let kGetDiaryDetailByIdentifierURL = DomainName + "getTeacherRequestDetail"
 
 
 

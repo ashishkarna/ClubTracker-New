@@ -1,17 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="Montserrat-Bold.ttf">
+        <array key="Montserrat-Bold.ttf">
             <string>Montserrat-Bold</string>
-        </mutableArray>
-        <mutableArray key="Montserrat-Regular.ttf">
+        </array>
+        <array key="Montserrat-Regular.ttf">
             <string>Montserrat-Regular</string>
-            <string>Montserrat-Regular</string>
-            <string>Montserrat-Regular</string>
-        </mutableArray>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="ClubTracker" customModuleProvider="target">
@@ -32,7 +34,7 @@
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8zD-eN-TJq">
                             <rect key="frame" x="0.0" y="68" width="320" height="1"/>
-                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="q27-Gy-7pa"/>
                             </constraints>
@@ -43,11 +45,11 @@
                                 <constraint firstAttribute="width" constant="95" id="z7k-8b-tMa"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.6705882352941176" green="0.76470588235294112" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.6705882352941176" green="0.76470588235294112" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="70" id="Pvi-xC-eML"/>
                         <constraint firstItem="8zD-eN-TJq" firstAttribute="width" secondItem="5p0-iq-6AL" secondAttribute="width" id="R7W-Hy-g9L"/>
@@ -78,9 +80,9 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="textFieldView" translatesAutoresizingMaskIntoConstraints="NO" id="P3T-MM-wwq">
                                                     <rect key="frame" x="0.0" y="0.0" width="290" height="45"/>
                                                 </imageView>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qvd-fd-5SD">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="test8@test.com" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qvd-fd-5SD">
                                                     <rect key="frame" x="15" y="0.0" width="275" height="45"/>
-                                                    <color key="textColor" red="0.34509803921568627" green="0.34901960784313724" blue="0.35686274509803922" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.34509803921568627" green="0.34901960784313724" blue="0.35686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                                                     <connections>
@@ -88,7 +90,7 @@
                                                     </connections>
                                                 </textField>
                                             </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="P3T-MM-wwq" firstAttribute="leading" secondItem="rIG-gh-opB" secondAttribute="leading" id="3Ba-mK-1nb"/>
                                                 <constraint firstAttribute="bottom" secondItem="P3T-MM-wwq" secondAttribute="bottom" id="Ose-nC-yFB"/>
@@ -107,9 +109,9 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="textFieldView" translatesAutoresizingMaskIntoConstraints="NO" id="4rY-ec-eAm">
                                                     <rect key="frame" x="0.0" y="0.0" width="290" height="45"/>
                                                 </imageView>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5qe-SE-tJ6">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="password" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5qe-SE-tJ6">
                                                     <rect key="frame" x="15" y="0.0" width="275" height="45"/>
-                                                    <color key="textColor" red="0.34509803921568627" green="0.34901960784313724" blue="0.35686274509803922" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.34509803921568627" green="0.34901960784313724" blue="0.35686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                                                     <connections>
@@ -117,7 +119,7 @@
                                                     </connections>
                                                 </textField>
                                             </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="5qe-SE-tJ6" secondAttribute="trailing" id="DeW-d3-hPw"/>
                                                 <constraint firstItem="4rY-ec-eAm" firstAttribute="top" secondItem="mYF-y3-h37" secondAttribute="top" id="E5g-XF-LiZ"/>
@@ -131,10 +133,10 @@
                                         </view>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="euQ-Pq-KEJ">
                                             <rect key="frame" x="0.0" y="331" width="290" height="45"/>
-                                            <color key="backgroundColor" red="0.6705882352941176" green="0.76470588235294112" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.6705882352941176" green="0.76470588235294112" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                             <state key="normal" title="Login">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -165,7 +167,7 @@
                                                     </connections>
                                                 </button>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="efZ-PD-fQc" secondAttribute="bottom" constant="2" id="6bt-m1-gUa"/>
                                                 <constraint firstAttribute="bottom" secondItem="N72-iy-bMF" secondAttribute="bottom" id="CeY-gZ-ckn"/>
@@ -178,7 +180,7 @@
                                             </constraints>
                                         </view>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstItem="euQ-Pq-KEJ" firstAttribute="top" secondItem="AqZ-Xs-eOq" secondAttribute="bottom" constant="40" id="6aF-TH-MAv"/>
                                         <constraint firstItem="mYF-y3-h37" firstAttribute="top" secondItem="rIG-gh-opB" secondAttribute="bottom" constant="15" id="6hq-UT-cKp"/>
@@ -202,7 +204,7 @@
                                     </constraints>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="Caz-2t-zbA" firstAttribute="centerX" secondItem="0gt-vs-vCa" secondAttribute="centerX" id="1bw-6O-XYm"/>
                                 <constraint firstItem="Caz-2t-zbA" firstAttribute="top" secondItem="0gt-vs-vCa" secondAttribute="top" constant="80" id="9dD-hh-Gjd"/>
@@ -211,7 +213,7 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="0gt-vs-vCa" firstAttribute="top" secondItem="ybB-G5-epT" secondAttribute="top" id="E6P-vO-uP9"/>
                         <constraint firstAttribute="trailing" secondItem="0gt-vs-vCa" secondAttribute="trailing" id="Pcn-ri-4AN"/>
@@ -221,7 +223,7 @@
                     </constraints>
                 </scrollView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="5p0-iq-6AL" secondAttribute="trailing" id="5yi-l5-uey"/>
                 <constraint firstItem="5p0-iq-6AL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UF5-wi-aFR"/>
@@ -236,8 +238,13 @@
         </view>
     </objects>
     <resources>
-        <image name="icon" width="76" height="76"/>
+        <image name="icon" width="60" height="60"/>
         <image name="textFieldView" width="214" height="44"/>
         <image name="unCheckIcon" width="50" height="50"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
+    </simulatedMetricsContainer>
 </document>
