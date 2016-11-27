@@ -13,6 +13,7 @@
 		4738FA541DB7CF2100F10698 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4738FA531DB7CF2100F10698 /* MBProgressHUD.m */; };
 		4738FA591DB7ECC700F10698 /* Details.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4738FA581DB7ECC700F10698 /* Details.swift */; };
 		474A94511DE4AA28001DB9A1 /* LGSimpleChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474A94501DE4AA28001DB9A1 /* LGSimpleChat.swift */; };
+		4756A3811DEB43370079261C /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4756A3801DEB43370079261C /* UserInfo.swift */; };
 		476FEEE01D9FB3BD00EEC5D4 /* TeacherMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476FEEDE1D9FB3BD00EEC5D4 /* TeacherMenuViewController.swift */; };
 		476FEEE11D9FB3BD00EEC5D4 /* TeacherMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 476FEEDF1D9FB3BD00EEC5D4 /* TeacherMenuViewController.xib */; };
 		476FEEE91D9FCCB600EEC5D4 /* TeacherMenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476FEEE71D9FCCB600EEC5D4 /* TeacherMenuItemCell.swift */; };
@@ -129,6 +130,7 @@
 		4738FA531DB7CF2100F10698 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		4738FA581DB7ECC700F10698 /* Details.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Details.swift; sourceTree = "<group>"; };
 		474A94501DE4AA28001DB9A1 /* LGSimpleChat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGSimpleChat.swift; sourceTree = "<group>"; };
+		4756A3801DEB43370079261C /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		476FEEDE1D9FB3BD00EEC5D4 /* TeacherMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherMenuViewController.swift; sourceTree = "<group>"; };
 		476FEEDF1D9FB3BD00EEC5D4 /* TeacherMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeacherMenuViewController.xib; sourceTree = "<group>"; };
 		476FEEE71D9FCCB600EEC5D4 /* TeacherMenuItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherMenuItemCell.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				4738FA581DB7ECC700F10698 /* Details.swift */,
+				4756A3801DEB43370079261C /* UserInfo.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1189,6 +1192,7 @@
 				47DD89EA1DE6F0840061DA37 /* ChatListCell.swift in Sources */,
 				47F096BF1DCF045E0002DF9C /* UrgentMessageDetailViewController.swift in Sources */,
 				4738FA501DB7CB9E00F10698 /* WebServiceHelper.swift in Sources */,
+				4756A3811DEB43370079261C /* UserInfo.swift in Sources */,
 				47B4DF8F1DE5F7E7006EFBFB /* ChatListViewController.swift in Sources */,
 				47EAF6091DA02CA200AFFFEC /* RegisterViewController.swift in Sources */,
 				47F316151DA2CC8800D740FD /* AddShopItemViewController.swift in Sources */,

@@ -90,7 +90,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="320" height="438"/>
                             <subviews>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="adR-9N-Ai9">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="388"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="383"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <connections>
                                         <outlet property="dataSource" destination="-1" id="f3J-7m-ZAy"/>
@@ -98,16 +98,16 @@
                                     </connections>
                                 </tableView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O7U-f2-rBY">
-                                    <rect key="frame" x="0.0" y="393" width="320" height="45"/>
+                                    <rect key="frame" x="0.0" y="388" width="320" height="45"/>
                                     <subviews>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Send Message" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mQ5-dN-NYS">
-                                            <rect key="frame" x="8" y="0.0" width="228" height="45"/>
+                                            <rect key="frame" x="8" y="0.0" width="222.5" height="45"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CvA-20-SxJ">
-                                            <rect key="frame" x="244" y="0.0" width="76" height="45"/>
+                                            <rect key="frame" x="238.5" y="0.0" width="73.5" height="45"/>
                                             <color key="backgroundColor" red="0.6705882353" green="0.76470588240000004" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                             <state key="normal" title="send">
@@ -126,7 +126,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstItem="CvA-20-SxJ" firstAttribute="top" secondItem="O7U-f2-rBY" secondAttribute="top" id="0gA-Ld-JRM"/>
-                                        <constraint firstAttribute="trailing" secondItem="CvA-20-SxJ" secondAttribute="trailing" id="KY6-Ep-gi6"/>
+                                        <constraint firstAttribute="trailing" secondItem="CvA-20-SxJ" secondAttribute="trailing" constant="8" id="KY6-Ep-gi6"/>
                                         <constraint firstItem="CvA-20-SxJ" firstAttribute="width" secondItem="mQ5-dN-NYS" secondAttribute="width" multiplier="1:3" id="QAB-PY-6uk"/>
                                         <constraint firstAttribute="height" constant="45" id="TB6-eY-AYt"/>
                                         <constraint firstItem="mQ5-dN-NYS" firstAttribute="leading" secondItem="O7U-f2-rBY" secondAttribute="leading" constant="8" id="U27-QM-cj8"/>
@@ -144,7 +144,7 @@
                                 <constraint firstItem="adR-9N-Ai9" firstAttribute="width" secondItem="59H-dR-SfD" secondAttribute="width" id="fvZ-Ni-vGk"/>
                                 <constraint firstItem="O7U-f2-rBY" firstAttribute="leading" secondItem="adR-9N-Ai9" secondAttribute="leading" id="kLj-tY-mdh"/>
                                 <constraint firstItem="O7U-f2-rBY" firstAttribute="width" secondItem="adR-9N-Ai9" secondAttribute="width" id="sto-CK-jde"/>
-                                <constraint firstAttribute="bottom" secondItem="O7U-f2-rBY" secondAttribute="bottom" id="wpC-ut-Ghi"/>
+                                <constraint firstAttribute="bottom" secondItem="O7U-f2-rBY" secondAttribute="bottom" constant="5" id="wpC-ut-Ghi"/>
                                 <constraint firstItem="adR-9N-Ai9" firstAttribute="leading" secondItem="59H-dR-SfD" secondAttribute="leading" id="yfT-wd-Lun"/>
                             </constraints>
                         </view>

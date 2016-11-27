@@ -192,12 +192,20 @@ extension LoginViewController{
                     case 200 : //Successful Login
                         
                         if let userData = responseData as? [String: AnyObject] {
-                            
+                            let user = userData["user"] as? [String: AnyObject]
                             let club = userData["club"] as? [String:AnyObject]
                             let profile = userData["profile"] as? [String: AnyObject]
                             UserDefaults.standard.setValue(club!["logo_link"], forKey: "clubLogo")
                             UserDefaults.standard.setValue(profile!["club_id"],forKey:"club_id")
+                            UserDefaults.standard.setValue(profile?["user_id"], forKey: "user_id")
+                            let userInfo = UserInfo()
                             
+                            userInfo.user_id = profile?["user_id"] as? String
+                            userInfo.club_id = profile?["club_id"] as? String
+                            userInfo.first_name = profile?["first_name"] as? String
+                            userInfo.avatar_link = profile?["avatar_link"] as? String
+                            userInfo.isTeacher = user?["user_type"] as! String == "3" ? true : false
+                            Helper.setUserInfo(userinfo: userInfo)
                             //go to next page
                             self!.gotoNextPage()
                         }

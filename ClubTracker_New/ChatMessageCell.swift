@@ -21,6 +21,17 @@ class ChatMessageCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        
+        lblSentMessage.layer.shadowColor = UIColor.black.cgColor
+        lblSentMessage.layer.shadowOffset = CGSize(width: 0, height: 4)
+        lblSentMessage.layer.shadowOpacity = 0.2
+        
+        lblSentMessage.layer.borderColor = UIColor.lightGray.cgColor
+      
+        lblSentMessage.layer.borderWidth = 1.0
+        lblSentMessage.layer.cornerRadius = 2.0
+        lblSentMessage.layer.masksToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

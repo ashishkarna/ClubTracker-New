@@ -62,6 +62,25 @@ class Helper: NSObject{
         
     }
     
+    //MARK: UserInfo
+    static func setUserInfo( userinfo: UserInfo?) {
+        
+       // let data: NSData? = ((userinfo == nil) ? nil : NSKeyedArchiver.archivedDataWithRootObject(userinfo!)) as Data
+        let data: NSData? = (userinfo == nil ? nil : NSKeyedArchiver.archivedData(withRootObject: userinfo!) as NSData)
+        UserDefaults.standard.setValue(data, forKey: "USERINFO")
+        UserDefaults.standard.synchronize()
+        
+    }
+    
+    static func getUserInfo() -> UserInfo? {
+        
+        let data: NSData? = UserDefaults.standard.value(forKey: "USERINFO") as? NSData
+        return ((data == nil) ? nil : (NSKeyedUnarchiver.unarchiveObject(with: data! as Data) as? UserInfo)!)
+        
+    }
+
+    
+    
     //MARK: TextField Validator
     
     static func isValidFullname(_ name: String) -> Bool{
@@ -151,6 +170,8 @@ class Helper: NSObject{
         
               
     }
+    
+    
     
 
 }

@@ -17,23 +17,43 @@ class ChatDetailViewController: UIViewController{
     
     var sentMember = ChatDetail()
     var chatsOfChatList = [ChatsOfChat]()
+    var user_id: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         btnAdd.isHidden = true
+        user_id = Helper.getUserInfo()?.user_id 
         
         tableChat.register(UINib(nibName: "ChatMessageCell", bundle: Bundle.main), forCellReuseIdentifier: "ChatMessageCell")
-        tableChat.estimatedRowHeight = 500
-        tableChat.rowHeight = UITableViewAutomaticDimension
+      //  tableChat.estimatedRowHeight = 500
+       // tableChat.rowHeight = UITableViewAutomaticDimension
         tableChat.isHidden = true
+        
         getChatsOfChat()
         
         
     }
     
+//    - (void) viewDidAppear:(BOOL)animated
+//    {
+//    [super viewDidAppear:animated];
+//    if (messagesTableView.contentSize.height > messagesTableView.frame.size.height)
+//    {
+//    CGPoint offset = CGPointMake(0, messagesTableView.contentSize.height -     messagesTableView.frame.size.height);
+//    [self.messagesTableView setContentOffset:offset animated:YES];
+//    }
+//    }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if tableChat.contentSize.height > tableChat.frame.size.height{
+            let yOffset = CGPoint(x: 0, y: tableChat.contentSize.height - tableChat.frame.size.height)
+            tableChat.setContentOffset(yOffset, animated: true)
+        
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -96,25 +116,35 @@ extension ChatDetailViewController:UITableViewDelegate,UITableViewDataSource{
         }
         
         //design setup
-        if sentMember.created_by == chatMessage.member_id{
+        
+        if user_id == chatMessage.member_id{
             
             if chatMessage.member_name != nil{
                 
                 cell.lblUserName.text = chatMessage.member_name
                 cell.lblOtherName.alpha = 0
+                cell.lblUserName.alpha = 1
                 cell.lblSentMessage.textAlignment = .right
             }
         }
         else{
             cell.lblOtherName.text = chatMessage.member_name
             cell.lblUserName.alpha = 0
+            cell.lblOtherName.alpha = 1
+            cell.lblSentMessage.textAlignment = .left
         }
         
-        return cell
+        
+             return cell
         
     }
     
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
     
 }
 
@@ -137,10 +167,12 @@ extension ChatDetailViewController{
         
         
         tableChat.isHidden = false
-        
+        //tableChat.scrollToNearestSelectedRow(at: UITableViewScrollPosition.bottom, animated: true)
         tableChat.reloadData()
-        //        let indexPath = NSIndexPath(forRow: 15, inSection: 0)
-        //        tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: true)
+      
+        
+        let indexPath = NSIndexPath.init(row: chatsOfChatList.count - 1, section: 0)
+        tableChat.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: true)
     }
     
     
@@ -211,10 +243,10 @@ extension ChatDetailViewController{
     
     func sendChatMessage(_ params: [String: AnyObject]){
         
-        MBProgressHUD.showAdded(to: self.view, animated: true)
+       // MBProgressHUD.showAdded(to: self.view, animated: true)
         WebServiceHelper.sendChatMessage(params as [String : AnyObject]?,onCompletion: {[weak self]
             response in
-            MBProgressHUD.hideAllHUDs(for: self?.view, animated: true)
+          //  MBProgressHUD.hideAllHUDs(for: self?.view, animated: true)
             
             switch response.result {
                 

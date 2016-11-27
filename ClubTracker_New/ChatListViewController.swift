@@ -18,11 +18,14 @@ class ChatListViewController: UIViewController {
     
     var chatMessageList = [ChatDetail]()
     var isComingFromCreateChat = false
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+        print(Helper.getUserInfo()?.isTeacher!)
+        lblClassName.text = UserDefaults.standard.value(forKey: (Helper.getUserInfo()?.isTeacher!)! ? "class_name": "child_name") as? String
         tableChatList.register(UINib(nibName: "ChatListCell", bundle: Bundle.main), forCellReuseIdentifier: "ChatListCell")
         Helper.setTableViewDesign(tableChatList)
         tableChatList.isHidden = true
@@ -132,13 +135,14 @@ extension ChatListViewController{
             chatMessageList.append(singleChat)
             
         }
-        if chatMessageList.count > 6{
-            tableHeight.constant = CGFloat(6 * 65)
-        }
-        else{
-           tableHeight.constant = CGFloat(chatMessageList.count * 65)
-        }
+//        if chatMessageList.count > 6{
+//            tableHeight.constant = CGFloat(6 * 65)
+//        }
+//        else{
+//           tableHeight.constant = CGFloat(chatMessageList.count * 65)
+//        }
         tableChatList.isHidden = false
+        chatMessageList.reverse()
         tableChatList.reloadData()
         
     }
