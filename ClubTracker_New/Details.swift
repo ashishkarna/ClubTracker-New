@@ -163,3 +163,41 @@ class ChatsOfChat{
     
 }
 
+
+class DiaryModel{
+    var identifier: String?
+    var eventTitle : String?
+    var eventDescritpion: String?
+    var eventDate: String?
+    var eventTime: String?
+    var pickPoint: String?
+    var createdAt: String?
+    
+}
+
+//MARK: shop  item list
+class ShopItemList{
+    
+    var id: Int?
+    var item_title : String?
+    var  price : Double?
+    var image: String?
+    var charge: Double?
+    var available_options: String?
+    
+}
+
+class shopItemDetails{
+    var id: Int?
+    var item_title : String?
+    var  price : Double?
+    var image: String?
+    var charge: Double?
+    var small: Int?
+    var medium: Int?
+    var large: Int?
+    var available_options: String?
+    var details: String?
+}
+
+

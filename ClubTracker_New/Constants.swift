@@ -64,7 +64,9 @@ let kGetClassTeachersUrl = DomainName + "getClassTeachers"
 let kSendMessageToTeacherUrl = DomainName + "saveParentMessage"
 
 
-
+//MARK:- DIARY
+let kgetAllDiaryUrl = DomainName + "getTeacherDiary"
+let kGetDiaryDetailByIdentifierURL = DomainName + "getTeacherRequestDetail"
 
 
 //MARK: CHAT SECTION

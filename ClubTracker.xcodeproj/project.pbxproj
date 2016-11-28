@@ -50,6 +50,17 @@
 		479FCA741D9EF104007891E9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479FCA731D9EF104007891E9 /* Constants.swift */; };
 		479FCA771D9EF445007891E9 /* SelectClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479FCA751D9EF445007891E9 /* SelectClassViewController.swift */; };
 		479FCA781D9EF445007891E9 /* SelectClassViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 479FCA761D9EF445007891E9 /* SelectClassViewController.xib */; };
+		47B069DC1DEC3DA000644DD1 /* SocialMediaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B069DA1DEC3DA000644DD1 /* SocialMediaVC.swift */; };
+		47B069DD1DEC3DA000644DD1 /* SocialMediaVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47B069DB1DEC3DA000644DD1 /* SocialMediaVC.xib */; };
+		47B069E31DEC3E0C00644DD1 /* CustomOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B069DE1DEC3E0C00644DD1 /* CustomOverlayView.swift */; };
+		47B069E41DEC3E0C00644DD1 /* CustomOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B069DF1DEC3E0C00644DD1 /* CustomOverlayViewController.swift */; };
+		47B069E51DEC3E0C00644DD1 /* CustomOverlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47B069E01DEC3E0C00644DD1 /* CustomOverlayViewController.xib */; };
+		47B069E61DEC3E0C00644DD1 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B069E11DEC3E0C00644DD1 /* PlayerViewController.swift */; };
+		47B069E71DEC3E0C00644DD1 /* PlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47B069E21DEC3E0C00644DD1 /* PlayerViewController.xib */; };
+		47B069EC1DEC4AB100644DD1 /* DiaryListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B069E81DEC4AB100644DD1 /* DiaryListCell.swift */; };
+		47B069ED1DEC4AB100644DD1 /* DiaryListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47B069E91DEC4AB100644DD1 /* DiaryListCell.xib */; };
+		47B069EE1DEC4AB100644DD1 /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B069EA1DEC4AB100644DD1 /* DiaryViewController.swift */; };
+		47B069EF1DEC4AB100644DD1 /* DiaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47B069EB1DEC4AB100644DD1 /* DiaryViewController.xib */; };
 		47B4DF8F1DE5F7E7006EFBFB /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B4DF8D1DE5F7E7006EFBFB /* ChatListViewController.swift */; };
 		47B4DF901DE5F7E7006EFBFB /* ChatListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47B4DF8E1DE5F7E7006EFBFB /* ChatListViewController.xib */; };
 		47B4DF941DE5F801006EFBFB /* ChatDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B4DF921DE5F801006EFBFB /* ChatDetailViewController.swift */; };
@@ -96,8 +107,6 @@
 		47F316221DA2E5A900D740FD /* TargetVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47F3161E1DA2E5A900D740FD /* TargetVC.xib */; };
 		47F316261DA2E64800D740FD /* ContactUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F316241DA2E64800D740FD /* ContactUsVC.swift */; };
 		47F316271DA2E64800D740FD /* ContactUsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47F316251DA2E64800D740FD /* ContactUsVC.xib */; };
-		47F3162A1DA2E6CA00D740FD /* SocialMediaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F316281DA2E6CA00D740FD /* SocialMediaVC.swift */; };
-		47F3162B1DA2E6CA00D740FD /* SocialMediaVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47F316291DA2E6CA00D740FD /* SocialMediaVC.xib */; };
 		47FBF6E81DBCFEF700D93C6D /* ArchiveAttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FBF6E61DBCFEF700D93C6D /* ArchiveAttendanceViewController.swift */; };
 		47FBF6E91DBCFEF700D93C6D /* ArchiveAttendanceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47FBF6E71DBCFEF700D93C6D /* ArchiveAttendanceViewController.xib */; };
 		54D1B40D4B4A264D5B9DF269 /* Pods_ClubTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7F22AF019E497760B8E5C22 /* Pods_ClubTrackerUITests.framework */; };
@@ -178,6 +187,17 @@
 		479FCA731D9EF104007891E9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		479FCA751D9EF445007891E9 /* SelectClassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectClassViewController.swift; sourceTree = "<group>"; };
 		479FCA761D9EF445007891E9 /* SelectClassViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectClassViewController.xib; sourceTree = "<group>"; };
+		47B069DA1DEC3DA000644DD1 /* SocialMediaVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialMediaVC.swift; sourceTree = "<group>"; };
+		47B069DB1DEC3DA000644DD1 /* SocialMediaVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocialMediaVC.xib; sourceTree = "<group>"; };
+		47B069DE1DEC3E0C00644DD1 /* CustomOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomOverlayView.swift; sourceTree = "<group>"; };
+		47B069DF1DEC3E0C00644DD1 /* CustomOverlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomOverlayViewController.swift; sourceTree = "<group>"; };
+		47B069E01DEC3E0C00644DD1 /* CustomOverlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomOverlayViewController.xib; sourceTree = "<group>"; };
+		47B069E11DEC3E0C00644DD1 /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		47B069E21DEC3E0C00644DD1 /* PlayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerViewController.xib; sourceTree = "<group>"; };
+		47B069E81DEC4AB100644DD1 /* DiaryListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryListCell.swift; sourceTree = "<group>"; };
+		47B069E91DEC4AB100644DD1 /* DiaryListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiaryListCell.xib; sourceTree = "<group>"; };
+		47B069EA1DEC4AB100644DD1 /* DiaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
+		47B069EB1DEC4AB100644DD1 /* DiaryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiaryViewController.xib; sourceTree = "<group>"; };
 		47B4DF8D1DE5F7E7006EFBFB /* ChatListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
 		47B4DF8E1DE5F7E7006EFBFB /* ChatListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatListViewController.xib; sourceTree = "<group>"; };
 		47B4DF921DE5F801006EFBFB /* ChatDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatDetailViewController.swift; sourceTree = "<group>"; };
@@ -224,8 +244,6 @@
 		47F3161E1DA2E5A900D740FD /* TargetVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TargetVC.xib; sourceTree = "<group>"; };
 		47F316241DA2E64800D740FD /* ContactUsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactUsVC.swift; sourceTree = "<group>"; };
 		47F316251DA2E64800D740FD /* ContactUsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactUsVC.xib; sourceTree = "<group>"; };
-		47F316281DA2E6CA00D740FD /* SocialMediaVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialMediaVC.swift; sourceTree = "<group>"; };
-		47F316291DA2E6CA00D740FD /* SocialMediaVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocialMediaVC.xib; sourceTree = "<group>"; };
 		47FBF6E61DBCFEF700D93C6D /* ArchiveAttendanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchiveAttendanceViewController.swift; sourceTree = "<group>"; };
 		47FBF6E71DBCFEF700D93C6D /* ArchiveAttendanceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArchiveAttendanceViewController.xib; sourceTree = "<group>"; };
 		5A6FC3C36ABB2A07E0D374FA /* Pods-ClubTrackerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClubTrackerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ClubTrackerUITests/Pods-ClubTrackerUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -541,6 +559,10 @@
 		479FCA601D9EE484007891E9 /* Diary */ = {
 			isa = PBXGroup;
 			children = (
+				47B069E81DEC4AB100644DD1 /* DiaryListCell.swift */,
+				47B069E91DEC4AB100644DD1 /* DiaryListCell.xib */,
+				47B069EA1DEC4AB100644DD1 /* DiaryViewController.swift */,
+				47B069EB1DEC4AB100644DD1 /* DiaryViewController.xib */,
 			);
 			name = Diary;
 			sourceTree = "<group>";
@@ -548,6 +570,11 @@
 		479FCA611D9EE491007891E9 /* Camera */ = {
 			isa = PBXGroup;
 			children = (
+				47B069DE1DEC3E0C00644DD1 /* CustomOverlayView.swift */,
+				47B069DF1DEC3E0C00644DD1 /* CustomOverlayViewController.swift */,
+				47B069E01DEC3E0C00644DD1 /* CustomOverlayViewController.xib */,
+				47B069E11DEC3E0C00644DD1 /* PlayerViewController.swift */,
+				47B069E21DEC3E0C00644DD1 /* PlayerViewController.xib */,
 			);
 			name = Camera;
 			sourceTree = "<group>";
@@ -577,8 +604,8 @@
 		479FCA641D9EE4B2007891E9 /* Social Media */ = {
 			isa = PBXGroup;
 			children = (
-				47F316281DA2E6CA00D740FD /* SocialMediaVC.swift */,
-				47F316291DA2E6CA00D740FD /* SocialMediaVC.xib */,
+				47B069DA1DEC3DA000644DD1 /* SocialMediaVC.swift */,
+				47B069DB1DEC3DA000644DD1 /* SocialMediaVC.xib */,
 			);
 			name = "Social Media";
 			sourceTree = "<group>";
@@ -964,10 +991,10 @@
 				479FCA721D9EECEE007891E9 /* Montserrat-Regular.ttf in Resources */,
 				47E9E1101DA16AFE00C6B6A6 /* InboxViewController.xib in Resources */,
 				479FCA501D9EE3B4007891E9 /* FAQCell.xib in Resources */,
+				47B069ED1DEC4AB100644DD1 /* DiaryListCell.xib in Resources */,
 				47E9E1141DA16B0C00C6B6A6 /* OutboxViewController.xib in Resources */,
 				476FEEEA1D9FCCB600EEC5D4 /* TeacherMenuItemCell.xib in Resources */,
 				476FEEF21D9FCF6E00EEC5D4 /* TabBarItem.xib in Resources */,
-				47F3162B1DA2E6CA00D740FD /* SocialMediaVC.xib in Resources */,
 				47F316221DA2E5A900D740FD /* TargetVC.xib in Resources */,
 				47F3161A1DA2E10700D740FD /* TutorialViewController.xib in Resources */,
 				47B4DF951DE5F801006EFBFB /* ChatDetailViewController.xib in Resources */,
@@ -986,11 +1013,14 @@
 				472FDD061DE859BC005AF42D /* ChatMessageCell.xib in Resources */,
 				476FEEE11D9FB3BD00EEC5D4 /* TeacherMenuViewController.xib in Resources */,
 				476FEF051D9FDE6700EEC5D4 /* FAQVC.xib in Resources */,
+				47B069E51DEC3E0C00644DD1 /* CustomOverlayViewController.xib in Resources */,
 				47FBF6E91DBCFEF700D93C6D /* ArchiveAttendanceViewController.xib in Resources */,
 				479FCA081D9EE025007891E9 /* Assets.xcassets in Resources */,
 				476FEF071D9FDE6700EEC5D4 /* HelpVC.xib in Resources */,
 				47E9E10C1DA16AE700C6B6A6 /* UrgentMessageViewController.xib in Resources */,
 				479FCA711D9EECEE007891E9 /* Montserrat-Bold.ttf in Resources */,
+				47B069DD1DEC3DA000644DD1 /* SocialMediaVC.xib in Resources */,
+				47B069EF1DEC4AB100644DD1 /* DiaryViewController.xib in Resources */,
 				476FEEF01D9FCF6E00EEC5D4 /* TabBar.xib in Resources */,
 				47E9E1241DA1721A00C6B6A6 /* InboxMessageTableViewCell.xib in Resources */,
 				47E984A21DA0F624003DC18C /* MessageMenuViewController.xib in Resources */,
@@ -998,6 +1028,7 @@
 				47E9E1081DA15E8000C6B6A6 /* NewMessageViewController.xib in Resources */,
 				47F316071DA2B02300D740FD /* ShopMenuViewController.xib in Resources */,
 				47EAF60A1DA02CA200AFFFEC /* RegisterViewController.xib in Resources */,
+				47B069E71DEC3E0C00644DD1 /* PlayerViewController.xib in Resources */,
 				47B4DF901DE5F7E7006EFBFB /* ChatListViewController.xib in Resources */,
 				47F316201DA2E5A900D740FD /* TargetCell.xib in Resources */,
 				47B4DF9A1DE5FAA5006EFBFB /* CreateChatViewController.xib in Resources */,
@@ -1164,11 +1195,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47B069E41DEC3E0C00644DD1 /* CustomOverlayViewController.swift in Sources */,
 				47F3161F1DA2E5A900D740FD /* TargetCell.swift in Sources */,
 				47B4DF941DE5F801006EFBFB /* ChatDetailViewController.swift in Sources */,
 				476FEF041D9FDE6700EEC5D4 /* FAQVC.swift in Sources */,
 				476FEF061D9FDE6700EEC5D4 /* HelpVC.swift in Sources */,
 				47FBF6E81DBCFEF700D93C6D /* ArchiveAttendanceViewController.swift in Sources */,
+				47B069E31DEC3E0C00644DD1 /* CustomOverlayView.swift in Sources */,
 				472FDD051DE859BC005AF42D /* ChatMessageCell.swift in Sources */,
 				479FCA771D9EF445007891E9 /* SelectClassViewController.swift in Sources */,
 				47E9E1071DA15E8000C6B6A6 /* NewMessageViewController.swift in Sources */,
@@ -1187,6 +1220,7 @@
 				47E9E1181DA16E2D00C6B6A6 /* MessageTableViewCell.swift in Sources */,
 				47E9E1231DA1721A00C6B6A6 /* InboxMessageTableViewCell.swift in Sources */,
 				47B4DF991DE5FAA5006EFBFB /* CreateChatViewController.swift in Sources */,
+				47B069EC1DEC4AB100644DD1 /* DiaryListCell.swift in Sources */,
 				479FCA4F1D9EE3B4007891E9 /* FAQCell.swift in Sources */,
 				47E984A11DA0F624003DC18C /* MessageMenuViewController.swift in Sources */,
 				47DD89EA1DE6F0840061DA37 /* ChatListCell.swift in Sources */,
@@ -1197,8 +1231,8 @@
 				47EAF6091DA02CA200AFFFEC /* RegisterViewController.swift in Sources */,
 				47F316151DA2CC8800D740FD /* AddShopItemViewController.swift in Sources */,
 				479FCA381D9EE2F1007891E9 /* TPKeyboardAvoidingCollectionView.m in Sources */,
+				47B069EE1DEC4AB100644DD1 /* DiaryViewController.swift in Sources */,
 				4738FA541DB7CF2100F10698 /* MBProgressHUD.m in Sources */,
-				47F3162A1DA2E6CA00D740FD /* SocialMediaVC.swift in Sources */,
 				47E9E10F1DA16AFE00C6B6A6 /* InboxViewController.swift in Sources */,
 				47E9E10B1DA16AE700C6B6A6 /* UrgentMessageViewController.swift in Sources */,
 				47E9E1131DA16B0C00C6B6A6 /* OutboxViewController.swift in Sources */,
@@ -1209,9 +1243,11 @@
 				479FCA451D9EE37E007891E9 /* Helper.swift in Sources */,
 				47EAF60E1DA02D8900AFFFEC /* RegisterCell.swift in Sources */,
 				476FEEEF1D9FCF6E00EEC5D4 /* TabBarController.swift in Sources */,
+				47B069DC1DEC3DA000644DD1 /* SocialMediaVC.swift in Sources */,
 				47E9E11D1DA170FE00C6B6A6 /* MessageDetailViewController.swift in Sources */,
 				47F316191DA2E10700D740FD /* TutorialViewController.swift in Sources */,
 				476FEEF11D9FCF6E00EEC5D4 /* TabBarCollectionViewCell.swift in Sources */,
+				47B069E61DEC3E0C00644DD1 /* PlayerViewController.swift in Sources */,
 				47F3160B1DA2B30A00D740FD /* ShopListItemCell.swift in Sources */,
 				479FCA741D9EF104007891E9 /* Constants.swift in Sources */,
 			);
@@ -1353,11 +1389,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Daniel Hughes (JK9C975RTZ)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = JK9C975RTZ;
 				INFOPLIST_FILE = ClubTracker_New/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.karma.ClubTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.karma.clubTracker;
 				PRODUCT_NAME = ClubTracker;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1375,11 +1411,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Daniel Hughes (JK9C975RTZ)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = JK9C975RTZ;
 				INFOPLIST_FILE = ClubTracker_New/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.karma.ClubTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.karma.clubTracker;
 				PRODUCT_NAME = ClubTracker;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

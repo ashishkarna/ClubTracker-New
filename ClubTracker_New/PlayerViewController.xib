@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlayerViewController" customModule="ClubTracker" customModuleProvider="target">
+            <connections>
+                <outlet property="img" destination="DwF-2H-9uh" id="cf8-vz-Xc0"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewVideo" destination="IqV-Uh-VGF" id="Ux8-ST-D9z"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DwF-2H-9uh">
+                    <rect key="frame" x="0.0" y="59" width="375" height="608"/>
+                </imageView>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="foz-Lb-FRz">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <items>
+                        <navigationItem title="Title" id="x51-hP-hUu">
+                            <barButtonItem key="leftBarButtonItem" title="Back" id="ef7-Zg-Tiq">
+                                <connections>
+                                    <action selector="btnBack:" destination="-1" id="pGa-Kk-9Uw"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem key="rightBarButtonItem" systemItem="reply" id="ToQ-0T-JcV">
+                                <connections>
+                                    <action selector="btnShare:" destination="-1" id="mKr-KT-now"/>
+                                </connections>
+                            </barButtonItem>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IqV-Uh-VGF">
+                    <rect key="frame" x="3" y="82" width="368" height="548"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="DwF-2H-9uh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="4KW-P8-1jV"/>
+                <constraint firstAttribute="trailing" secondItem="DwF-2H-9uh" secondAttribute="trailing" id="4nM-4z-VPZ"/>
+                <constraint firstItem="foz-Lb-FRz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="5ab-G9-u4W"/>
+                <constraint firstItem="foz-Lb-FRz" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="B0j-wt-Nm8"/>
+                <constraint firstItem="IqV-Uh-VGF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="3" id="PiF-iV-nOW"/>
+                <constraint firstAttribute="bottom" secondItem="DwF-2H-9uh" secondAttribute="bottom" id="R5C-W0-iJg"/>
+                <constraint firstAttribute="trailing" secondItem="foz-Lb-FRz" secondAttribute="trailing" id="RgW-zo-UCL"/>
+                <constraint firstAttribute="bottom" secondItem="IqV-Uh-VGF" secondAttribute="bottom" constant="37" id="SEW-K9-UEW"/>
+                <constraint firstItem="IqV-Uh-VGF" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="82" id="VUH-Hd-CZ7"/>
+                <constraint firstItem="DwF-2H-9uh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="59" id="ZFq-fL-5XJ"/>
+                <constraint firstAttribute="trailing" secondItem="IqV-Uh-VGF" secondAttribute="trailing" constant="4" id="xwV-LB-G6V"/>
+            </constraints>
+            <point key="canvasLocation" x="33.5" y="54.5"/>
+        </view>
+    </objects>
+</document>

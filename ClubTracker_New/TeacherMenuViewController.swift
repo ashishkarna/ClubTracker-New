@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import MobileCoreServices
 
 
 
@@ -20,7 +20,9 @@ class TeacherMenuViewController
     var menuImage = ["register-icon","message-icon","chat-icon","diary-icon","camera-icon","target-icon","shop_icon","social-media","contact-icon"]
     var menuTitle = ["Register","Message","Chat","Diary","Camera","Target/Stats","Shop","Social Media","Contact US"]
     var isTeacher = false
-    
+    var imagePicker = UIImagePickerController()
+    var isLibrary = false
+    var isCameraOpen = false
     @IBOutlet weak var lblNavTitle: UILabel!
   
   
@@ -45,6 +47,10 @@ class TeacherMenuViewController
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
        // (self.navigationController?.tabBarController as! TabBarController)
+        if isCameraOpen{
+            cameraOpen()
+        }
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -128,6 +134,14 @@ extension TeacherMenuViewController:UICollectionViewDelegate,UICollectionViewDat
             let chatVC = ChatListViewController(nibName:"ChatListViewController", bundle:nil)
             self.navigationController?.pushViewController(chatVC, animated: true)
             break
+        case 3:
+            let diaryVC = DiaryViewController(nibName: "DiaryViewController", bundle: nil)
+            diaryVC.isTeacher = (Helper.getUserInfo()?.isTeacher)! 
+            self.navigationController?.pushViewController(diaryVC, animated: true)
+            break
+        case 4:
+            cameraOpen()
+            break
         case 5:
             let targetVC = TargetVC(nibName: "TargetVC", bundle: nil)
             self.navigationController?.pushViewController(targetVC, animated: true)
@@ -150,3 +164,136 @@ extension TeacherMenuViewController:UICollectionViewDelegate,UICollectionViewDat
     }
   
 }
+
+
+//MARK: Camera Helper Method 
+extension TeacherMenuViewController{
+
+    func cameraOpen(){
+        //imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+      
+        if UIImagePickerController.availableCaptureModes(for: .rear) != nil {
+            isCameraOpen = true
+            imagePicker = UIImagePickerController() //make a clean controller
+            imagePicker.allowsEditing = false
+            imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+            imagePicker.mediaTypes = [kUTTypeImage as String,kUTTypeMovie as String]
+            
+            imagePicker.showsCameraControls = true
+            imagePicker.delegate = self  //uncomment if you want to take multiple pictures.
+            
+            let customViewController = CustomOverlayViewController(
+                nibName:"CustomOverlayViewController",
+                bundle: nil
+            )
+            let customView:CustomOverlayView = customViewController.view as! CustomOverlayView
+            customView.frame = CGRect(x: 0, y: 0, width: 320, height: 100)
+            //customView.backgroundColor = UIColor.red
+            customView.delegate = self
+            imagePicker.cameraOverlayView = customView
+            
+            present(imagePicker,
+                    animated: false,
+                    completion:nil)
+            
+        } else { //no camera found -- alert the user.
+            
+            let alertVC = UIAlertController(
+                title: "No Camera",
+                message: "Sorry, this device has no camera",
+                preferredStyle: .alert)
+            let okAction = UIAlertAction(
+                title: "OK",
+                style:.default,
+                handler: nil)
+            alertVC.addAction(okAction)
+            present(
+                alertVC,
+                animated: false,
+                completion: nil)
+        }
+        
+    }
+
+
+}
+
+
+//MARK: Camera Delegate Meethod
+extension TeacherMenuViewController:  UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        print("Got a video")
+        dismiss(animated: false, completion: nil)
+        if let pickedVideo:NSURL = (info[UIImagePickerControllerMediaURL] as? NSURL) {
+            if !isLibrary{
+                UISaveVideoAtPathToSavedPhotosAlbum(pickedVideo.relativePath!, self, nil, nil)
+                let videoData = NSData(contentsOf: pickedVideo as URL)
+                let paths = NSSearchPathForDirectoriesInDomains(
+                    FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
+                let documentsDirectory: AnyObject = paths[0] as AnyObject
+                videoData?.write(toFile: documentsDirectory as! String, atomically: false)
+            }
+            let playerVC = PlayerViewController(
+                nibName:"PlayerViewController",
+                bundle: nil
+            )
+            playerVC.isVideo = true
+            playerVC.videoURL = pickedVideo
+            present(
+                playerVC,
+                animated: false,
+                completion: nil)
+        }
+        else{
+            let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+            if isLibrary{
+                
+            }
+            else{
+                
+                UIImageWriteToSavedPhotosAlbum(chosenImage, self,nil, nil) //save to the photo library
+                
+            }
+            let playerVC = PlayerViewController(
+                nibName:"PlayerViewController",
+                bundle: nil
+            )
+            playerVC.isVideo = false
+            playerVC.imageSel = chosenImage
+            present(
+                playerVC,
+                animated: false,
+                completion: nil)
+        }
+        
+        
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        if isLibrary{
+           
+            isLibrary = false
+            imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+        }
+        else{
+            isCameraOpen = false
+            self.dismiss(animated: true, completion: nil)
+        }
+        print("Canceled!!")
+        
+    }
+
+
+}
+
+
+
+//MARK:Camera Custom Delegate
+extension TeacherMenuViewController:CustomOverlayDelegate{
+    func libraryShow() {
+        isLibrary = true
+        imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+    }
+}
+
