@@ -208,3 +208,72 @@ extension WebServiceHelper{
 
     
 }
+
+//MARK: SHOP SECTION
+
+extension WebServiceHelper{
+    static func getAllShopItems(_ params: [String : AnyObject]?,onCompletion:@escaping (DataResponse<Any>)->()){
+        self.makeRequest(.get, url:kGetAllShopItemURL, params: nil,header: getHeaders(), onCompletion: onCompletion)
+    }
+    static func removeHopItem(_ params: [String : AnyObject]?,onCompletion:@escaping (DataResponse<Any>)->()){
+        self.makeRequest(.post, url:kRemoveShopItemURL, params: nil,header: getHeaders(), onCompletion: onCompletion)
+    }
+    
+    static func getDetailShopItems(_ params: [String : AnyObject]?,onCompletion:@escaping (DataResponse<Any>)->()){
+        self.makeRequest(.post, url:kgetShopItemDetailURL, params: params,header: getHeaders(), onCompletion: onCompletion)
+    }
+    
+    static func updateShopItems(_ params: [String : AnyObject]?,onCompletion:@escaping (DataResponse<Any>)->()){
+        self.makeRequest(.post, url:kUpdateShopItemURL, params: nil,header: getHeaders(), onCompletion: onCompletion)
+    }
+    
+    static func addShopItem(selectedImage:UIImage?, params: [String : AnyObject]?, onCompletion: @escaping (DataResponse<Any>) -> ()) {
+        //let paramters = try! NSJSONSerialization.JSONObjectWithData(params, options: [])
+        let image = selectedImage
+        let imageData = UIImageJPEGRepresentation(image!, 0.6)! as Data
+        let URL = try! URLRequest(url: kAddShopItemURL, method: .post, headers: getHeaders())
+      //  let items = params!["itemdetails"] as! [String:AnyObject]
+      //  let itm:[AnyObject] = items["item_options"] as! [AnyObject]
+                Alamofire.upload(
+            multipartFormData: { multipartFormData in
+                
+                multipartFormData.append(imageData, withName: "image", mimeType: "image/jpg")
+             //  multipartFormData.append(dataExample , withName: "itemdetails")
+//                let item = itm[0] as! [String:AnyObject]
+                                for (key, value) in params! {
+                                    if(key == "item_options"){
+                                        let dataExample : Data = NSKeyedArchiver.archivedData(withRootObject: value) as Data
+                                        multipartFormData.append(dataExample , withName: "item_options")
+                                    
+                                    }
+                                    else{
+                
+                                        multipartFormData.append((value as! String).data(using: .utf8)!, withName: key)
+                   }
+                  }
+        },
+            with: URL,
+            encodingCompletion: { encodingResult in
+                
+                switch encodingResult {
+                    
+                case .success(let upload, _, _):
+                    upload.responseJSON(completionHandler: onCompletion)
+                    break
+                default:
+                    break
+                    
+                    
+                }//switch
+                
+        }
+        )
+        
+    }
+    
+    static func addItem(_ params: [String : AnyObject]?,onCompletion:@escaping (DataResponse<Any>)->()){
+        
+        
+        self.makeRequest(.post, url:kAddShopItemURL, params: params,header: getHeaders(), onCompletion: onCompletion)
+}
+}

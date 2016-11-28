@@ -79,6 +79,12 @@ let ksendChatMessageUrl = DomainName + "sendChatMessage"
 let kgetAllDiaryUrl = DomainName + "getTeacherDiary"
 let kGetDiaryDetailByIdentifierURL = DomainName + "getTeacherRequestDetail"
 
+//MARK: Shop SECTION
 
+let kGetAllShopItemURL = DomainName + "getShopItems"
+let kAddShopItemURL = DomainName + "addItem"
+let kRemoveShopItemURL = DomainName + "deleteItem"
+let kgetShopItemDetailURL = DomainName + "itemDetails"
+let kUpdateShopItemURL = DomainName + "-------"
 
 
