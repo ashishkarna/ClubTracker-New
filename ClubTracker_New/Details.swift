@@ -120,6 +120,7 @@ class UrgentRequest{
     var event_time: String?
     var reminder: String?
     var message_to: String?
+    var from_name: String?
     var created_at: String?
     var responded_percent: Int?
 

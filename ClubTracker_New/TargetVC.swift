@@ -33,12 +33,7 @@ class TargetVC: UIViewController {
 
        
         
-       //setting up tap gesture
-        let tapGesture = UITapGestureRecognizer(target: self,action: #selector(viewTapped(_:)))
-        tapGesture.numberOfTapsRequired = 1
-        tapGesture.cancelsTouchesInView = false
-        tapGesture.delegate = self
-        formHolder.addGestureRecognizer(tapGesture)
+
         
         //MARK: Target TableView
         self.targetTableView.register(UINib(nibName: "TargetCell", bundle: Bundle.main), forCellReuseIdentifier: "TargetCell")
@@ -55,11 +50,6 @@ class TargetVC: UIViewController {
         
     }
 
-    func viewTapped(_ recognizer: UITapGestureRecognizer){
-    
-        self.searchPupilTableView.isHidden = true
-        self.currentTxtField?.resignFirstResponder()
-    }
     
     func setTableViewDesign(_ tableView: UITableView){
         
@@ -103,15 +93,6 @@ extension TargetVC: UIGestureRecognizerDelegate {
 
 //MARK: TextFieldDelegate
 extension TargetVC : UITextFieldDelegate{
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.currentTxtField = textField
-        
-    }
-    
-     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.currentTxtField?.resignFirstResponder()
-        return true
-    }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
@@ -254,3 +235,15 @@ extension TargetVC : UITableViewDelegate{
 
 
 }
+
+
+//MARK: Web Service Helper Method
+extension TargetVC{
+
+    
+    
+
+}
+
+
+

@@ -92,8 +92,8 @@ extension ResponseMessageViewController: UITableViewDelegate,UITableViewDataSour
         cell.lblDeadline.text = " Deadline: "
         cell.lblSubject.text = " Subject: "
         cell.lblResponded.text = " Cost: "
-        if (urgentMessageList[indexPath.row].message_to) != nil{
-            cell.lblTo.text =  cell.lblTo.text! + urgentMessageList[indexPath.row].message_to!
+        if (urgentMessageList[indexPath.row].from_name) != nil{
+            cell.lblTo.text =  cell.lblTo.text! + urgentMessageList[indexPath.row].from_name!
         }
         
         cell.lblDeadline.text = cell.lblDeadline.text! + Helper.getDate(urgentMessageList[indexPath.row].deadline!)
@@ -143,6 +143,7 @@ extension ResponseMessageViewController{
             singleUrgent.reminder = item["reminder"] as? String
             singleUrgent.message_to = item["message_to"] as? String
             singleUrgent.created_at = item["created_at"] as? String
+            singleUrgent.from_name = item["from_name"] as? String
             singleUrgent.responded_percent = item["responded_percent"] as? Int
             
             urgentMessageList.append(singleUrgent)

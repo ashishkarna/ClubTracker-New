@@ -72,7 +72,7 @@ extension CreateChatViewController{
         var params = [String: AnyObject]()
         var hasError = false
         var errorMessage = ""
-        if !Helper.isSameText(lblChatMember.text!, secondStr: "To"){
+        if !Helper.isSameText(lblChatMember.text!, secondStr: "Select Member"){
             var memberList = [String]()
             memberList.append(selectedMember.id!)
             params["member"] = memberList as AnyObject?
