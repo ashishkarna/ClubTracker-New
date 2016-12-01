@@ -231,6 +231,12 @@ extension WebServiceHelper{
         self.makeRequest(.post, url:kaddTargetUrl, params:params,header: getHeaders(), onCompletion: onCompletion)
     }
 
+    //get target
+    static func getTargets(_ params: [String : AnyObject]?,onCompletion:@escaping (DataResponse<Any>)->()){
+        self.makeRequest(.post, url:kgetTargetsUrl, params:params,header: getHeaders(), onCompletion: onCompletion)
+    }
+
+    
     //get target of pupil
     
     static func getTargetOfPupil(_ params: [String : AnyObject]?,onCompletion:@escaping (DataResponse<Any>)->()){

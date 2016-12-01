@@ -79,6 +79,7 @@ let kcreateChatUrl = DomainName + "createChat"
 
 //MARK: TARGET SECTION
 let kaddTargetUrl = DomainName + "addTarget"
+let kgetTargetsUrl = DomainName + "getTargets"
 let kgetTargetOfPupilUrl = DomainName + "getTargetOfPupil"
 let kgetPupilOfTargetUrl = DomainName + "getPupilOfTarget"
 let kchangeTargetStatusOfChildUrl = DomainName + "changeTargetStatusOfChild"

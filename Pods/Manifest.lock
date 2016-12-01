@@ -1,15 +1,15 @@
 PODS:
-  - Alamofire (4.2.0)
-  - FSCalendar (2.6.0)
+  - Alamofire (4.1.0)
+  - FSCalendar (2.5.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
   - FSCalendar
 
 SPEC CHECKSUMS:
-  Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
-  FSCalendar: c00fa5f4c3ec343ee6f7b804ae19322e9898bb84
+  Alamofire: e266cf991b933498df791e645e0d8ac294492153
+  FSCalendar: 8efeb4b92240937204165c7743f4375923112fb5
 
-PODFILE CHECKSUM: bf5adcd5ae8668a2fc919fab61f420ce00b0c562
+PODFILE CHECKSUM: 24615030a267482de94d3a325c38cc28a4b9f00c
 
-COCOAPODS: 1.2.0.beta.1
+COCOAPODS: 1.1.1

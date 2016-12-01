@@ -8,6 +8,12 @@
 
 import UIKit
 
+enum TableViewTag: Int{
+    case pupil = 0
+    case targets = 1
+    case targetsOrPupil = 2
+}
+
 class TargetVC: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
@@ -16,8 +22,15 @@ class TargetVC: UIViewController {
     
     @IBOutlet weak var txtAddTarget: UITextField!
     @IBOutlet weak var txtSearchPupil: UITextField!
+    @IBOutlet weak var txtSearchTarget: UITextField!
+ 
+    
+  
     
     @IBOutlet weak var searchPupilTableView: UITableView!
+    
+    @IBOutlet weak var searchTargetTableView: UITableView!
+    
     @IBOutlet weak var tableHeightPupil: NSLayoutConstraint!
     @IBOutlet weak var tableHeight: NSLayoutConstraint!
     @IBOutlet weak var targetTableView: UITableView!
@@ -26,50 +39,44 @@ class TargetVC: UIViewController {
     @IBOutlet weak var lblAttendance: UILabel!
     
     var currentTxtField: UITextField?
-    var targetList = [String]()
-    var pupilList = [String]()
+    var targetList = [Target]()
+    var pupilList = [Child]()
+    var selectedTarget = [Target]()
+    var selectedPupil = [Pupil]()
+    
+    var isSelected = -1
+    
+    var selectedTargetItem = Target()
+   
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       
-        
-
         
         //MARK: Target TableView
         self.targetTableView.register(UINib(nibName: "TargetCell", bundle: Bundle.main), forCellReuseIdentifier: "TargetCell")
-        setTableViewDesign(self.targetTableView)
+        Helper.setTableViewDesign(self.targetTableView)
         
         //MARK:Dropdown Pupil TableView
         self.searchPupilTableView.register(UINib(nibName: "AutoCompleteCell", bundle: Bundle.main), forCellReuseIdentifier: "AutoCompleteCell")
+         Helper.setTableViewDesign(self.searchPupilTableView)
         
-        setTableViewDesign(self.searchPupilTableView)
-        
-        
+        //MARK: Dropdown Target TableView
+        self.searchTargetTableView.register(UINib(nibName: "AutoCompleteCell", bundle: Bundle.main), forCellReuseIdentifier: "AutoCompleteCell")
+        Helper.setTableViewDesign(self.searchTargetTableView)
+       
         ///Dropdown Table people List
-        self.pupilList = ["Pupil-1","Pupil-2","Pupil-3","Pupil-4","Pupil-5"]
+      //  self.pupilList = ["Pupil-1","Pupil-2","Pupil-3","Pupil-4","Pupil-5"]
+
+        searchPupilTableView.isHidden = true
+        searchTargetTableView.isHidden = true
+        
+        
+        
         
     }
 
-    
-    func setTableViewDesign(_ tableView: UITableView){
-        
-        tableView.layer.shadowColor = UIColor.black.cgColor
-        tableView.layer.shadowOffset = CGSize(width: 0, height: 4)
-        tableView.layer.shadowOpacity = 0.2
-        
-        tableView.layer.borderColor = UIColor.lightGray.cgColor
-        tableView.layer.cornerRadius = 1.0
-        tableView.layer.borderWidth = 1.0
-        tableView.layer.cornerRadius = 2.0
-        tableView.layer.masksToBounds = true
-        
-        if tableView.tag == 0 {
-            tableView.isHidden = true
-        }
-        
-    }
-    
-
+ 
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -78,53 +85,7 @@ class TargetVC: UIViewController {
     
 }
 
-extension TargetVC: UIGestureRecognizerDelegate {
-    
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        
-        let view = touch.view!
-        if view.isDescendant(of: searchPupilTableView) {
-            return false
-        }
-        return true
-    }
-    
-}
 
-//MARK: TextFieldDelegate
-extension TargetVC : UITextFieldDelegate{
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        if textField == txtSearchPupil {
-            searchPupilTableView.isHidden = false
-             let subString = (textField.text! as NSString).replacingCharacters(in: range, with: string)
-            
-            if !subString.isEmpty {
-               
-                //get Suggestion
-                AutoComplete.sharedInstance.pupilName = self.pupilList
-                let pupilNameSuggestion = AutoComplete.sharedInstance.pupilNameSuggestionFromPupilName(subString)
-            
-                //adjust height of dropdown tableview
-                if pupilNameSuggestion.count < 3 {
-                    tableHeightPupil.constant = CGFloat(pupilNameSuggestion.count * 45)
-                }else{
-                    tableHeightPupil.constant = CGFloat(3 * 45)
-                }
-                
-                searchPupilTableView.reloadData()
-                
-            }else{
-                
-                 searchPupilTableView.isHidden = true
-            
-            }
-        }
-        return true
-    }
-
-}
 
 
 //MARK: Button Action
@@ -141,39 +102,69 @@ extension TargetVC{
     }
 
     @IBAction func btnAddTargets(_ sender: UIButton) {
-        self.currentTxtField?.resignFirstResponder()
-        //new item add garda cell item add garne and reload table data
+
+        if Helper.isNotBlank(txtAddTarget.text!){
+        var params = [String: AnyObject]()
+        params["club_id"] = Helper.getUserInfo()?.club_id as AnyObject
+        params["class_id"] = UserDefaults.standard.value(forKey: "class_id") as AnyObject?
+        params["start_date"] = "2016-10-10 20:00:00" as AnyObject?
+        params["end_date"] = "2017-10-10 20:00:00" as AnyObject?
+        params["title"] = txtAddTarget.text! as AnyObject?
         
-        let msg = validateTextField()
-        
-        if msg.isEmpty {
-            targetList.append(txtAddTarget.text!)
-            targetTableView.reloadData()
-            txtAddTarget.text = ""
-        }else{
-        
-            self.showAlertOnMainThread(msg)
+            addTargets(params)
+        }
+        else{
+            self.showAlertOnMainThread("Please enter the target.")
         }
         
+    }
+    
+ 
+    
+    
+    @IBAction func selectPupilButtonTapped(_ sender: UIButton) {
+        //show pupil dropdownList
         
+       searchPupilTableView.isHidden = !searchPupilTableView.isHidden
+        if !searchPupilTableView.isHidden{
+            searchTargetTableView.isHidden = true
+            getPupil()
+           
+        }
         
     }
+    
+    @IBAction func selectTargetButtonTapped(_ sender: UIButton) {
+        //show target dropdownList
+        searchTargetTableView.isHidden = !searchTargetTableView.isHidden
+        if !searchTargetTableView.isHidden{
+             searchPupilTableView.isHidden = true
+             getTargets()
+        }
+        
+    }
+    
     
     @IBAction func btnSearchPeople(_ sender: UIButton) {
+        //get target of selected pupil
         
-        self.currentTxtField?.resignFirstResponder()
-        let msg = validateTextField()
-        
-        if msg.isEmpty {
-                targetTableView.reloadData()
+        isSelected = 0
+        if !Helper.isSameText(txtSearchPupil.text!, secondStr: "Select Pupil"){
             
-        }else{
-            
-            self.showAlertOnMainThread(msg)
+            getTargetOfPupil()
         }
-
+        
     }
     
+    
+    @IBAction func buttonSearchTargetTapped(_ sender: UIButton) {
+        //get pupil of selected target
+        isSelected = 1
+        if !Helper.isSameText(txtSearchTarget.text!, secondStr: "Select Target"){
+            
+            getPupilOfTarget()
+        }
+    }
     
     //MARK: Validate TextField
     func validateTextField()->(String){
@@ -195,10 +186,24 @@ extension TargetVC : UITableViewDelegate{
 
     //MARK:Table View Deligates
     func  tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView.tag == 0 {
+        switch tableView.tag {
+        
+        case TableViewTag.pupil.rawValue:
             return pupilList.count
-        }else{
+        
+        case TableViewTag.targets.rawValue:
             return targetList.count
+        
+        case TableViewTag.targetsOrPupil.rawValue:
+            if isSelected > -1{
+                return isSelected == 0 ? selectedPupil.count : selectedTarget.count
+                }
+            else{
+                return 0
+            }
+        
+        default:
+            return 0 
         }
     }
     
@@ -211,23 +216,50 @@ extension TargetVC : UITableViewDelegate{
         
         if tableView.tag == 0 {
            let cell = tableView.dequeueReusableCell(withIdentifier: "AutoCompleteCell") as! AutoCompleteCell
-            cell.lblPupil.text = pupilList[indexPath.row]
-            return cell
-        }else{
-           let  cell = tableView.dequeueReusableCell(withIdentifier: "TargetCell") as! TargetCell
-             cell.targetLabel.text = targetList[indexPath.row]
+            cell.lblPupil.text = pupilList[indexPath.row].firstName
             return cell
         }
-        
-        
+            
+        else if tableView.tag == 1{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AutoCompleteCell") as! AutoCompleteCell
+            cell.lblPupil.text = targetList[indexPath.row].title
+            return cell
+        }
+            
+        else{
+            let  cell = tableView.dequeueReusableCell(withIdentifier: "TargetCell") as! TargetCell
+            cell.targetLabel.text = isSelected == 0 ? selectedPupil[indexPath.row].first_name : selectedTarget[indexPath.row].title
+            return cell
+          
+        }
     }
+        
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView.tag == 0 {
-            txtSearchPupil.text = pupilList[indexPath.row]
+        
+        switch tableView.tag {
+        
+        case TableViewTag.pupil.rawValue:
+            txtSearchPupil.text = pupilList[indexPath.row].firstName
+            
             searchPupilTableView.isHidden = true
-            self.currentTxtField?.resignFirstResponder()
+            
+        
+        case TableViewTag.targets.rawValue:
+            txtSearchTarget.text = targetList[indexPath.row].title
+            selectedTargetItem = targetList[indexPath.row]
+            searchTargetTableView.isHidden = true
+            
+        case TableViewTag.targetsOrPupil.rawValue:
+            //change status
+            
+            break
+            
+        default:
+            break
         }
+    
     }
     
 
@@ -240,10 +272,341 @@ extension TargetVC : UITableViewDelegate{
 //MARK: Web Service Helper Method
 extension TargetVC{
 
+    //add target
+    func addTargets(_ params: [String: AnyObject]){
+        
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        WebServiceHelper.addTarget(params, onCompletion: {[weak self]
+            response in
+            MBProgressHUD.hideAllHUDs(for: self?.view, animated: true)
+            
+            switch response.result {
+                
+            case .success(let responseData) :
+                
+                if let status_code = response.response?.statusCode {
+                    
+                    
+                    switch status_code {
+                        
+                    case 200 : //Successful Login
+                        
+                       self?.showAlertOnMainThread("Target added successfully.")
+                       self?.txtAddTarget.text = ""
+                    case 301: // Login Unsuccessful
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey:"error") as! String)
+                        
+                    case 500: // Cannot Create Token
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey:"error") as! String)
+                    default:
+                        self?.showAlertOnMainThread(kServerError)
+                        
+                    }
+                    
+                }
+                
+            case.failure(let error):
+                self?.showAlertOnMainThread(error.localizedDescription)
+                
+            }
+            
+            
+            
+        })
+        
+    }
+
+    //get target
+    func getTargets(){
+        var params = [String: AnyObject]()
+        params["club_id"] = Helper.getUserInfo()?.club_id as AnyObject
+        params["class_id"] = UserDefaults.standard.value(forKey: "class_id") as AnyObject?
+        
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        WebServiceHelper.getTargets(params, onCompletion: {[weak self]
+            response in
+            MBProgressHUD.hideAllHUDs(for: self?.view, animated: true)
+            
+            switch response.result {
+                
+            case .success(let responseData) :
+                
+                if let status_code = response.response?.statusCode {
+                    
+                    
+                    switch status_code {
+                        
+                    case 200 : //Successful Login
+                        let targetArray = (responseData as AnyObject).value(forKey:"targets") as! [AnyObject]
+                        self?.setTarget(data: targetArray)
+                        
+                        self?.txtAddTarget.text = ""
+                    case 301: // Login Unsuccessful
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey:"error") as! String)
+                        
+                    case 500: // Cannot Create Token
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey:"error") as! String)
+                    default:
+                        self?.showAlertOnMainThread(kServerError)
+                        
+                    }
+                    
+                }
+                
+            case.failure(let error):
+                self?.showAlertOnMainThread(error.localizedDescription)
+                
+            }
+            
+            
+            
+        })
+        
+    }
+
+
+    
+    //get pupil
+    func getPupil(){
+        var params = [String: AnyObject]()
+        params["class_id"] = UserDefaults.standard.value(forKey: "class_id") as AnyObject?
+        
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        WebServiceHelper.getAllChilds(params, onCompletion: {[weak self]
+            response in
+            MBProgressHUD.hideAllHUDs(for: self?.view, animated: true)
+            
+            switch response.result {
+                
+            case .success(let responseData) :
+                
+                if let status_code = response.response?.statusCode {
+                    
+                    
+                    switch status_code {
+                        
+                    case 200 : //Successful Login
+                        let pupilArray = (responseData as AnyObject).value(forKey:"childs") as! [AnyObject]
+                        self?.setPupil(data: pupilArray)
+                        
+                        self?.txtAddTarget.text = ""
+                    case 301: // Login Unsuccessful
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey:"error") as! String)
+                        
+                    case 500: // Cannot Create Token
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey:"error") as! String)
+                    default:
+                        self?.showAlertOnMainThread(kServerError)
+                        
+                    }
+                    
+                }
+                
+            case.failure(let error):
+                self?.showAlertOnMainThread(error.localizedDescription)
+                
+            }
+            
+            
+            
+        })
+        
+    }
+
     
     
+    
+    //get pupil of target
+    func getPupilOfTarget(){
+        
+        var params = [String: AnyObject]()
+        
+        params["club_id"] = Helper.getUserInfo()?.club_id as AnyObject
+        params["class_id"] = UserDefaults.standard.value(forKey: "class_id") as AnyObject?
+        params["target_id"] = selectedTargetItem.id! as AnyObject?
+        
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        WebServiceHelper.getPupilOfTarget(params, onCompletion: {[weak self]
+            response in
+            MBProgressHUD.hideAllHUDs(for: self?.view, animated: true)
+            
+            switch response.result {
+                
+            case .success(let responseData) :
+                
+                if let status_code = response.response?.statusCode {
+                    
+                    
+                    switch status_code {
+                        
+                    case 200 : //Successful Login
+                        let targetArray = (responseData as AnyObject).value(forKey:"pupils") as! [AnyObject]
+                        self?.lblTargetCompleted.text = "Target Completed: " + ((responseData as AnyObject).value(forKey:"target_completes") as? String)!
+
+                        self?.setTargetOfPupil(data: targetArray)
+                        
+                        self?.txtAddTarget.text = ""
+                    case 301: // Login Unsuccessful
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey:"error") as! String)
+                        
+                    case 500: // Cannot Create Token
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey:"error") as! String)
+                    default:
+                        self?.showAlertOnMainThread(kServerError)
+                        
+                    }
+                    
+                }
+                
+            case.failure(let error):
+                self?.showAlertOnMainThread(error.localizedDescription)
+                
+            }
+            
+            
+            
+        })
+        
+    }
+    
+    
+    
+    
+    //get pupil of target
+    func getTargetOfPupil(){
+        
+        var params = [String: AnyObject]()
+        
+        params["club_id"] = Helper.getUserInfo()?.club_id as AnyObject
+        params["class_id"] = UserDefaults.standard.value(forKey: "class_id") as AnyObject?
+        params["target_id"] = txtSearchTarget.text as AnyObject?
+        
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        WebServiceHelper.getTargetOfPupil(params, onCompletion: {[weak self]
+            response in
+            MBProgressHUD.hideAllHUDs(for: self?.view, animated: true)
+            
+            switch response.result {
+                
+            case .success(let responseData) :
+                
+                if let status_code = response.response?.statusCode {
+                    
+                    
+                    switch status_code {
+                        
+                    case 200 : //Successful Login
+                        let pupilArray = (responseData as AnyObject).value(forKey:"targets") as! [AnyObject]
+                        self?.lblTargetCompleted.text = "Target Completed: " + ((responseData as AnyObject).value(forKey:"target_completes") as? String)!
+                        self?.lblAttendance.text =  "Attendance: " + ((responseData as AnyObject).value(forKey:"attendances") as? String)!
+                        self?.setPupilOfTarget(data: pupilArray)
+                        
+                        self?.txtAddTarget.text = ""
+                    case 301: // Login Unsuccessful
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey:"error") as! String)
+                        
+                    case 500: // Cannot Create Token
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey:"error") as! String)
+                    default:
+                        self?.showAlertOnMainThread(kServerError)
+                        
+                    }
+                    
+                }
+                
+            case.failure(let error):
+                self?.showAlertOnMainThread(error.localizedDescription)
+                
+            }
+            
+            
+            
+        })
+        
+    }
 
 }
 
 
+
+//MARK: VIEW Controller Helper Method
+extension TargetVC{
+
+    //set target list
+    func setTarget(data:[AnyObject]){
+        targetList.removeAll()
+        for singleItem in data{
+            let item = singleItem as! [String: AnyObject]
+            let singleTarget = Target()
+            singleTarget.id = item["id"] as? Int
+            singleTarget.title = item["title"] as? String
+            
+            targetList.append(singleTarget)
+        }
+       
+        searchTargetTableView.reloadData()
+        
+    }
+    
+    //set pupil list
+    func setPupil(data:[AnyObject]){
+        pupilList.removeAll()
+        for singleItem in data{
+            let item = singleItem as! [String: AnyObject]
+            let singleChild = Child()
+            singleChild.id = item["id"] as? Int
+            singleChild.class_id = item["class_id"] as? String
+            singleChild.club_id = item["club_id"] as? String
+            singleChild.parent_id = item["parent_id"] as? String
+            singleChild.firstName = item["first_name"] as? String
+            singleChild.lastName = item["last_name"] as? String
+            singleChild.class_name = item["class_name"] as? String
+            
+            
+            
+            pupilList.append(singleChild)
+        }
+        
+        searchPupilTableView.reloadData()
+        
+    }
+    
+    //set targets of pupil
+    func setTargetOfPupil(data:[AnyObject]){
+        selectedTarget.removeAll()
+        for singleItem in data{
+            let item = singleItem as! [String: AnyObject]
+            let singleTarget = Target()
+            singleTarget.id = item["id"] as? Int
+            singleTarget.title = item["title"] as? String
+            singleTarget.status = item["status"] as? String
+            
+            selectedTarget.append(singleTarget)
+        }
+        
+        targetTableView.reloadData()
+        
+    }
+    
+    //set pupil of target
+    func setPupilOfTarget(data:[AnyObject]){
+        selectedPupil.removeAll()
+        for singleItem in data{
+            let item = singleItem as! [String: AnyObject]
+            let singlePupil = Pupil()
+            singlePupil.child_id = item["child_id"] as? String
+            singlePupil.status = item["status"] as? String
+            singlePupil.first_name = item["first_name"] as? String
+            singlePupil.last_name = item["last_name"] as? String
+            singlePupil.title = item["title"] as? String
+            singlePupil.child_id = item["child_id"] as? String
+            
+            selectedPupil.append(singlePupil)
+        }
+        
+        targetTableView.reloadData()
+        
+    }
+    
+}
 
