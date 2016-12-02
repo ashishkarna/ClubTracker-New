@@ -237,5 +237,76 @@ extension LoginViewController{
     
     
 
+    
+    //Device Registration
+    func addeUpdateDeviceInfo(){
+        
+        var params = [String : AnyObject]()
+        params["platform"] = "ios" as AnyObject?
+        params["device_token"] = 
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        WebServiceHelper.addUpdateDeviceInfo(params, onCompletion: { [weak self]
+            response in
+            
+            debugPrint(response)
+            MBProgressHUD.hideAllHUDs(for: self?.view, animated: true)
+            
+            switch response.result {
+                
+            case .success(let responseData) :
+                
+                if let status_code = response.response?.statusCode {
+                    
+                    
+                    switch status_code {
+                        
+                    case 200 : //Successful Login
+                        
+                        if let userData = responseData as? [String: AnyObject] {
+                            let user = userData["user"] as? [String: AnyObject]
+                            let club = userData["club"] as? [String:AnyObject]
+                            let profile = userData["profile"] as? [String: AnyObject]
+                            UserDefaults.standard.setValue(club!["logo_link"], forKey: "clubLogo")
+                            UserDefaults.standard.setValue(profile!["club_id"],forKey:"club_id")
+                            UserDefaults.standard.setValue(profile?["user_id"], forKey: "user_id")
+                            let userInfo = UserInfo()
+                            
+                            userInfo.user_id = profile?["user_id"] as? String
+                            userInfo.club_id = profile?["club_id"] as? String
+                            userInfo.first_name = profile?["first_name"] as? String
+                            userInfo.avatar_link = profile?["avatar_link"] as? String
+                            userInfo.isTeacher = user?["user_type"] as! String == "3" ? true : false
+                            Helper.setUserInfo(userinfo: userInfo)
+                            //go to next page
+                            self!.gotoNextPage()
+                        }
+                            
+                        else{
+                            self?.showAlertOnMainThread(kServerError)
+                        }
+                        
+                    case 401: // Login Unsuccessful
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey:"error") as! String)
+                        
+                    case 500: // Internal Server Error
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey:"error") as! String)
+                        
+                    default:
+                        self?.showAlertOnMainThread(kServerError)
+                        
+                    }
+                    
+                }
+                
+            case.failure(let error):
+                self?.showAlertOnMainThread(error.localizedDescription)
+                
+            }
+        })
+        
+    }
+
+    
+    
 
 }

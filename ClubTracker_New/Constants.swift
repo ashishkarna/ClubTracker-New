@@ -86,7 +86,8 @@ let kchangeTargetStatusOfChildUrl = DomainName + "changeTargetStatusOfChild"
 
 
 
-
+//MARK: Device Register
+let kaddUpdateDeviceInfoUrl = DomainName + "addUpdateDeviceInfo"
 
 
 

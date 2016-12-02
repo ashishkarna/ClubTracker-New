@@ -62,6 +62,32 @@ class Helper: NSObject{
         
     }
     
+    
+    static func setDeviceToken(token: String?) {
+        
+        if let deviceToken = token {
+            
+            let data = NSKeyedArchiver.archivedData(withRootObject: deviceToken)
+            UserDefaults.standard.setValue(data, forKey: "DEVICETOKEN")
+            UserDefaults.standard.synchronize()
+            
+        }
+        
+    }
+    
+    static func getDeviceToken() -> String? {
+        
+        if let data = UserDefaults.standard.value(forKey: "DEVICETOKEN") {
+            return NSKeyedUnarchiver.unarchiveObject(with: (data as! NSData) as Data) as? String
+        }
+        
+        return nil
+        
+    }
+    
+    
+    
+    
     //MARK: UserInfo
     static func setUserInfo( userinfo: UserInfo?) {
         

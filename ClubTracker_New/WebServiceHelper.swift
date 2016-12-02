@@ -258,5 +258,13 @@ extension WebServiceHelper{
 }
 
 
+//MARK: DEVICE REGISTRATION
+extension WebServiceHelper{
+    static func addUpdateDeviceInfo(_ params: [String : AnyObject]?,onCompletion:@escaping (DataResponse<Any>)->()){
+        self.makeRequest(.post, url:kaddUpdateDeviceInfoUrl, params:params,header: getHeaders(), onCompletion: onCompletion)
+    }
 
+    
+
+}
 
