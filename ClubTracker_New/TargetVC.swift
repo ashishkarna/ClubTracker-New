@@ -47,6 +47,7 @@ class TargetVC: UIViewController {
     var isSelected = -1
     
     var selectedTargetItem = Target()
+    var selectedChildItem = Child()
    
     
     
@@ -178,6 +179,46 @@ extension TargetVC{
         return ""
     
     }
+    
+    func buttonCompleteTapped(_ sender:UIButton){
+        // call change status  and reload table
+        
+        var params = [String: AnyObject]()
+        
+        if isSelected == 0{
+            params["child_id"] = selectedTarget[sender.tag].child_id as AnyObject?
+         params["target_id"] = selectedTarget[sender.tag].target_id as AnyObject?
+            if Int(selectedTarget[sender.tag].status!)! == 0{
+                params["status"] = "1" as AnyObject?
+            }
+            else{
+                params["status"] = "0" as AnyObject?
+            }
+
+        }else{
+        params["child_id"] = selectedPupil[sender.tag].child_id as AnyObject?
+          params["target_id"] = selectedPupil[sender.tag].target_id as AnyObject?
+            if Int(selectedPupil[sender.tag].status!)! == 0{
+                params["status"] = "1" as AnyObject?
+            }
+            else{
+                params["status"] = "0" as AnyObject?
+            }
+
+        }
+        params["club_id"] = Helper.getUserInfo()?.club_id as AnyObject
+        params["class_id"] = UserDefaults.standard.value(forKey: "class_id") as AnyObject?
+        
+        
+        print(selectedPupil)
+        
+        
+        
+               print(params)
+        changeTargetStatus(params: params)
+        
+        
+    }
   
 }
 
@@ -196,7 +237,7 @@ extension TargetVC : UITableViewDelegate{
         
         case TableViewTag.targetsOrPupil.rawValue:
             if isSelected > -1{
-                return isSelected == 0 ? selectedPupil.count : selectedTarget.count
+                return isSelected == 1 ? selectedPupil.count : selectedTarget.count
                 }
             else{
                 return 0
@@ -228,8 +269,22 @@ extension TargetVC : UITableViewDelegate{
             
         else{
             let  cell = tableView.dequeueReusableCell(withIdentifier: "TargetCell") as! TargetCell
-            cell.targetLabel.text = isSelected == 0 ? selectedPupil[indexPath.row].first_name : selectedTarget[indexPath.row].title
-            return cell
+            cell.targetLabel.text = isSelected == 1 ? selectedPupil[indexPath.row].first_name : selectedTarget[indexPath.row].title
+           
+            
+                cell.btnComplete.tag = indexPath.row
+                cell.btnComplete.addTarget(self, action: #selector(buttonCompleteTapped), for: .touchUpInside)
+            var status : Int?
+            
+            if isSelected == 1{
+                    status = Int(selectedPupil[indexPath.row].status!)
+            
+            }else{
+                status = Int(selectedTarget[indexPath.row].status!)
+            
+            }
+                cell.customizeCompleteButton(status: status!)
+                        return cell
           
         }
     }
@@ -242,7 +297,7 @@ extension TargetVC : UITableViewDelegate{
         
         case TableViewTag.pupil.rawValue:
             txtSearchPupil.text = pupilList[indexPath.row].firstName
-            
+            selectedChildItem = pupilList[indexPath.row]
             searchPupilTableView.isHidden = true
             
         
@@ -253,7 +308,7 @@ extension TargetVC : UITableViewDelegate{
             
         case TableViewTag.targetsOrPupil.rawValue:
             //change status
-            
+         
             break
             
         default:
@@ -423,11 +478,12 @@ extension TargetVC{
         
         params["club_id"] = Helper.getUserInfo()?.club_id as AnyObject
         params["class_id"] = UserDefaults.standard.value(forKey: "class_id") as AnyObject?
-        params["target_id"] = selectedTargetItem.id! as AnyObject?
-        
+        params["target_id"] = selectedTargetItem.target_id! as AnyObject?
+        print(params)
         MBProgressHUD.showAdded(to: self.view, animated: true)
         WebServiceHelper.getPupilOfTarget(params, onCompletion: {[weak self]
             response in
+            debugPrint(response)
             MBProgressHUD.hideAllHUDs(for: self?.view, animated: true)
             
             switch response.result {
@@ -440,12 +496,18 @@ extension TargetVC{
                     switch status_code {
                         
                     case 200 : //Successful Login
-                        let targetArray = (responseData as AnyObject).value(forKey:"pupils") as! [AnyObject]
-                        self?.lblTargetCompleted.text = "Target Completed: " + ((responseData as AnyObject).value(forKey:"target_completes") as? String)!
-
-                        self?.setTargetOfPupil(data: targetArray)
                         
-                        self?.txtAddTarget.text = ""
+                        let  result = ((responseData as! [String: AnyObject])["response"] as! [String: AnyObject])["pupils"] as! [AnyObject]
+                        
+                        self?.lblTargetCompleted.text = "Target Completed: " + (((responseData as! [String: AnyObject])["response"] as! [String: AnyObject])["target_completes"] as! String)
+                        
+                        self?.setPupilOfTarget(data: result)
+                            self?.txtAddTarget.text = ""
+                            self?.txtSearchPupil.text = ""
+                        self?.lblAttendance.isHidden = true
+                       
+                        
+                       
                     case 301: // Login Unsuccessful
                         self?.showAlertOnMainThread((responseData as AnyObject).value(forKey:"error") as! String)
                         
@@ -479,13 +541,13 @@ extension TargetVC{
         
         params["club_id"] = Helper.getUserInfo()?.club_id as AnyObject
         params["class_id"] = UserDefaults.standard.value(forKey: "class_id") as AnyObject?
-        params["target_id"] = txtSearchTarget.text as AnyObject?
+        params["child_id"] = selectedChildItem.id as AnyObject?
         
         MBProgressHUD.showAdded(to: self.view, animated: true)
         WebServiceHelper.getTargetOfPupil(params, onCompletion: {[weak self]
             response in
             MBProgressHUD.hideAllHUDs(for: self?.view, animated: true)
-            
+            debugPrint(response)
             switch response.result {
                 
             case .success(let responseData) :
@@ -496,12 +558,69 @@ extension TargetVC{
                     switch status_code {
                         
                     case 200 : //Successful Login
-                        let pupilArray = (responseData as AnyObject).value(forKey:"targets") as! [AnyObject]
-                        self?.lblTargetCompleted.text = "Target Completed: " + ((responseData as AnyObject).value(forKey:"target_completes") as? String)!
-                        self?.lblAttendance.text =  "Attendance: " + ((responseData as AnyObject).value(forKey:"attendances") as? String)!
-                        self?.setPupilOfTarget(data: pupilArray)
+                        if  let data = responseData as? [String: AnyObject]{
+                            let result = data["response"] as? [String: AnyObject]
+                            let pupilArray = result?["targets"] as! [AnyObject]
+                            self?.lblTargetCompleted.text = "Target Completed: " + (result?["target_completes"] as! String)
+                            self?.lblAttendance.text =  "Attendance: " + (result?["attendances"] as! String)
+                            self?.setTargetOfPupil(data: pupilArray)
+                            self?.lblAttendance.isHidden = false
+                            self?.txtAddTarget.text = ""
+
+                        }
+                        case 301: // Login Unsuccessful
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey:"error") as! String)
                         
-                        self?.txtAddTarget.text = ""
+                    case 500: // Cannot Create Token
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey:"error") as! String)
+                    default:
+                        self?.showAlertOnMainThread(kServerError)
+                        
+                    }
+                    
+                }
+                
+            case.failure(let error):
+                self?.showAlertOnMainThread(error.localizedDescription)
+                
+            }
+            
+            
+            
+        })
+        
+    }
+    
+    
+    
+    
+    //change status of target
+    func changeTargetStatus(params:[String: AnyObject]){
+        
+              
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        WebServiceHelper.changeTargetStatusOfChild(params, onCompletion: {[weak self]
+            response in
+            MBProgressHUD.hideAllHUDs(for: self?.view, animated: true)
+            debugPrint(response)
+            switch response.result {
+                
+            case .success(let responseData) :
+                
+                if let status_code = response.response?.statusCode {
+                    
+                    
+                    switch status_code {
+                        
+                    case 200 : //Successful Login
+                        if self?.isSelected == 1 {
+                            self?.getPupilOfTarget()
+                        }
+                        else{
+                            self?.getTargetOfPupil()
+                        }
+                        self?.showAlertOnMainThread("Status Changed Successfully")
+                        
                     case 301: // Login Unsuccessful
                         self?.showAlertOnMainThread((responseData as AnyObject).value(forKey:"error") as! String)
                         
@@ -538,7 +657,7 @@ extension TargetVC{
         for singleItem in data{
             let item = singleItem as! [String: AnyObject]
             let singleTarget = Target()
-            singleTarget.id = item["id"] as? Int
+            singleTarget.target_id = String(item["id"] as! Int)
             singleTarget.title = item["title"] as? String
             
             targetList.append(singleTarget)
@@ -577,9 +696,10 @@ extension TargetVC{
         for singleItem in data{
             let item = singleItem as! [String: AnyObject]
             let singleTarget = Target()
-            singleTarget.id = item["id"] as? Int
+            singleTarget.target_id = item["target_id"] as? String
             singleTarget.title = item["title"] as? String
             singleTarget.status = item["status"] as? String
+            singleTarget.child_id = item["child_id"] as? String
             
             selectedTarget.append(singleTarget)
         }
@@ -600,6 +720,7 @@ extension TargetVC{
             singlePupil.last_name = item["last_name"] as? String
             singlePupil.title = item["title"] as? String
             singlePupil.child_id = item["child_id"] as? String
+            singlePupil.target_id = item["target_id"] as? String
             
             selectedPupil.append(singlePupil)
         }

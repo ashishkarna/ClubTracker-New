@@ -176,6 +176,29 @@ class DiaryModel{
     
 }
 
+
+
+
+//MARK: TARGET Section
+class Target{
+    var target_id: String?
+    var title: String?
+    var status: String?
+    var child_id: String?
+}
+
+
+class Pupil{
+    var target_id: String?
+    var status: String?
+    var first_name: String?
+    var last_name: String?
+    var title: String?
+    var child_id:String?
+
+}
+
+
 //MARK: shop  item list
 class ShopItemList{
     
@@ -194,29 +217,15 @@ class shopItemDetails{
     var  price : Double?
     var image: String?
     var charge: Double?
-    var small: Int?
-    var medium: Int?
-    var large: Int?
-    var available_options: String?
+    var isDelivery: Int?
+    var options = [Option]()
     var details: String?
 }
 
-
-//MARK: TARGET Section
-class Target{
-    var id: Int?
-    var title: String?
-    var status: String?
-    var child_id: String?
+class Option{
+    var id:Int?
+    var title:String?
+    var quantity:String?
 }
 
 
-class Pupil{
-    var target_id: String?
-    var status: String?
-    var first_name: String?
-    var last_name: String?
-    var title: String?
-    var child_id:String?
-
-}

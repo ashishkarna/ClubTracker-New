@@ -268,3 +268,120 @@ extension WebServiceHelper{
 
 }
 
+
+//MARK: SHOP SECTION
+
+extension WebServiceHelper{
+    static func getAllShopItems(_ params: [String : AnyObject]?,onCompletion:@escaping (DataResponse<Any>)->()){
+        self.makeRequest(.get, url:kGetAllShopItemURL, params: nil,header: getHeaders(), onCompletion: onCompletion)
+    }
+    static func removeHopItem(_ params: [String : AnyObject]?,onCompletion:@escaping (DataResponse<Any>)->()){
+        self.makeRequest(.post, url:kRemoveShopItemURL, params: params,header: getHeaders(), onCompletion: onCompletion)
+    }
+    
+    static func getDetailShopItems(_ params: [String : AnyObject]?,onCompletion:@escaping (DataResponse<Any>)->()){
+        self.makeRequest(.post, url:kgetShopItemDetailURL, params: params,header: getHeaders(), onCompletion: onCompletion)
+    }
+    
+    static func updateShopItem(selectedImage:UIImage?, params: [String : AnyObject]?, onCompletion: @escaping (DataResponse<Any>) -> ()) {
+        let image = selectedImage
+        let imageData = UIImageJPEGRepresentation(image!, 0.6)! as Data
+        let URL = try! URLRequest(url: kUpdateShopItemURL, method: .post, headers: getHeaders())
+        Alamofire.upload(
+            multipartFormData: { multipartFormData in
+                
+                multipartFormData.append(imageData, withName: "image", mimeType: "image/jpg")
+                
+                for (key, value) in params! {
+                    if(key == "options"){
+                        let data  = value as! [[String:AnyObject]]
+                        do{
+                            let jsonData =  try JSONSerialization.data(withJSONObject: data, options:.prettyPrinted)
+                            multipartFormData.append(jsonData , withName: "options")
+                        }
+                        catch let e as NSError{
+                            print(e)
+                        }
+                    }
+                    else{
+                        
+                        multipartFormData.append((value as! String).data(using: .utf8)!, withName: key)
+                    }
+                }
+                print(multipartFormData)
+        },
+            with: URL,
+            encodingCompletion: { encodingResult in
+                
+                switch encodingResult {
+                    
+                case .success(let upload, _, _):
+                    upload.responseJSON(completionHandler: onCompletion)
+                    break
+                default:
+                    break
+                    
+                    
+                }//switch
+                
+        }
+        )
+        
+    }
+    
+    
+    static func addShopItem(selectedImage:UIImage?, params: [String : AnyObject]?, onCompletion: @escaping (DataResponse<Any>) -> ()) {
+        let image = selectedImage
+        let imageData = UIImageJPEGRepresentation(image!, 0.6)! as Data
+        let URL = try! URLRequest(url: kAddShopItemURL, method: .post, headers: getHeaders())
+        Alamofire.upload(
+            multipartFormData: { multipartFormData in
+                
+                multipartFormData.append(imageData, withName: "image", mimeType: "image/jpg")
+                
+                for (key, value) in params! {
+                    if(key == "options"){
+                        let data  = value as! [[String:AnyObject]]
+                        do{
+                            let jsonData =  try JSONSerialization.data(withJSONObject: data, options:.prettyPrinted)
+                            multipartFormData.append(jsonData , withName: "options")
+                        }
+                        catch let e as NSError{
+                            print(e)
+                        }
+                    }
+                    else{
+                        
+                        multipartFormData.append((value as! String).data(using: .utf8)!, withName: key)
+                    }
+                }
+                print(multipartFormData)
+        },
+            with: URL,
+            encodingCompletion: { encodingResult in
+                
+                switch encodingResult {
+                    
+                case .success(let upload, _, _):
+                    upload.responseJSON(completionHandler: onCompletion)
+                    break
+                default:
+                    break
+                    
+                    
+                }//switch
+                
+        }
+        )
+        
+    }
+    
+    static func addItem(_ params: [String : AnyObject]?,onCompletion:@escaping (DataResponse<Any>)->()){
+        
+        
+        self.makeRequest(.post, url:kAddShopItemURL, params: params,header: getHeaders(), onCompletion: onCompletion)
+    }
+    
+    
+}
+

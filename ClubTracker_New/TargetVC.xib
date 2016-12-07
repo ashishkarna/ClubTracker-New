@@ -38,7 +38,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Targets" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPx-62-D3A">
-                            <rect key="frame" x="128" y="34" width="64" height="21"/>
+                            <rect key="frame" x="128.5" y="34" width="63.5" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="SOC-Ia-a8v"/>
                             </constraints>
@@ -64,21 +64,6 @@
                                 <action selector="btnBack:" destination="-1" eventType="touchUpInside" id="f9O-J7-5ZY"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="isH-ej-Fy1">
-                            <rect key="frame" x="249" y="34" width="63" height="30"/>
-                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="30" id="Qwd-jH-qJU"/>
-                                <constraint firstAttribute="width" constant="63" id="dnM-ni-fNO"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
-                            <state key="normal" title="Save">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </state>
-                            <connections>
-                                <action selector="btnSave:" destination="-1" eventType="touchUpInside" id="IhW-xY-zrO"/>
-                            </connections>
-                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.6705882353" green="0.76470588240000004" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -87,9 +72,7 @@
                         <constraint firstAttribute="trailing" secondItem="00F-wv-AyX" secondAttribute="trailing" id="B5q-xR-2R8"/>
                         <constraint firstItem="27t-MC-g25" firstAttribute="leading" secondItem="XDO-3G-iM1" secondAttribute="leading" id="FIu-CH-acw"/>
                         <constraint firstAttribute="height" constant="70" id="Pem-Yx-CA1"/>
-                        <constraint firstItem="isH-ej-Fy1" firstAttribute="centerY" secondItem="jPx-62-D3A" secondAttribute="centerY" constant="4.5" id="QdT-3q-Dfo"/>
                         <constraint firstAttribute="bottom" secondItem="00F-wv-AyX" secondAttribute="bottom" id="gic-bK-dLg"/>
-                        <constraint firstAttribute="trailing" secondItem="isH-ej-Fy1" secondAttribute="trailing" constant="8" id="h4j-UI-LjY"/>
                         <constraint firstItem="00F-wv-AyX" firstAttribute="leading" secondItem="XDO-3G-iM1" secondAttribute="leading" id="mNX-7b-5yZ"/>
                         <constraint firstItem="27t-MC-g25" firstAttribute="centerY" secondItem="jPx-62-D3A" secondAttribute="centerY" constant="3" id="v8y-dG-fHt"/>
                     </constraints>

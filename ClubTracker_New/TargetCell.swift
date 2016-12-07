@@ -12,6 +12,10 @@ class TargetCell: UITableViewCell {
     
     @IBOutlet weak var targetLabel: UILabel!
     
+    @IBOutlet weak var btnComplete: UIButton!
+    
+    var target_id : String?
+    var Status: Int?
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -21,6 +25,13 @@ class TargetCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
 
-    @IBAction func btnComplete(_ sender: UIButton) {
+    func customizeCompleteButton(status:Int){
+        if status == 1{
+            btnComplete.backgroundColor = appColor
+        
+        }
+        else{
+            btnComplete.backgroundColor = lightAppColor
+        }
     }
 }

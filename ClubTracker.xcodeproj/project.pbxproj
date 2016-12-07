@@ -69,6 +69,18 @@
 		47B4DF9A1DE5FAA5006EFBFB /* CreateChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47B4DF981DE5FAA5006EFBFB /* CreateChatViewController.xib */; };
 		47DD89EA1DE6F0840061DA37 /* ChatListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DD89E81DE6F0840061DA37 /* ChatListCell.swift */; };
 		47DD89EB1DE6F0840061DA37 /* ChatListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47DD89E91DE6F0840061DA37 /* ChatListCell.xib */; };
+		47E163B41DF5ED7800A626EB /* AddShopItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E163A81DF5ED7800A626EB /* AddShopItemViewController.swift */; };
+		47E163B51DF5ED7800A626EB /* AddShopItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47E163A91DF5ED7800A626EB /* AddShopItemViewController.xib */; };
+		47E163B61DF5ED7800A626EB /* ShopItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E163AA1DF5ED7800A626EB /* ShopItemDetailViewController.swift */; };
+		47E163B71DF5ED7800A626EB /* ShopItemDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47E163AB1DF5ED7800A626EB /* ShopItemDetailViewController.xib */; };
+		47E163B81DF5ED7800A626EB /* ShopListItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E163AC1DF5ED7800A626EB /* ShopListItemCell.swift */; };
+		47E163B91DF5ED7800A626EB /* ShopListItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47E163AD1DF5ED7800A626EB /* ShopListItemCell.xib */; };
+		47E163BA1DF5ED7800A626EB /* ShopMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E163AE1DF5ED7800A626EB /* ShopMenuViewController.swift */; };
+		47E163BB1DF5ED7800A626EB /* ShopMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47E163AF1DF5ED7800A626EB /* ShopMenuViewController.xib */; };
+		47E163BC1DF5ED7800A626EB /* SizeAndQtyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E163B01DF5ED7800A626EB /* SizeAndQtyCell.swift */; };
+		47E163BD1DF5ED7800A626EB /* SizeAndQtyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47E163B11DF5ED7800A626EB /* SizeAndQtyCell.xib */; };
+		47E163BE1DF5ED7800A626EB /* sizeQtyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E163B21DF5ED7800A626EB /* sizeQtyCell.swift */; };
+		47E163BF1DF5ED7800A626EB /* sizeQtyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47E163B31DF5ED7800A626EB /* sizeQtyCell.xib */; };
 		47E984A11DA0F624003DC18C /* MessageMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E9849F1DA0F624003DC18C /* MessageMenuViewController.swift */; };
 		47E984A21DA0F624003DC18C /* MessageMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47E984A01DA0F624003DC18C /* MessageMenuViewController.xib */; };
 		47E9E1071DA15E8000C6B6A6 /* NewMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E9E1051DA15E8000C6B6A6 /* NewMessageViewController.swift */; };
@@ -91,14 +103,6 @@
 		47EAF60F1DA02D8900AFFFEC /* RegisterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47EAF60D1DA02D8900AFFFEC /* RegisterCell.xib */; };
 		47F096BF1DCF045E0002DF9C /* UrgentMessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F096BD1DCF045E0002DF9C /* UrgentMessageDetailViewController.swift */; };
 		47F096C01DCF045E0002DF9C /* UrgentMessageDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47F096BE1DCF045E0002DF9C /* UrgentMessageDetailViewController.xib */; };
-		47F316061DA2B02300D740FD /* ShopMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F316041DA2B02300D740FD /* ShopMenuViewController.swift */; };
-		47F316071DA2B02300D740FD /* ShopMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47F316051DA2B02300D740FD /* ShopMenuViewController.xib */; };
-		47F3160B1DA2B30A00D740FD /* ShopListItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F316091DA2B30A00D740FD /* ShopListItemCell.swift */; };
-		47F3160C1DA2B30A00D740FD /* ShopListItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47F3160A1DA2B30A00D740FD /* ShopListItemCell.xib */; };
-		47F3160F1DA2C0F200D740FD /* ShopItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F3160D1DA2C0F100D740FD /* ShopItemDetailViewController.swift */; };
-		47F316101DA2C0F200D740FD /* ShopItemDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47F3160E1DA2C0F100D740FD /* ShopItemDetailViewController.xib */; };
-		47F316151DA2CC8800D740FD /* AddShopItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F316131DA2CC8800D740FD /* AddShopItemViewController.swift */; };
-		47F316161DA2CC8800D740FD /* AddShopItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47F316141DA2CC8800D740FD /* AddShopItemViewController.xib */; };
 		47F316191DA2E10700D740FD /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F316171DA2E10700D740FD /* TutorialViewController.swift */; };
 		47F3161A1DA2E10700D740FD /* TutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47F316181DA2E10700D740FD /* TutorialViewController.xib */; };
 		47F3161F1DA2E5A900D740FD /* TargetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F3161B1DA2E5A900D740FD /* TargetCell.swift */; };
@@ -206,6 +210,18 @@
 		47B4DF981DE5FAA5006EFBFB /* CreateChatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateChatViewController.xib; sourceTree = "<group>"; };
 		47DD89E81DE6F0840061DA37 /* ChatListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListCell.swift; sourceTree = "<group>"; };
 		47DD89E91DE6F0840061DA37 /* ChatListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatListCell.xib; sourceTree = "<group>"; };
+		47E163A81DF5ED7800A626EB /* AddShopItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddShopItemViewController.swift; sourceTree = "<group>"; };
+		47E163A91DF5ED7800A626EB /* AddShopItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddShopItemViewController.xib; sourceTree = "<group>"; };
+		47E163AA1DF5ED7800A626EB /* ShopItemDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopItemDetailViewController.swift; sourceTree = "<group>"; };
+		47E163AB1DF5ED7800A626EB /* ShopItemDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopItemDetailViewController.xib; sourceTree = "<group>"; };
+		47E163AC1DF5ED7800A626EB /* ShopListItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopListItemCell.swift; sourceTree = "<group>"; };
+		47E163AD1DF5ED7800A626EB /* ShopListItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopListItemCell.xib; sourceTree = "<group>"; };
+		47E163AE1DF5ED7800A626EB /* ShopMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopMenuViewController.swift; sourceTree = "<group>"; };
+		47E163AF1DF5ED7800A626EB /* ShopMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopMenuViewController.xib; sourceTree = "<group>"; };
+		47E163B01DF5ED7800A626EB /* SizeAndQtyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeAndQtyCell.swift; sourceTree = "<group>"; };
+		47E163B11DF5ED7800A626EB /* SizeAndQtyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SizeAndQtyCell.xib; sourceTree = "<group>"; };
+		47E163B21DF5ED7800A626EB /* sizeQtyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sizeQtyCell.swift; sourceTree = "<group>"; };
+		47E163B31DF5ED7800A626EB /* sizeQtyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = sizeQtyCell.xib; sourceTree = "<group>"; };
 		47E9849F1DA0F624003DC18C /* MessageMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageMenuViewController.swift; sourceTree = "<group>"; };
 		47E984A01DA0F624003DC18C /* MessageMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageMenuViewController.xib; sourceTree = "<group>"; };
 		47E9E1051DA15E8000C6B6A6 /* NewMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMessageViewController.swift; sourceTree = "<group>"; };
@@ -228,14 +244,6 @@
 		47EAF60D1DA02D8900AFFFEC /* RegisterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterCell.xib; sourceTree = "<group>"; };
 		47F096BD1DCF045E0002DF9C /* UrgentMessageDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrgentMessageDetailViewController.swift; sourceTree = "<group>"; };
 		47F096BE1DCF045E0002DF9C /* UrgentMessageDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UrgentMessageDetailViewController.xib; sourceTree = "<group>"; };
-		47F316041DA2B02300D740FD /* ShopMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopMenuViewController.swift; sourceTree = "<group>"; };
-		47F316051DA2B02300D740FD /* ShopMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopMenuViewController.xib; sourceTree = "<group>"; };
-		47F316091DA2B30A00D740FD /* ShopListItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopListItemCell.swift; sourceTree = "<group>"; };
-		47F3160A1DA2B30A00D740FD /* ShopListItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopListItemCell.xib; sourceTree = "<group>"; };
-		47F3160D1DA2C0F100D740FD /* ShopItemDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopItemDetailViewController.swift; sourceTree = "<group>"; };
-		47F3160E1DA2C0F100D740FD /* ShopItemDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopItemDetailViewController.xib; sourceTree = "<group>"; };
-		47F316131DA2CC8800D740FD /* AddShopItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddShopItemViewController.swift; sourceTree = "<group>"; };
-		47F316141DA2CC8800D740FD /* AddShopItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddShopItemViewController.xib; sourceTree = "<group>"; };
 		47F316171DA2E10700D740FD /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		47F316181DA2E10700D740FD /* TutorialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TutorialViewController.xib; sourceTree = "<group>"; };
 		47F3161B1DA2E5A900D740FD /* TargetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetCell.swift; sourceTree = "<group>"; };
@@ -592,11 +600,11 @@
 		479FCA631D9EE4A5007891E9 /* Shop */ = {
 			isa = PBXGroup;
 			children = (
-				47F316121DA2CC6E00D740FD /* Add Item */,
-				47F316111DA2C0F800D740FD /* Item Detail */,
-				47F316081DA2B2EE00D740FD /* Shop Item Cell */,
-				47F316041DA2B02300D740FD /* ShopMenuViewController.swift */,
-				47F316051DA2B02300D740FD /* ShopMenuViewController.xib */,
+				47E163C41DF5EDC200A626EB /* shop item cell */,
+				47E163C31DF5EDBB00A626EB /* item detail */,
+				47E163C01DF5ED8D00A626EB /* add item */,
+				47E163AE1DF5ED7800A626EB /* ShopMenuViewController.swift */,
+				47E163AF1DF5ED7800A626EB /* ShopMenuViewController.xib */,
 			);
 			name = Shop;
 			sourceTree = "<group>";
@@ -712,6 +720,53 @@
 			name = "Chat LIst Cell";
 			sourceTree = "<group>";
 		};
+		47E163C01DF5ED8D00A626EB /* add item */ = {
+			isa = PBXGroup;
+			children = (
+				47E163A81DF5ED7800A626EB /* AddShopItemViewController.swift */,
+				47E163A91DF5ED7800A626EB /* AddShopItemViewController.xib */,
+				47E163C21DF5EDAC00A626EB /* sizeqty */,
+				47E163C11DF5ED9A00A626EB /* sizenqtycell */,
+			);
+			name = "add item";
+			sourceTree = "<group>";
+		};
+		47E163C11DF5ED9A00A626EB /* sizenqtycell */ = {
+			isa = PBXGroup;
+			children = (
+				47E163B01DF5ED7800A626EB /* SizeAndQtyCell.swift */,
+				47E163B11DF5ED7800A626EB /* SizeAndQtyCell.xib */,
+			);
+			name = sizenqtycell;
+			sourceTree = "<group>";
+		};
+		47E163C21DF5EDAC00A626EB /* sizeqty */ = {
+			isa = PBXGroup;
+			children = (
+				47E163B21DF5ED7800A626EB /* sizeQtyCell.swift */,
+				47E163B31DF5ED7800A626EB /* sizeQtyCell.xib */,
+			);
+			name = sizeqty;
+			sourceTree = "<group>";
+		};
+		47E163C31DF5EDBB00A626EB /* item detail */ = {
+			isa = PBXGroup;
+			children = (
+				47E163AA1DF5ED7800A626EB /* ShopItemDetailViewController.swift */,
+				47E163AB1DF5ED7800A626EB /* ShopItemDetailViewController.xib */,
+			);
+			name = "item detail";
+			sourceTree = "<group>";
+		};
+		47E163C41DF5EDC200A626EB /* shop item cell */ = {
+			isa = PBXGroup;
+			children = (
+				47E163AC1DF5ED7800A626EB /* ShopListItemCell.swift */,
+				47E163AD1DF5ED7800A626EB /* ShopListItemCell.xib */,
+			);
+			name = "shop item cell";
+			sourceTree = "<group>";
+		};
 		47E9E1011DA15E5900C6B6A6 /* New */ = {
 			isa = PBXGroup;
 			children = (
@@ -801,33 +856,6 @@
 				47F096BE1DCF045E0002DF9C /* UrgentMessageDetailViewController.xib */,
 			);
 			name = "Urgent Detail";
-			sourceTree = "<group>";
-		};
-		47F316081DA2B2EE00D740FD /* Shop Item Cell */ = {
-			isa = PBXGroup;
-			children = (
-				47F316091DA2B30A00D740FD /* ShopListItemCell.swift */,
-				47F3160A1DA2B30A00D740FD /* ShopListItemCell.xib */,
-			);
-			name = "Shop Item Cell";
-			sourceTree = "<group>";
-		};
-		47F316111DA2C0F800D740FD /* Item Detail */ = {
-			isa = PBXGroup;
-			children = (
-				47F3160D1DA2C0F100D740FD /* ShopItemDetailViewController.swift */,
-				47F3160E1DA2C0F100D740FD /* ShopItemDetailViewController.xib */,
-			);
-			name = "Item Detail";
-			sourceTree = "<group>";
-		};
-		47F316121DA2CC6E00D740FD /* Add Item */ = {
-			isa = PBXGroup;
-			children = (
-				47F316131DA2CC8800D740FD /* AddShopItemViewController.swift */,
-				47F316141DA2CC8800D740FD /* AddShopItemViewController.xib */,
-			);
-			name = "Add Item";
 			sourceTree = "<group>";
 		};
 		47F316231DA2E5AE00D740FD /* Target Cell */ = {
@@ -1000,15 +1028,12 @@
 				47B4DF951DE5F801006EFBFB /* ChatDetailViewController.xib in Resources */,
 				479FCA781D9EF445007891E9 /* SelectClassViewController.xib in Resources */,
 				479FCA0B1D9EE025007891E9 /* LaunchScreen.storyboard in Resources */,
-				47F3160C1DA2B30A00D740FD /* ShopListItemCell.xib in Resources */,
 				47DD89EB1DE6F0840061DA37 /* ChatListCell.xib in Resources */,
 				479FCA6D1D9EE5B0007891E9 /* LoginViewController.xib in Resources */,
 				479FCA4E1D9EE3B4007891E9 /* AutoCompleteCell.xib in Resources */,
 				47F316271DA2E64800D740FD /* ContactUsVC.xib in Resources */,
 				479004B51DD8115E0086502B /* ResponseMessageViewController.xib in Resources */,
 				47F096C01DCF045E0002DF9C /* UrgentMessageDetailViewController.xib in Resources */,
-				47F316101DA2C0F200D740FD /* ShopItemDetailViewController.xib in Resources */,
-				47F316161DA2CC8800D740FD /* AddShopItemViewController.xib in Resources */,
 				47E9E1191DA16E2D00C6B6A6 /* MessageTableViewCell.xib in Resources */,
 				472FDD061DE859BC005AF42D /* ChatMessageCell.xib in Resources */,
 				476FEEE11D9FB3BD00EEC5D4 /* TeacherMenuViewController.xib in Resources */,
@@ -1021,18 +1046,23 @@
 				479FCA711D9EECEE007891E9 /* Montserrat-Bold.ttf in Resources */,
 				47B069DD1DEC3DA000644DD1 /* SocialMediaVC.xib in Resources */,
 				47B069EF1DEC4AB100644DD1 /* DiaryViewController.xib in Resources */,
+				47E163BB1DF5ED7800A626EB /* ShopMenuViewController.xib in Resources */,
 				476FEEF01D9FCF6E00EEC5D4 /* TabBar.xib in Resources */,
+				47E163B51DF5ED7800A626EB /* AddShopItemViewController.xib in Resources */,
 				47E9E1241DA1721A00C6B6A6 /* InboxMessageTableViewCell.xib in Resources */,
 				47E984A21DA0F624003DC18C /* MessageMenuViewController.xib in Resources */,
+				47E163BF1DF5ED7800A626EB /* sizeQtyCell.xib in Resources */,
+				47E163B91DF5ED7800A626EB /* ShopListItemCell.xib in Resources */,
 				47EAF60F1DA02D8900AFFFEC /* RegisterCell.xib in Resources */,
 				47E9E1081DA15E8000C6B6A6 /* NewMessageViewController.xib in Resources */,
-				47F316071DA2B02300D740FD /* ShopMenuViewController.xib in Resources */,
 				47EAF60A1DA02CA200AFFFEC /* RegisterViewController.xib in Resources */,
 				47B069E71DEC3E0C00644DD1 /* PlayerViewController.xib in Resources */,
 				47B4DF901DE5F7E7006EFBFB /* ChatListViewController.xib in Resources */,
 				47F316201DA2E5A900D740FD /* TargetCell.xib in Resources */,
 				47B4DF9A1DE5FAA5006EFBFB /* CreateChatViewController.xib in Resources */,
 				47E9E11E1DA170FE00C6B6A6 /* MessageDetailViewController.xib in Resources */,
+				47E163B71DF5ED7800A626EB /* ShopItemDetailViewController.xib in Resources */,
+				47E163BD1DF5ED7800A626EB /* SizeAndQtyCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1206,6 +1236,7 @@
 				479FCA771D9EF445007891E9 /* SelectClassViewController.swift in Sources */,
 				47E9E1071DA15E8000C6B6A6 /* NewMessageViewController.swift in Sources */,
 				47F316261DA2E64800D740FD /* ContactUsVC.swift in Sources */,
+				47E163BA1DF5ED7800A626EB /* ShopMenuViewController.swift in Sources */,
 				4738FA591DB7ECC700F10698 /* Details.swift in Sources */,
 				479FCA6C1D9EE5B0007891E9 /* LoginViewController.swift in Sources */,
 				474A94511DE4AA28001DB9A1 /* LGSimpleChat.swift in Sources */,
@@ -1216,12 +1247,12 @@
 				479FCA431D9EE37E007891E9 /* AutoComplete.swift in Sources */,
 				476FEEE01D9FB3BD00EEC5D4 /* TeacherMenuViewController.swift in Sources */,
 				479FCA3A1D9EE2F1007891E9 /* TPKeyboardAvoidingTableView.m in Sources */,
-				47F316061DA2B02300D740FD /* ShopMenuViewController.swift in Sources */,
 				47E9E1181DA16E2D00C6B6A6 /* MessageTableViewCell.swift in Sources */,
 				47E9E1231DA1721A00C6B6A6 /* InboxMessageTableViewCell.swift in Sources */,
 				47B4DF991DE5FAA5006EFBFB /* CreateChatViewController.swift in Sources */,
 				47B069EC1DEC4AB100644DD1 /* DiaryListCell.swift in Sources */,
 				479FCA4F1D9EE3B4007891E9 /* FAQCell.swift in Sources */,
+				47E163B61DF5ED7800A626EB /* ShopItemDetailViewController.swift in Sources */,
 				47E984A11DA0F624003DC18C /* MessageMenuViewController.swift in Sources */,
 				47DD89EA1DE6F0840061DA37 /* ChatListCell.swift in Sources */,
 				47F096BF1DCF045E0002DF9C /* UrgentMessageDetailViewController.swift in Sources */,
@@ -1229,26 +1260,27 @@
 				4756A3811DEB43370079261C /* UserInfo.swift in Sources */,
 				47B4DF8F1DE5F7E7006EFBFB /* ChatListViewController.swift in Sources */,
 				47EAF6091DA02CA200AFFFEC /* RegisterViewController.swift in Sources */,
-				47F316151DA2CC8800D740FD /* AddShopItemViewController.swift in Sources */,
 				479FCA381D9EE2F1007891E9 /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				47B069EE1DEC4AB100644DD1 /* DiaryViewController.swift in Sources */,
 				4738FA541DB7CF2100F10698 /* MBProgressHUD.m in Sources */,
 				47E9E10F1DA16AFE00C6B6A6 /* InboxViewController.swift in Sources */,
 				47E9E10B1DA16AE700C6B6A6 /* UrgentMessageViewController.swift in Sources */,
 				47E9E1131DA16B0C00C6B6A6 /* OutboxViewController.swift in Sources */,
+				47E163B41DF5ED7800A626EB /* AddShopItemViewController.swift in Sources */,
+				47E163BE1DF5ED7800A626EB /* sizeQtyCell.swift in Sources */,
 				479FCA011D9EE025007891E9 /* AppDelegate.swift in Sources */,
 				47F316211DA2E5A900D740FD /* TargetVC.swift in Sources */,
 				479FCA3B1D9EE2F1007891E9 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
-				47F3160F1DA2C0F200D740FD /* ShopItemDetailViewController.swift in Sources */,
 				479FCA451D9EE37E007891E9 /* Helper.swift in Sources */,
 				47EAF60E1DA02D8900AFFFEC /* RegisterCell.swift in Sources */,
 				476FEEEF1D9FCF6E00EEC5D4 /* TabBarController.swift in Sources */,
 				47B069DC1DEC3DA000644DD1 /* SocialMediaVC.swift in Sources */,
 				47E9E11D1DA170FE00C6B6A6 /* MessageDetailViewController.swift in Sources */,
 				47F316191DA2E10700D740FD /* TutorialViewController.swift in Sources */,
+				47E163BC1DF5ED7800A626EB /* SizeAndQtyCell.swift in Sources */,
 				476FEEF11D9FCF6E00EEC5D4 /* TabBarCollectionViewCell.swift in Sources */,
 				47B069E61DEC3E0C00644DD1 /* PlayerViewController.swift in Sources */,
-				47F3160B1DA2B30A00D740FD /* ShopListItemCell.swift in Sources */,
+				47E163B81DF5ED7800A626EB /* ShopListItemCell.swift in Sources */,
 				479FCA741D9EF104007891E9 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
