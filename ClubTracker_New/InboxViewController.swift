@@ -11,6 +11,9 @@ import UIKit
 class InboxViewController: UIViewController {
 
     
+    @IBOutlet weak var imgClubLogo: UIImageView!
+    
+    
     @IBOutlet weak var lblClassName: UILabel!
     @IBOutlet weak var tableInbox: UITableView!
     
@@ -46,7 +49,13 @@ class InboxViewController: UIViewController {
            params["child_id"] = child_id as AnyObject?
         }
         getInbox(params)
+        
+        
+        if Helper.getUserInfo()?.avatar_link != nil{
+            Helper.loadImageFromUrl(url: (Helper.getUserInfo()?.avatar_link!)!, view: imgClubLogo)
+        }
     }
+    
 
     
     
@@ -155,6 +164,8 @@ extension InboxViewController{
             inboxMessageList.append(singleInbox)
             
         }
+        
+        inboxMessageList.reverse()
         if inboxMessageList.count > 6{
             tableHeight.constant = CGFloat(6 * 45)
         }

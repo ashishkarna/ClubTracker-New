@@ -26,7 +26,7 @@ class UserInfo: NSObject , NSCoding {
         club_id = aDecoder.decodeObject(forKey: "club_id") as? String
         first_name = aDecoder.decodeObject(forKey: "first_name") as? String
         last_name = aDecoder.decodeObject(forKey: "last_name") as? String
-        avatar_link = aDecoder.decodeObject(forKey: "avatar_link") as? String
+        avatar_link = aDecoder.decodeObject(forKey: "avatarlink") as? String
         isTeacher = aDecoder.decodeObject(forKey: "isTeacher") as? Bool
     }
     func encode(with aCoder: NSCoder) {
@@ -34,7 +34,7 @@ class UserInfo: NSObject , NSCoding {
         aCoder.encode(club_id, forKey: "club_id")
         aCoder.encode(first_name, forKey: "first_name")
         aCoder.encode(last_name, forKey: "last_name")
-        aCoder.encode(avatar_link, forKey: "avatar_link")
+        aCoder.encode(avatar_link, forKey: "avatarlink")
         aCoder.encode(isTeacher, forKey: "isTeacher")
 
     }

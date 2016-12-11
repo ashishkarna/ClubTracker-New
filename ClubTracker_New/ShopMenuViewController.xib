@@ -20,6 +20,7 @@
             <connections>
                 <outlet property="btnAdd" destination="IpI-4T-b0D" id="SwU-Nq-YcM"/>
                 <outlet property="collectionView" destination="Go4-Rz-Zg4" id="qOg-lS-tAG"/>
+                <outlet property="imgClubLogo" destination="2Xj-8S-GW9" id="QI0-lc-KpW"/>
                 <outlet property="lblClassName" destination="5NW-LZ-G70" id="raX-M5-EfC"/>
                 <outlet property="txtSearchItem" destination="mzc-NC-IvX" id="frX-cI-RF4"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -41,7 +42,7 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gid-Es-yag">
-                            <rect key="frame" x="-2" y="35.5" width="53" height="22"/>
+                            <rect key="frame" x="-2" y="36" width="53" height="22"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="22" id="4zS-fC-AGz"/>
                                 <constraint firstAttribute="width" constant="53" id="QmH-eH-E3g"/>
@@ -52,7 +53,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shop" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNr-ru-BpY">
-                            <rect key="frame" x="139.5" y="36" width="41.5" height="20"/>
+                            <rect key="frame" x="141.5" y="37" width="38" height="19"/>
                             <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>

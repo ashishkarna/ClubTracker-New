@@ -20,6 +20,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewMessageViewController" customModule="ClubTracker" customModuleProvider="target">
             <connections>
+                <outlet property="imgClubLogo" destination="9wt-6d-peQ" id="Iex-U3-3zT"/>
                 <outlet property="lblClassName" destination="dzP-Ai-Y30" id="fkx-cM-n0M"/>
                 <outlet property="lblSetReminder" destination="1MI-cj-AyK" id="dca-z6-wWs"/>
                 <outlet property="pickerBottomConstraint" destination="V0d-xP-3wd" id="i0h-EW-leS"/>
@@ -58,13 +59,13 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Message" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNr-ru-BpY">
-                            <rect key="frame" x="109.66666666666666" y="35" width="101.66666666666666" height="18.666666666666664"/>
+                            <rect key="frame" x="109.66666666666666" y="35" width="101.66666666666666" height="19.666666666666664"/>
                             <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lGN-TN-wiF">
-                            <rect key="frame" x="253" y="29" width="59" height="32"/>
+                            <rect key="frame" x="253" y="29.666666666666664" width="59" height="31.999999999999993"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="59" id="Our-RW-mQ1"/>
                             </constraints>
@@ -82,7 +83,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gid-Es-yag">
-                            <rect key="frame" x="8" y="33.333333333333336" width="35" height="22"/>
+                            <rect key="frame" x="8" y="34" width="35" height="22"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="35" id="tdt-0B-lmi"/>
                             </constraints>
@@ -211,6 +212,9 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="-1" id="Wn0-O4-ini"/>
+                                                    </connections>
                                                 </textView>
                                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Z3W-N6-e5i">
                                                     <rect key="frame" x="15" y="158.66666666666669" width="188" height="150.00000000000006"/>
@@ -456,7 +460,7 @@
                                                             </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Reminder: 0 Days" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1MI-cj-AyK">
-                                                            <rect key="frame" x="8" y="12" width="183" height="18.666666666666629"/>
+                                                            <rect key="frame" x="8" y="12" width="183" height="19.666666666666629"/>
                                                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>

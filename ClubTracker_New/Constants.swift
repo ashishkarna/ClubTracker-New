@@ -83,6 +83,7 @@ let kgetTargetsUrl = DomainName + "getTargets"
 let kgetTargetOfPupilUrl = DomainName + "getTargetOfPupil"
 let kgetPupilOfTargetUrl = DomainName + "getPupilOfTarget"
 let kchangeTargetStatusOfChildUrl = DomainName + "changeTargetStatusOfChild"
+let kgetTargetOfChildUrl = DomainName + "getTargetOfChild"
 
 
 

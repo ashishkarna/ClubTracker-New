@@ -16,6 +16,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatListViewController" customModule="ClubTracker" customModuleProvider="target">
             <connections>
+                <outlet property="imgClubLogo" destination="2Xj-8S-GW9" id="gTy-eR-JEn"/>
                 <outlet property="lblClassName" destination="5NW-LZ-G70" id="pgU-V1-Ub1"/>
                 <outlet property="tableChatList" destination="PYd-PO-Mbr" id="S8k-Jo-hpY"/>
                 <outlet property="tableHeight" destination="L5Q-0d-NEV" id="B8l-k5-7j6"/>
@@ -38,13 +39,13 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNr-ru-BpY">
-                            <rect key="frame" x="141.5" y="35" width="38.5" height="20"/>
+                            <rect key="frame" x="143.5" y="36" width="34.5" height="19"/>
                             <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gid-Es-yag">
-                            <rect key="frame" x="-2" y="36" width="53" height="22"/>
+                            <rect key="frame" x="-2" y="36.5" width="53" height="22"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="22" id="4zS-fC-AGz"/>
                                 <constraint firstAttribute="width" constant="53" id="QmH-eH-E3g"/>
@@ -68,7 +69,7 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Class Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5NW-LZ-G70">
-                    <rect key="frame" x="8" y="85" width="101" height="27"/>
+                    <rect key="frame" x="8" y="85" width="92" height="27"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="27" id="Ewx-O1-9Ug"/>
                     </constraints>

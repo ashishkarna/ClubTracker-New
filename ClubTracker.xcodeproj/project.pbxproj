@@ -978,7 +978,7 @@
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = JK9C975RTZ;
 						LastSwiftMigration = 0810;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					479FCA101D9EE025007891E9 = {
 						CreatedOnToolsVersion = 7.3;
@@ -1420,15 +1420,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Daniel Hughes (JK9C975RTZ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Daniel Hughes (JK9C975RTZ)";
 				DEVELOPMENT_TEAM = JK9C975RTZ;
 				INFOPLIST_FILE = ClubTracker_New/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.karma.clubTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.karma.ClubTracker;
 				PRODUCT_NAME = ClubTracker;
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "8402b519-cfff-47de-8a24-fc2ca7480470";
+				PROVISIONING_PROFILE_SPECIFIER = ClubTracker_Distribution;
 				SWIFT_OBJC_BRIDGING_HEADER = "ClubTracker_New/ClubTracker-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1442,15 +1442,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Daniel Hughes (JK9C975RTZ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Daniel Hughes (JK9C975RTZ)";
 				DEVELOPMENT_TEAM = JK9C975RTZ;
 				INFOPLIST_FILE = ClubTracker_New/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.karma.clubTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.karma.ClubTracker;
 				PRODUCT_NAME = ClubTracker;
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "8402b519-cfff-47de-8a24-fc2ca7480470";
+				PROVISIONING_PROFILE_SPECIFIER = ClubTracker_Distribution;
 				SWIFT_OBJC_BRIDGING_HEADER = "ClubTracker_New/ClubTracker-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};

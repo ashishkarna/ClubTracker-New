@@ -10,6 +10,10 @@ import UIKit
 
 class ChatListViewController: UIViewController {
     
+    
+    @IBOutlet weak var imgClubLogo: UIImageView!
+    
+    
     @IBOutlet weak var lblClassName: UILabel!
 
     @IBOutlet weak var tableChatList: UITableView!
@@ -31,6 +35,10 @@ class ChatListViewController: UIViewController {
         tableChatList.isHidden = true
 
         getChatLists()
+        
+        if Helper.getUserInfo()?.avatar_link != nil{
+            Helper.loadImageFromUrl(url: (Helper.getUserInfo()?.avatar_link!)!, view: imgClubLogo)
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {

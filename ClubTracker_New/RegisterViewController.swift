@@ -15,6 +15,10 @@ protocol tableListDelegates{
 
 
 class RegisterViewController: UIViewController {
+    
+    
+    @IBOutlet weak var imgClubLogo: UIImageView!
+    
 
     @IBOutlet weak var lblClassName: UILabel!
     @IBOutlet weak var tablePupil: UITableView!
@@ -63,6 +67,10 @@ class RegisterViewController: UIViewController {
            
         })
 
+        
+        if Helper.getUserInfo()?.avatar_link != nil{
+            Helper.loadImageFromUrl(url: (Helper.getUserInfo()?.avatar_link!)!, view: imgClubLogo)
+        }
         
        
     

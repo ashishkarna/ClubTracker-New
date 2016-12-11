@@ -14,6 +14,7 @@ import MobileCoreServices
 
 class SocialMediaVC: UIViewController {
 
+    @IBOutlet weak var imgClubLogo: UIImageView!
     @IBOutlet weak var txtVIewDetails: UITextView!
     var isVideo = false
     var videoURL:NSURL?
@@ -26,7 +27,9 @@ class SocialMediaVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-       
+        if Helper.getUserInfo()?.avatar_link != nil{
+            Helper.loadImageFromUrl(url: (Helper.getUserInfo()?.avatar_link!)!, view: imgClubLogo)
+        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -20,6 +20,10 @@ class NewMessageViewController: UIViewController {
     //MARK: Normal Outlet
     @IBOutlet weak var scrollView: UIScrollView!
     
+    
+    
+    @IBOutlet weak var imgClubLogo: UIImageView!
+    
     @IBOutlet weak var requireActionView: UIView!
     @IBOutlet weak var lblClassName: UILabel!
     @IBOutlet weak var txtSendMessageTo: UITextField!
@@ -89,6 +93,10 @@ class NewMessageViewController: UIViewController {
         tableSendMessageTo.isHidden = true
         tableSetReminder.isHidden = true
 
+        
+        if Helper.getUserInfo()?.avatar_link != nil{
+            Helper.loadImageFromUrl(url: (Helper.getUserInfo()?.avatar_link!)!, view: imgClubLogo)
+        }
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -297,6 +305,25 @@ extension NewMessageViewController: UITextFieldDelegate{
     }
 }
 
+
+
+//MARK: TextView Delegate
+extension NewMessageViewController: UITextViewDelegate{
+
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == "Details"{
+            textView.text = ""
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text == ""{
+            textView.text = "Details"
+        }
+    }
+}
+
+
 //MARK: TableViewDelegate
 
 extension NewMessageViewController: UITableViewDelegate, UITableViewDataSource
@@ -357,7 +384,7 @@ extension NewMessageViewController: UITableViewDelegate, UITableViewDataSource
             //2.Update textField
 
         case 1:
-            lblSetReminder.text = String(indexPath.row)
+            lblSetReminder.text = String(indexPath.row + 1)
             tableSetReminder.isHidden = true
             
         default:
@@ -416,7 +443,7 @@ extension NewMessageViewController{
     func showHidePicker(){
        // self.currentTextField?.resignFirstResponder()
         UIView.animate(withDuration: 0.5, animations: {
-            self.pickerBottomConstraint.constant = self.isPickerShowing ? -260.0 : 60.0
+            self.pickerBottomConstraint.constant = self.isPickerShowing ? -260.0 : 260.0
             self.view.layoutIfNeeded()
             }, completion: nil)
         isPickerShowing = !isPickerShowing

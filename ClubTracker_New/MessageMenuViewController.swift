@@ -10,6 +10,9 @@ import UIKit
 
 class MessageMenuViewController: UIViewController {
 
+    @IBOutlet weak var imgClubLogo: UIImageView!
+    
+    
     @IBOutlet weak var lblClassName: UILabel!
     var isTeacher = false
     override func viewDidLoad() {
@@ -18,6 +21,11 @@ class MessageMenuViewController: UIViewController {
         // Do any additional setup after loading the view.
         isTeacher = UserDefaults.standard.value(forKey: "isTeacher") as! Bool
         lblClassName.text = UserDefaults.standard.value(forKey: isTeacher ? "class_name" : "child_name") as? String
+        
+        
+        if Helper.getUserInfo()?.avatar_link != nil{
+            Helper.loadImageFromUrl(url: (Helper.getUserInfo()?.avatar_link!)!, view: imgClubLogo)
+        }
         
     }
 

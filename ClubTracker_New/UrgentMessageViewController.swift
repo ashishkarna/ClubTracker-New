@@ -11,6 +11,9 @@ import UIKit
 class UrgentMessageViewController: UIViewController {
 
     
+    
+    @IBOutlet weak var imgClubLogo: UIImageView!
+    
     @IBOutlet weak var lblClassName: UILabel!
     
     
@@ -40,6 +43,11 @@ class UrgentMessageViewController: UIViewController {
         params["club_id"] = club_id as AnyObject?
         params["class_id"] = class_id as AnyObject?
         getUrgentRequest(params)
+        
+        
+        if Helper.getUserInfo()?.avatar_link != nil{
+            Helper.loadImageFromUrl(url: (Helper.getUserInfo()?.avatar_link!)!, view: imgClubLogo)
+        }
     }
 
     
@@ -150,12 +158,14 @@ extension UrgentMessageViewController{
             urgentMessageList.append(singleUrgent)
             
         }
-        if urgentMessageList.count > 6{
-            tableHeight.constant = CGFloat(6 * 45)
-        }
-        else{
-            tableHeight.constant = CGFloat(urgentMessageList.count * 45)
-        }
+        
+        urgentMessageList.reverse()
+//        if urgentMessageList.count > 6{
+//            tableHeight.constant = CGFloat(6 * 45)
+//        }
+//        else{
+//            tableHeight.constant = CGFloat(urgentMessageList.count * 45)
+//        }
         tableUrgentRequest.isHidden = false
         self.tableUrgentRequest.reloadData()
     }

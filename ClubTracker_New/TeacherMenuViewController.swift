@@ -15,6 +15,9 @@ class TeacherMenuViewController
 : UIViewController {
 
     
+    
+    @IBOutlet weak var imgClubLogo: UIImageView!
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     var menuImage = ["register-icon","message-icon","chat-icon","diary-icon","camera-icon","target-icon","shop_icon","social-media","contact-icon"]
@@ -41,6 +44,9 @@ class TeacherMenuViewController
         menuImage[0] = isTeacher ? "register-icon" : "responseMessage"
         menuTitle[0] = isTeacher ? "Register" : "Response"
         
+        if Helper.getUserInfo()?.avatar_link != nil{
+            Helper.loadImageFromUrl(url: (Helper.getUserInfo()?.avatar_link!)!, view: imgClubLogo)
+        }
       
     }
 

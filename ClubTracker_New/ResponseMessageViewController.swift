@@ -10,6 +10,7 @@ import UIKit
 
 class ResponseMessageViewController: UIViewController {
 
+    @IBOutlet weak var imgClubLogo: UIImageView!
     
     @IBOutlet weak var lblClassName: UILabel!
     @IBOutlet weak var txtSearch: UITextField!
@@ -43,6 +44,10 @@ class ResponseMessageViewController: UIViewController {
         params["class_id"] = class_id as AnyObject?
         getUrgentRequest(params)
 
+        
+        if Helper.getUserInfo()?.avatar_link != nil{
+            Helper.loadImageFromUrl(url: (Helper.getUserInfo()?.avatar_link!)!, view: imgClubLogo)
+        }
         
     }
 
@@ -149,6 +154,8 @@ extension ResponseMessageViewController{
             urgentMessageList.append(singleUrgent)
             
         }
+        urgentMessageList.reverse()
+        
         if urgentMessageList.count > 6{
             tableHeight.constant = CGFloat(6 * 45)
         }

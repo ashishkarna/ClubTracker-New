@@ -10,6 +10,10 @@ import UIKit
 
 class ArchiveAttendanceViewController: UIViewController {
 
+    
+    
+    @IBOutlet weak var imgClubLogo: UIImageView!
+    
     @IBOutlet weak var lblClassName: UILabel!
     @IBOutlet weak var lblSelectedDate: UILabel!
     @IBOutlet weak var tableAttendance: UITableView!
@@ -55,6 +59,10 @@ class ArchiveAttendanceViewController: UIViewController {
         }
         tableAttendance.register(UINib(nibName: "RegisterCell",bundle: Bundle.main), forCellReuseIdentifier: "RegisterCell")
         Helper.setTableViewDesign(tableAttendance)
+        
+        if Helper.getUserInfo()?.avatar_link != nil{
+            Helper.loadImageFromUrl(url: (Helper.getUserInfo()?.avatar_link!)!, view: imgClubLogo)
+        }
         
     }
 

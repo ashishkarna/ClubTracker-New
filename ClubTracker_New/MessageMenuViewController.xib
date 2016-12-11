@@ -1,12 +1,17 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MessageMenuViewController" customModule="ClubTracker" customModuleProvider="target">
             <connections>
+                <outlet property="imgClubLogo" destination="AHw-4E-dms" id="K4R-59-prQ"/>
                 <outlet property="lblClassName" destination="WnA-kf-B6J" id="pxU-u8-arc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -22,12 +27,12 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wx2-U8-r55">
                             <rect key="frame" x="126" y="35" width="68" height="20"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZiO-IL-6zt">
                             <rect key="frame" x="0.0" y="69" width="320" height="1"/>
-                            <color key="backgroundColor" red="0.57254901960000004" green="0.58039215690000001" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.57254901960000004" green="0.58039215690000001" blue="0.59215686270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="uui-2g-gLw"/>
                             </constraints>
@@ -44,7 +49,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.6705882353" green="0.76470588240000004" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.6705882353" green="0.76470588240000004" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="70" id="Dt1-2z-Oy8"/>
                         <constraint firstItem="ufs-Z4-5Dc" firstAttribute="centerY" secondItem="wx2-U8-r55" secondAttribute="centerY" id="E2k-eZ-dEp"/>
@@ -65,11 +70,11 @@
                                 <constraint firstAttribute="height" constant="21" id="M8T-Ad-eRR"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="WnA-kf-B6J" firstAttribute="top" secondItem="Smu-Sq-JPJ" secondAttribute="top" constant="12" id="Prt-p4-MCQ"/>
                         <constraint firstItem="WnA-kf-B6J" firstAttribute="leading" secondItem="Smu-Sq-JPJ" secondAttribute="leading" id="Txd-CZ-q9b"/>
@@ -106,11 +111,11 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9q-Y7-pLw">
                                             <rect key="frame" x="35" y="83" width="72.5" height="18"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.6705882353" green="0.76470588240000004" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.6705882353" green="0.76470588240000004" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="e9q-Y7-pLw" secondAttribute="bottom" constant="15" id="8XM-Up-qVe"/>
                                         <constraint firstItem="e9q-Y7-pLw" firstAttribute="leading" secondItem="MMy-37-fhs" secondAttribute="leading" constant="35" id="C3G-4l-xG0"/>
@@ -140,7 +145,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Urgent" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ZQ-PB-TSm">
                                             <rect key="frame" x="45" y="83" width="46" height="18"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JI4-if-0qI">
@@ -150,7 +155,7 @@
                                             </connections>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.6705882353" green="0.76470588240000004" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.6705882353" green="0.76470588240000004" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="JI4-if-0qI" secondAttribute="trailing" id="EAf-OW-Kxg"/>
                                         <constraint firstItem="0ZQ-PB-TSm" firstAttribute="centerX" secondItem="W1U-Hj-RDe" secondAttribute="centerX" id="KdI-G1-q1P"/>
@@ -171,7 +176,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inbox" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pu7-Vo-Fin">
                                             <rect key="frame" x="49" y="83" width="38" height="18"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="inboxMessage" translatesAutoresizingMaskIntoConstraints="NO" id="1cJ-BJ-hQA">
@@ -184,7 +189,7 @@
                                             </connections>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.6705882353" green="0.76470588240000004" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.6705882353" green="0.76470588240000004" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstItem="pu7-Vo-Fin" firstAttribute="centerX" secondItem="1cJ-BJ-hQA" secondAttribute="centerX" id="AYw-QO-jwV"/>
                                         <constraint firstAttribute="bottom" secondItem="tPZ-zH-uhC" secondAttribute="bottom" id="BWN-w8-GT2"/>
@@ -209,7 +214,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Outbox" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ckm-MM-IUv">
                                             <rect key="frame" x="43" y="83" width="50" height="18"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9au-eW-BFH">
@@ -219,7 +224,7 @@
                                             </connections>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.6705882353" green="0.76470588240000004" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.6705882353" green="0.76470588240000004" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="Ckm-MM-IUv" secondAttribute="bottom" constant="15" id="6TU-NC-lQP"/>
                                         <constraint firstItem="zjA-53-VUo" firstAttribute="centerX" secondItem="XtZ-6W-Lxf" secondAttribute="centerX" id="8Im-MH-jRV"/>
@@ -236,7 +241,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="KLv-PI-U1i" firstAttribute="height" secondItem="MMy-37-fhs" secondAttribute="height" id="18K-jW-Y6Y"/>
                                 <constraint firstItem="iwu-rX-d2t" firstAttribute="leading" secondItem="MMy-37-fhs" secondAttribute="leading" id="7c5-EO-aJK"/>
@@ -265,7 +270,7 @@
                     </constraints>
                 </scrollView>
             </subviews>
-            <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Smu-Sq-JPJ" firstAttribute="width" secondItem="AHw-4E-dms" secondAttribute="width" multiplier="1:3" constant="133" id="6Gq-z8-6VQ"/>
                 <constraint firstAttribute="trailing" secondItem="0ks-hu-Jjb" secondAttribute="trailing" id="Aht-Bw-u6f"/>
@@ -290,9 +295,14 @@
     <resources>
         <image name="UrgentMessage" width="512" height="512"/>
         <image name="backBtn" width="12" height="20"/>
-        <image name="icon" width="76" height="76"/>
+        <image name="icon" width="60" height="60"/>
         <image name="inboxMessage" width="50" height="50"/>
         <image name="newMessageIcon" width="1024" height="1024"/>
         <image name="outboxMessage" width="50" height="50"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
+    </simulatedMetricsContainer>
 </document>

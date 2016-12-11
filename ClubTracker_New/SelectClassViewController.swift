@@ -10,6 +10,11 @@ import UIKit
 
 class SelectClassViewController: UIViewController {
 
+    
+    @IBOutlet weak var imgClubLogo: UIImageView!
+    
+    
+    
     @IBOutlet weak var txtSelectClass: UITextField!
     
     @IBOutlet weak var tableSelectClass: UITableView!
@@ -43,6 +48,11 @@ class SelectClassViewController: UIViewController {
         tableSelectClass.register(UINib(nibName: "AutoCompleteCell", bundle: Bundle.main), forCellReuseIdentifier: "AutoCompleteCell")
         
         Helper.setTableViewDesign(tableSelectClass)
+      
+       
+        if Helper.getUserInfo()?.avatar_link != nil{
+            Helper.loadImageFromUrl(url: (Helper.getUserInfo()?.avatar_link!)!, view: imgClubLogo)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

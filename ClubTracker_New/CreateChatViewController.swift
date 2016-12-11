@@ -10,6 +10,10 @@ import UIKit
 
 class CreateChatViewController: UIViewController {
 
+    
+    
+    @IBOutlet weak var imgClubLogo: UIImageView!
+    
     @IBOutlet weak var lblClassName: UILabel!
     
     @IBOutlet weak var lblChatMember: UILabel!
@@ -34,6 +38,11 @@ class CreateChatViewController: UIViewController {
          tableMember.register(UINib(nibName: "AutoCompleteCell",bundle: Bundle.main), forCellReuseIdentifier: "AutoCompleteCell")
         Helper.setTableViewDesign(tableMember)
         tableMember.isHidden = true
+        
+        
+        if Helper.getUserInfo()?.avatar_link != nil{
+            Helper.loadImageFromUrl(url: (Helper.getUserInfo()?.avatar_link!)!, view: imgClubLogo)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -107,6 +116,22 @@ extension CreateChatViewController{
     
 }
 
+
+//MARK: TextView Delegate
+extension CreateChatViewController: UITextViewDelegate{
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == "Details"{
+            textView.text = ""
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text == ""{
+            textView.text = "Details"
+        }
+    }
+}
 
 
 //MARK: TableView Delegate Method

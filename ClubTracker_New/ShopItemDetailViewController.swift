@@ -9,6 +9,7 @@
 import UIKit
 
 class ShopItemDetailViewController: UIViewController {
+    @IBOutlet weak var imgClubLogo: UIImageView!
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -45,6 +46,10 @@ class ShopItemDetailViewController: UIViewController {
         
         btnRemove.isEnabled = !(Helper.getUserInfo()?.isTeacher)! ? false : true
        btnEdit.isEnabled = !(Helper.getUserInfo()?.isTeacher)! ? false: true
+        
+        if Helper.getUserInfo()?.avatar_link != nil{
+            Helper.loadImageFromUrl(url: (Helper.getUserInfo()?.avatar_link!)!, view: imgClubLogo)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -16,6 +16,7 @@ enum TableViewTag: Int{
 
 class TargetVC: UIViewController {
 
+    @IBOutlet weak var imgClubLogo: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
 
     @IBOutlet weak var formHolder: UIView!
@@ -25,7 +26,17 @@ class TargetVC: UIViewController {
     @IBOutlet weak var txtSearchTarget: UITextField!
  
     
-  
+    //height
+    
+    @IBOutlet weak var addTargetHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var searchPupilHeight: NSLayoutConstraint!
+
+    
+    @IBOutlet weak var searchTargetHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var searchPupilView: UIView!
+    
     
     @IBOutlet weak var searchPupilTableView: UITableView!
     
@@ -54,6 +65,16 @@ class TargetVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        if !(Helper.getUserInfo()?.isTeacher)!{
+            addTargetHeight.constant = 0
+            //searchPupilHeight.constant = 0
+            searchTargetHeight.constant = 0
+            //top space
+            NSLayoutConstraint(item: targetTableView, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: searchPupilView, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 15.0).isActive = true
+            txtSearchPupil.text = "Select Child"
+        }
+        
         //MARK: Target TableView
         self.targetTableView.register(UINib(nibName: "TargetCell", bundle: Bundle.main), forCellReuseIdentifier: "TargetCell")
         Helper.setTableViewDesign(self.targetTableView)
@@ -72,6 +93,9 @@ class TargetVC: UIViewController {
         searchPupilTableView.isHidden = true
         searchTargetTableView.isHidden = true
         
+        if Helper.getUserInfo()?.avatar_link != nil{
+            Helper.loadImageFromUrl(url: (Helper.getUserInfo()?.avatar_link!)!, view: imgClubLogo)
+        }
         
         
         
@@ -127,10 +151,17 @@ extension TargetVC{
         //show pupil dropdownList
         
        searchPupilTableView.isHidden = !searchPupilTableView.isHidden
+        
+        
         if !searchPupilTableView.isHidden{
             searchTargetTableView.isHidden = true
-            getPupil()
-           
+            
+            if (Helper.getUserInfo()?.isTeacher)!{
+                getPupil()
+            }
+            else{
+                getMyChildren()
+            }
         }
         
     }
@@ -150,22 +181,35 @@ extension TargetVC{
         //get target of selected pupil
         
         isSelected = 0
-        if !Helper.isSameText(txtSearchPupil.text!, secondStr: "Select Pupil"){
+        
+        if (Helper.getUserInfo()?.isTeacher)!{
+            if !Helper.isSameText(txtSearchPupil.text!, secondStr: "Select Pupil"){
+                
+                getTargetOfPupil()
+            }
+
+        }
+        else{
+            if !Helper.isSameText(txtSearchPupil.text!, secondStr: "Select Child"){
             
             getTargetOfPupil()
         }
-        
+        }
     }
     
     
     @IBAction func buttonSearchTargetTapped(_ sender: UIButton) {
         //get pupil of selected target
         isSelected = 1
-        if !Helper.isSameText(txtSearchTarget.text!, secondStr: "Select Target"){
+        
+   
+        
+            if !Helper.isSameText(txtSearchTarget.text!, secondStr: "Select Target"){
             
             getPupilOfTarget()
-        }
-    }
+            }
+        
+           }
     
     //MARK: Validate TextField
     func validateTextField()->(String){
@@ -215,8 +259,10 @@ extension TargetVC{
         
         
                print(params)
-        changeTargetStatus(params: params)
         
+        if (Helper.getUserInfo()?.isTeacher)!{
+            changeTargetStatus(params: params)
+        }
         
     }
   
@@ -593,6 +639,60 @@ extension TargetVC{
     
     
     
+    //MARK: PARENT
+    func getMyChildren(){
+        
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        WebServiceHelper.getMyChildren(nil, onCompletion: { [weak self]
+            response in
+            
+            debugPrint(response)
+            MBProgressHUD.hideAllHUDs(for: self?.view, animated: true)
+            
+            switch response.result {
+                
+            case .success(let responseData) :
+                
+                if let status_code = response.response?.statusCode {
+                    
+                    
+                    switch status_code {
+                        
+                    case 200 : //Successful Login
+                        
+                        if let result = responseData as? [String: AnyObject] {
+                            if let responseResult = result["response"] as? [String: AnyObject]{
+                                let childs = responseResult["children"] as? [AnyObject]
+                                if childs!.count > 0{
+                                 self?.setPupil(data:childs!)
+                                }
+                                    
+                                else{
+                                    self?.showAlertOnMainThread("No Result Found.")
+                                }
+                            }
+                        }
+                        
+                        
+                    case 401: // Login Unsuccessful
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey: "error") as! String)
+                        
+                    case 500: // Cannot Create Token
+                        self?.showAlertOnMainThread((responseData as AnyObject).value(forKey: "error") as! String)
+                    default:
+                        self?.showAlertOnMainThread(kServerError)
+                        
+                    }
+                    
+                }
+                
+            case.failure(let error):
+                self?.showAlertOnMainThread(error.localizedDescription)
+                
+            }
+        })
+        
+    }
     
     //change status of target
     func changeTargetStatus(params:[String: AnyObject]){

@@ -16,6 +16,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SocialMediaVC" customModule="ClubTracker" customModuleProvider="target">
             <connections>
+                <outlet property="imgClubLogo" destination="m9a-G3-9Bd" id="2Hc-tt-QTz"/>
                 <outlet property="imgView" destination="8SL-ef-kLL" id="5mh-Bu-usC"/>
                 <outlet property="txtVIewDetails" destination="X6h-67-0fL" id="M8J-uh-S32"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -48,7 +49,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2b0-88-Rg0">
-                            <rect key="frame" x="266" y="33" width="46" height="31"/>
+                            <rect key="frame" x="266" y="33.5" width="46" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="46" id="UpX-2S-XGd"/>
                             </constraints>

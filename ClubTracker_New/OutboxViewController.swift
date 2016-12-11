@@ -9,6 +9,9 @@
 import UIKit
 
 class OutboxViewController: UIViewController {
+    
+    
+    @IBOutlet weak var imgClubLogo: UIImageView!
 
     @IBOutlet weak var lblClassName: UILabel!
     @IBOutlet weak var txtSearch: UITextField!
@@ -45,6 +48,9 @@ class OutboxViewController: UIViewController {
         }
         getOutbox(params)
         
+        if Helper.getUserInfo()?.avatar_link != nil{
+            Helper.loadImageFromUrl(url: (Helper.getUserInfo()?.avatar_link!)!, view: imgClubLogo)
+        }
         
     }
     
@@ -150,6 +156,8 @@ extension OutboxViewController{
             outboxMessageList.append(singleOutbox)
         
         }
+        
+        outboxMessageList.reverse()
         if outboxMessageList.count > 6{
             tableHeight.constant = CGFloat(6 * 45)
         }

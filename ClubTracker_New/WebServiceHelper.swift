@@ -240,12 +240,12 @@ extension WebServiceHelper{
     //get target of pupil
     
     static func getTargetOfPupil(_ params: [String : AnyObject]?,onCompletion:@escaping (DataResponse<Any>)->()){
-        self.makeRequest(.post, url:kgetTargetOfPupilUrl, params:params,header: getHeaders(), onCompletion: onCompletion)
+        self.makeRequest(.post, url:(Helper.getUserInfo()?.isTeacher)! ? kgetTargetOfPupilUrl: kgetTargetOfChildUrl, params:params,header: getHeaders(), onCompletion: onCompletion)
     }
 
     //get pupil of target
     static func getPupilOfTarget(_ params: [String : AnyObject]?,onCompletion:@escaping (DataResponse<Any>)->()){
-        self.makeRequest(.post, url:kgetPupilOfTargetUrl, params:params,header: getHeaders(), onCompletion: onCompletion)
+        self.makeRequest(.post, url:  kgetPupilOfTargetUrl, params:params,header: getHeaders(), onCompletion: onCompletion)
     }
 
     
@@ -254,6 +254,11 @@ extension WebServiceHelper{
         self.makeRequest(.post, url:kchangeTargetStatusOfChildUrl, params:params,header: getHeaders(), onCompletion: onCompletion)
     }
 
+    //parent
+    //get target of Child
+    static func getTargetOfChild(_ params: [String : AnyObject]?,onCompletion:@escaping (DataResponse<Any>)->()){
+        self.makeRequest(.post, url:kgetTargetOfChildUrl, params:params,header: getHeaders(), onCompletion: onCompletion)
+    }
 
 }
 

@@ -19,6 +19,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SelectClassViewController" customModule="ClubTracker" customModuleProvider="target">
             <connections>
+                <outlet property="imgClubLogo" destination="2Xj-8S-GW9" id="ylf-Xb-PHa"/>
                 <outlet property="scrollView" destination="ybB-G5-epT" id="y3t-Qp-SBc"/>
                 <outlet property="tableHeight" destination="jSW-PW-IJU" id="XAY-3h-mmL"/>
                 <outlet property="tableSelectClass" destination="YHT-b5-D3N" id="sp7-yG-U8A"/>

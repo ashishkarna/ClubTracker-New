@@ -16,11 +16,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TargetVC" customModule="ClubTracker" customModuleProvider="target">
             <connections>
+                <outlet property="addTargetHeight" destination="Hrs-ED-VJ7" id="oJM-Zn-zaN"/>
                 <outlet property="formHolder" destination="1V9-QV-r89" id="ndR-Gd-vc4"/>
+                <outlet property="imgClubLogo" destination="Pqg-rr-8a3" id="rEr-6g-3qp"/>
                 <outlet property="lblAttendance" destination="FMk-Oi-m2c" id="ucv-7F-KgY"/>
                 <outlet property="lblTargetCompleted" destination="Cgo-Ll-ee6" id="sgB-KK-KnA"/>
                 <outlet property="scrollView" destination="XVc-4T-I6P" id="SuU-KC-Xvr"/>
+                <outlet property="searchPupilHeight" destination="Of9-9s-Tld" id="ssK-ba-Zs8"/>
                 <outlet property="searchPupilTableView" destination="015-8F-NrL" id="p2M-To-lpG"/>
+                <outlet property="searchPupilView" destination="6oR-u1-P3r" id="mnh-LT-2LH"/>
+                <outlet property="searchTargetHeight" destination="8Ry-6Z-wck" id="S5Y-qC-PRl"/>
                 <outlet property="searchTargetTableView" destination="Cf1-NK-UuY" id="JzQ-Hy-CbK"/>
                 <outlet property="targetTableView" destination="p8b-s1-ETw" id="Qex-hB-YIO"/>
                 <outlet property="txtAddTarget" destination="ydK-PB-rWp" id="nbr-OC-1AO"/>
@@ -218,7 +223,6 @@
                                         <constraint firstAttribute="height" constant="45" id="Of9-9s-Tld"/>
                                         <constraint firstItem="hv6-rj-EN6" firstAttribute="centerY" secondItem="XWd-X5-fwW" secondAttribute="centerY" id="Was-3g-cmx"/>
                                         <constraint firstItem="hv6-rj-EN6" firstAttribute="top" secondItem="6oR-u1-P3r" secondAttribute="top" id="gTF-Mh-tsi"/>
-                                        <constraint firstAttribute="height" constant="45" id="imQ-AO-6KE"/>
                                         <constraint firstItem="hv6-rj-EN6" firstAttribute="leading" secondItem="XWd-X5-fwW" secondAttribute="trailing" constant="5" id="uvB-Tr-03m"/>
                                     </constraints>
                                 </view>
@@ -302,7 +306,6 @@
                                         <constraint firstAttribute="bottom" secondItem="V5R-Vm-gta" secondAttribute="bottom" id="h9x-bm-BL0"/>
                                         <constraint firstAttribute="trailing" secondItem="V5R-Vm-gta" secondAttribute="trailing" id="jAW-ej-GGv"/>
                                         <constraint firstItem="HAl-cT-CT0" firstAttribute="leading" secondItem="Oal-Zr-3Am" secondAttribute="leading" id="r5E-he-9xq"/>
-                                        <constraint firstAttribute="height" constant="45" id="zX9-zD-lUA"/>
                                     </constraints>
                                 </view>
                                 <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Cf1-NK-UuY">
@@ -366,7 +369,6 @@
                                 <constraint firstItem="6oR-u1-P3r" firstAttribute="top" secondItem="1Hp-Sw-f9o" secondAttribute="bottom" constant="15" id="Aoi-Fr-TEO"/>
                                 <constraint firstItem="WDd-KG-k3l" firstAttribute="width" secondItem="p8b-s1-ETw" secondAttribute="width" id="B1o-eB-MZj"/>
                                 <constraint firstItem="Pqg-rr-8a3" firstAttribute="centerX" secondItem="1V9-QV-r89" secondAttribute="centerX" id="C6i-SE-TvI"/>
-                                <constraint firstItem="Oal-Zr-3Am" firstAttribute="height" secondItem="6oR-u1-P3r" secondAttribute="height" id="EHS-nO-shy"/>
                                 <constraint firstAttribute="bottom" secondItem="WDd-KG-k3l" secondAttribute="bottom" constant="39" id="EKG-S8-2sP"/>
                                 <constraint firstItem="XWd-X5-fwW" firstAttribute="top" secondItem="015-8F-NrL" secondAttribute="bottom" constant="5" id="FJP-Jg-rIf"/>
                                 <constraint firstItem="Cf1-NK-UuY" firstAttribute="width" secondItem="HAl-cT-CT0" secondAttribute="width" id="FuD-In-M5Q"/>

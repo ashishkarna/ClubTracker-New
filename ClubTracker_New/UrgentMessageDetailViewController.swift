@@ -10,6 +10,7 @@ import UIKit
 
 class UrgentMessageDetailViewController: UIViewController {
 
+    @IBOutlet weak var imgClubLogo: UIImageView!
     
     @IBOutlet weak var lblClassName: UILabel!
     @IBOutlet weak var lblTo: UILabel!
@@ -95,7 +96,9 @@ class UrgentMessageDetailViewController: UIViewController {
         }
   
 
-        
+        if Helper.getUserInfo()?.avatar_link != nil{
+            Helper.loadImageFromUrl(url: (Helper.getUserInfo()?.avatar_link!)!, view: imgClubLogo)
+        }
         
         
     }

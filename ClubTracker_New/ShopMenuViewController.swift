@@ -10,6 +10,7 @@ import UIKit
 
 class ShopMenuViewController: UIViewController {
     
+    @IBOutlet weak var imgClubLogo: UIImageView!
     @IBOutlet weak var txtSearchItem: UITextField!
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -27,6 +28,10 @@ class ShopMenuViewController: UIViewController {
         // Do any additional setup after loading the view.
         collectionView.register(UINib(nibName: "ShopListItemCell", bundle: Bundle.main), forCellWithReuseIdentifier: "ShopCell")
         btnAdd.isEnabled =  !(Helper.getUserInfo()?.isTeacher)! ? false : true
+        
+        if Helper.getUserInfo()?.avatar_link != nil{
+            Helper.loadImageFromUrl(url: (Helper.getUserInfo()?.avatar_link!)!, view: imgClubLogo)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
